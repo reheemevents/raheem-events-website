@@ -8,13 +8,12 @@ import { Button } from "@/components/ui/Button";
 import {
   Phone,
   MessageCircle,
-  Mail,
   MapPin,
   Clock,
   Building2,
 } from "lucide-react";
 import { CONTACT } from "@/lib/constants";
-import { getPhoneLink, getWhatsAppLink, getEmailLink } from "@/lib/utils";
+import { getPhoneLink, getWhatsAppLink } from "@/lib/utils";
 import israrData from "@/data/venues/israr.json";
 import mumtazData from "@/data/venues/mumtaz.json";
 
@@ -28,7 +27,7 @@ export async function generateMetadata({
 
   return {
     title: `${t("title")} | Raheem Event Management & Catering`,
-    description: "Contact us - via phone, WhatsApp, or email",
+    description: "Contact us via phone or WhatsApp",
   };
 }
 
@@ -125,24 +124,6 @@ export default async function ContactPage({
                       </p>
                       <p className="font-medium text-[#1A1A1A]">
                         {CONTACT.phone}
-                      </p>
-                    </div>
-                  </a>
-
-                  {/* Email */}
-                  <a
-                    href={getEmailLink(CONTACT.email)}
-                    className="flex items-center gap-4 p-4 bg-white rounded-sm border border-[#E5E5E5] hover:border-[#D4AF37] transition-colors group"
-                  >
-                    <span className="w-12 h-12 rounded-full bg-[#D4AF37]/10 flex items-center justify-center group-hover:bg-[#D4AF37]/20 transition-colors">
-                      <Mail size={20} className="text-[#D4AF37]" />
-                    </span>
-                    <div>
-                      <p className="text-sm text-[#6B7280]">
-                        {tCommon("email")}
-                      </p>
-                      <p className="font-medium text-[#1A1A1A]">
-                        {CONTACT.email}
                       </p>
                     </div>
                   </a>

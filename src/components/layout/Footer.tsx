@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   Phone,
-  Mail,
+  MessageCircle,
   MapPin,
   Facebook,
   Instagram,
@@ -14,7 +14,7 @@ import {
   ArrowUp,
 } from "lucide-react";
 import { CONTACT, SOCIAL_LINKS } from "@/lib/constants";
-import { getPhoneLink, getWhatsAppLink, getEmailLink } from "@/lib/utils";
+import { getPhoneLink, getWhatsAppLink } from "@/lib/utils";
 
 export default function Footer() {
   const t = useTranslations("footer");
@@ -29,6 +29,7 @@ export default function Footer() {
       { href: "/catering", label: "Wedding Catering" },
       { href: "/catering", label: "Corporate Events" },
       { href: "/menu", label: "Food Menu" },
+      { href: "/menu-builder", label: "Menu Builder" },
     ],
     venues: [
       { href: "/venues/israr-marriage-hall", label: "Israr Marriage Hall" },
@@ -38,6 +39,7 @@ export default function Footer() {
     company: [
       { href: "/about", label: "About Us" },
       { href: "/testimonials", label: "Testimonials" },
+      { href: "/faq", label: "FAQ" },
       { href: "/contact", label: "Contact" },
     ],
   };
@@ -107,13 +109,15 @@ export default function Footer() {
               </a>
 
               <a
-                href={getEmailLink(CONTACT.email)}
-                className="flex items-center gap-3 text-sm text-[#9CA3AF] hover:text-[#D4AF37] transition-colors group"
+                href={getWhatsAppLink(CONTACT.whatsapp)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-sm text-[#9CA3AF] hover:text-[#25D366] transition-colors group"
               >
-                <span className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#D4AF37]/10 transition-colors">
-                  <Mail size={14} className="text-[#D4AF37]" />
+                <span className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#25D366]/10 transition-colors">
+                  <MessageCircle size={14} className="text-[#25D366]" />
                 </span>
-                {CONTACT.email}
+                WhatsApp: {CONTACT.phone}
               </a>
 
               <a

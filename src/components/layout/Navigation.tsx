@@ -108,7 +108,23 @@ export default function Navigation() {
 
   const navItems: NavItemProps[] = [
     { href: "/", label: t("home") },
-    { href: "/menu", label: t("menu") },
+    {
+      href: "/menu",
+      label: t("menu"),
+      hasDropdown: true,
+      dropdownItems: [
+        {
+          href: "/menu",
+          label: "Full Menu",
+          description: "Browse all 107+ menu items",
+        },
+        {
+          href: "/menu-builder",
+          label: t("menuBuilder"),
+          description: "Create a custom menu for your event",
+        },
+      ],
+    },
     {
       href: "/venues",
       label: t("venues"),
@@ -117,12 +133,12 @@ export default function Navigation() {
         {
           href: "/venues/israr-marriage-hall",
           label: "Israr Marriage Hall",
-          description: "Elegant venue for up to 700 guests",
+          description: "Two floors, capacity up to 700 guests",
         },
         {
           href: "/venues/mumtaz-banquet-hall",
           label: "Mumtaz Banquet Hall",
-          description: "Luxurious setting for up to 600 guests",
+          description: "Ground floor, capacity 1000-1200 guests",
         },
       ],
     },

@@ -170,8 +170,7 @@ export default async function VenueDetailPage({
                 <div className="flex items-center gap-2 text-white">
                   <Users size={20} className="text-[#D4AF37]" />
                   <span>
-                    {venue.capacity.seated}-{venue.capacity.buffet}{" "}
-                    {t("guests")}
+                    {venue.capacity.total} {t("guests")}
                   </span>
                 </div>
                 <div className="flex items-center gap-2 text-white">
@@ -207,19 +206,25 @@ export default async function VenueDetailPage({
                   <h2 className="font-heading text-2xl font-semibold text-[#1A1A1A] mb-6">
                     {t("capacity")}
                   </h2>
-                  <div className="grid grid-cols-2 gap-8">
-                    <div className="text-center p-6 bg-[#FAFAFA] rounded-sm">
-                      <div className="font-heading text-4xl font-bold text-[#D4AF37] mb-2">
-                        {venue.capacity.seated}
-                      </div>
-                      <p className="text-[#6B7280]">{t("seated")}</p>
+
+                  {/* Total capacity */}
+                  <div className="text-center p-6 bg-[#FAFAFA] rounded-sm mb-6">
+                    <div className="font-heading text-4xl font-bold text-[#D4AF37] mb-2">
+                      {venue.capacity.total}
                     </div>
-                    <div className="text-center p-6 bg-[#FAFAFA] rounded-sm">
-                      <div className="font-heading text-4xl font-bold text-[#D4AF37] mb-2">
-                        {venue.capacity.buffet}
+                    <p className="text-[#6B7280]">Total {t("guests")}</p>
+                  </div>
+
+                  {/* Floor breakdown */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {venue.capacity.floors.map((floor: { name: string; capacity: string | number }, index: number) => (
+                      <div key={index} className="text-center p-4 bg-[#FAFAFA] rounded-sm border border-[#E5E5E5]">
+                        <div className="font-heading text-2xl font-bold text-[#1A1A1A] mb-1">
+                          {floor.capacity}
+                        </div>
+                        <p className="text-[#6B7280] text-sm">{floor.name}</p>
                       </div>
-                      <p className="text-[#6B7280]">{t("buffet")}</p>
-                    </div>
+                    ))}
                   </div>
                 </div>
 

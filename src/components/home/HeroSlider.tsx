@@ -81,7 +81,7 @@ export default function HeroSlider() {
         }}
       />
 
-      {/* Gold corner decorations - positioned below header (h-20 = 80px) */}
+      {/* Gold corner decorations - vertically centered, below header */}
       <div className="absolute top-24 left-8 w-24 h-24 border-t-2 border-l-2 border-[#D4AF37]/60" />
       <div className="absolute top-24 right-8 w-24 h-24 border-t-2 border-r-2 border-[#D4AF37]/60" />
       <div className="absolute bottom-8 left-8 w-24 h-24 border-b-2 border-l-2 border-[#D4AF37]/60" />

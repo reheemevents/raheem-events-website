@@ -1,0 +1,181 @@
+{
+  "categories": [
+    {
+      "id": "general",
+      "label": "General",
+      "icon": "HelpCircle"
+    },
+    {
+      "id": "venues",
+      "label": "Venues",
+      "icon": "Building2"
+    },
+    {
+      "id": "catering",
+      "label": "Catering",
+      "icon": "UtensilsCrossed"
+    },
+    {
+      "id": "booking",
+      "label": "Booking",
+      "icon": "Calendar"
+    },
+    {
+      "id": "pricing",
+      "label": "Pricing",
+      "icon": "CreditCard"
+    }
+  ],
+  "questions": [
+    {
+      "id": "general-1",
+      "category": "general",
+      "question": "What services does Raheem Event Management offer?",
+      "answer": "We provide comprehensive event management services including professional catering, two elegant marriage halls (Israr Marriage Hall and Mumtaz Banquet Hall), complete event decoration, stage setup, lighting, and coordination for weddings, corporate events, and private celebrations."
+    },
+    {
+      "id": "general-2",
+      "category": "general",
+      "question": "How long has Raheem Event Management been in business?",
+      "answer": "We have been serving families in Mirpur and across AJK since 2005, with over 20 years of experience in creating unforgettable celebrations and thousands of successful events."
+    },
+    {
+      "id": "general-3",
+      "category": "general",
+      "question": "What areas do you serve?",
+      "answer": "We primarily serve Mirpur, AJK and surrounding areas. Our catering services can be extended to other locations within a reasonable distance. Please contact us to discuss your specific location requirements."
+    },
+    {
+      "id": "general-4",
+      "category": "general",
+      "question": "What types of events do you cater?",
+      "answer": "We cater all types of events including weddings (Mehndi, Barat, Walima), engagement ceremonies, birthday parties, corporate events, business meetings, conferences, and private family gatherings."
+    },
+    {
+      "id": "venues-1",
+      "category": "venues",
+      "question": "What is the capacity of Israr Marriage Hall?",
+      "answer": "Israr Marriage Hall can accommodate up to 700 guests for a seated arrangement and up to 1000 guests for a buffet-style event. The hall features a grand stage, modern lighting, and ample parking space."
+    },
+    {
+      "id": "venues-2",
+      "category": "venues",
+      "question": "What is the capacity of Mumtaz Banquet Hall?",
+      "answer": "Mumtaz Banquet Hall has a capacity of up to 600 guests for seated arrangements and up to 800 guests for buffet-style events. It offers a luxurious setting with contemporary decor and full amenities."
+    },
+    {
+      "id": "venues-3",
+      "category": "venues",
+      "question": "What amenities are included with the venue?",
+      "answer": "Both venues include air conditioning, backup generator, ample parking, stage with decoration, sound system, bridal room, separate dining areas, and professional service staff. Additional amenities can be arranged upon request."
+    },
+    {
+      "id": "venues-4",
+      "category": "venues",
+      "question": "Can I book both venues for the same event?",
+      "answer": "Yes, both venues can be booked together for larger events or multi-day celebrations like weddings spanning Mehndi, Barat, and Walima. We offer special packages for multiple bookings."
+    },
+    {
+      "id": "venues-5",
+      "category": "venues",
+      "question": "Is parking available at your venues?",
+      "answer": "Yes, both Israr Marriage Hall and Mumtaz Banquet Hall have dedicated parking areas. Israr Hall has parking for approximately 100 vehicles, and Mumtaz Hall can accommodate around 80 vehicles."
+    },
+    {
+      "id": "catering-1",
+      "category": "catering",
+      "question": "How many dishes are on your menu?",
+      "answer": "Our menu features over 107 authentic Pakistani dishes across 14 categories including rice dishes, BBQ, qorma & curries, desserts, tandoor items, street food, Chinese cuisine, and more."
+    },
+    {
+      "id": "catering-2",
+      "category": "catering",
+      "question": "Is all food Halal certified?",
+      "answer": "Yes, all our food is 100% Halal. We source all ingredients from trusted suppliers and maintain strict Halal standards in our kitchen operations."
+    },
+    {
+      "id": "catering-3",
+      "category": "catering",
+      "question": "Can you customize the menu for my event?",
+      "answer": "Absolutely! We can create a custom menu tailored to your preferences, dietary requirements, and budget. Use our Menu Builder tool or contact us to discuss your specific needs."
+    },
+    {
+      "id": "catering-4",
+      "category": "catering",
+      "question": "Do you offer catering without venue booking?",
+      "answer": "Yes, we offer standalone catering services for events at your chosen location. We provide complete catering packages including food, serving staff, and equipment rental if needed."
+    },
+    {
+      "id": "catering-5",
+      "category": "catering",
+      "question": "What is the minimum guest count for catering?",
+      "answer": "For catering-only services, we typically require a minimum of 100 guests. For venue bookings with catering, minimum requirements may vary by package. Please contact us for specific details."
+    },
+    {
+      "id": "catering-6",
+      "category": "catering",
+      "question": "Do you accommodate dietary restrictions?",
+      "answer": "Yes, we can accommodate various dietary requirements including vegetarian options, food allergies, and special dietary needs. Please inform us in advance so we can plan accordingly."
+    },
+    {
+      "id": "booking-1",
+      "category": "booking",
+      "question": "How far in advance should I book?",
+      "answer": "We recommend booking at least 2-3 months in advance for weddings and large events, especially during peak wedding season (October-February). For smaller events, 2-4 weeks notice is usually sufficient."
+    },
+    {
+      "id": "booking-2",
+      "category": "booking",
+      "question": "What is required to confirm a booking?",
+      "answer": "To confirm your booking, we require a signed agreement and an advance payment (typically 30-50% of the total amount). The remaining balance is due before the event date."
+    },
+    {
+      "id": "booking-3",
+      "category": "booking",
+      "question": "Can I visit the venue before booking?",
+      "answer": "Yes, we encourage you to visit our venues before booking. Please contact us to schedule a convenient time for a tour. We'll show you the facilities and discuss your requirements in detail."
+    },
+    {
+      "id": "booking-4",
+      "category": "booking",
+      "question": "What is your cancellation policy?",
+      "answer": "Cancellations made 30 days or more before the event receive a full refund minus the booking fee. Cancellations within 30 days may be subject to partial charges. Please refer to our booking agreement for complete details."
+    },
+    {
+      "id": "booking-5",
+      "category": "booking",
+      "question": "Can I reschedule my event?",
+      "answer": "Yes, events can be rescheduled subject to availability. We recommend contacting us as early as possible if you need to change your event date. Rescheduling fees may apply depending on the notice period."
+    },
+    {
+      "id": "pricing-1",
+      "category": "pricing",
+      "question": "What packages do you offer?",
+      "answer": "We offer three main wedding packages: Silver (basic), Gold (premium), and Platinum (luxury). Each package includes different levels of catering, decoration, and services. We also offer custom packages tailored to your needs."
+    },
+    {
+      "id": "pricing-2",
+      "category": "pricing",
+      "question": "How is pricing calculated?",
+      "answer": "Our pricing is typically based on per-head cost, which varies depending on the menu selection, package chosen, and additional services required. Contact us for a detailed quote based on your specific requirements."
+    },
+    {
+      "id": "pricing-3",
+      "category": "pricing",
+      "question": "Are taxes included in the quoted price?",
+      "answer": "The prices we quote typically include all applicable taxes. Any additional charges, if applicable, will be clearly mentioned in your booking agreement before confirmation."
+    },
+    {
+      "id": "pricing-4",
+      "category": "pricing",
+      "question": "What payment methods do you accept?",
+      "answer": "We accept cash, bank transfers, and cheques. For your convenience, payments can be made in installments as agreed upon in the booking contract."
+    },
+    {
+      "id": "pricing-5",
+      "category": "pricing",
+      "question": "Do you offer discounts for weekday events?",
+      "answer": "Yes, we offer special rates for events held on weekdays (Monday-Thursday). Contact us to learn about current promotions and off-peak discounts."
+    }
+  ]
+}

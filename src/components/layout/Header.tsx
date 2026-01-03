@@ -37,105 +37,99 @@ export default function Header() {
 
   return (
     <>
-      <motion.header
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-          isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-[0_1px_0_0_rgba(212,175,55,0.2),0_4px_20px_-4px_rgba(0,0,0,0.1)]"
-            : "bg-white"
-        )}
-      >
-        {/* Top gold accent line */}
-        <div className="h-[2px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <Link href="/" className="flex-shrink-0 group">
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Image
-                  src="/Logo/logo.png"
-                  alt="Raheem Events & Catering"
-                  width={180}
-                  height={60}
-                  className="h-12 sm:h-14 w-auto"
-                  priority
-                />
-              </motion.div>
-            </Link>
-
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-8">
-              <Navigation />
-
-              {/* Book Now Button */}
-              <Link href="/book-now">
-                <motion.button
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="relative overflow-hidden px-6 py-2.5 bg-[#DA291C] text-white text-sm font-medium tracking-wide rounded-sm group"
+      {/* Floating Header Container */}
+      <div className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-4">
+        <motion.header
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className={cn(
+            "max-w-7xl mx-auto transition-all duration-500 rounded-full",
+            isScrolled
+              ? "bg-white/95 backdrop-blur-md shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_0_0_1px_rgba(212,175,55,0.2)]"
+              : "bg-white/90 backdrop-blur-sm shadow-[0_4px_24px_-4px_rgba(0,0,0,0.1),0_0_0_1px_rgba(212,175,55,0.15)]"
+          )}
+        >
+          <div className="px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16">
+              {/* Left - Logo */}
+              <Link href="/" className="flex-shrink-0 group">
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  <span className="relative z-10">{t("bookNow")}</span>
-                  <motion.div
-                    className="absolute inset-0 bg-[#B82318]"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                  <Image
+                    src="/Logo/logo.png"
+                    alt="Raheem Events & Catering"
+                    width={160}
+                    height={50}
+                    className="h-10 sm:h-11 w-auto"
+                    priority
                   />
-                </motion.button>
+                </motion.div>
               </Link>
-            </div>
 
-            {/* Mobile Menu Toggle */}
-            <div className="flex items-center gap-4 lg:hidden">
-              <motion.button
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2 text-[#1A1A1A] hover:text-[#DA291C] transition-colors"
-                aria-label="Toggle menu"
-              >
-                <AnimatePresence mode="wait">
-                  {isMobileMenuOpen ? (
+              {/* Center - Navigation (Desktop) */}
+              <div className="hidden lg:flex items-center justify-center flex-1">
+                <Navigation />
+              </div>
+
+              {/* Right - Book Now Button (Desktop) */}
+              <div className="hidden lg:block">
+                <Link href="/book-now">
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="relative overflow-hidden px-5 py-2 bg-[#DA291C] text-white text-sm font-medium tracking-wide rounded-full group shadow-lg shadow-[#DA291C]/25"
+                  >
+                    <span className="relative z-10">{t("bookNow")}</span>
                     <motion.div
-                      key="close"
-                      initial={{ rotate: -90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: 90, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <X size={24} />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="menu"
-                      initial={{ rotate: 90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: -90, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Menu size={24} />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.button>
+                      className="absolute inset-0 bg-[#B82318]"
+                      initial={{ x: "-100%" }}
+                      whileHover={{ x: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                    />
+                  </motion.button>
+                </Link>
+              </div>
+
+              {/* Mobile Menu Toggle (Right on mobile) */}
+              <div className="flex items-center lg:hidden">
+                <motion.button
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  className="p-2 text-[#1A1A1A] hover:text-[#DA291C] transition-colors"
+                  aria-label="Toggle menu"
+                >
+                  <AnimatePresence mode="wait">
+                    {isMobileMenuOpen ? (
+                      <motion.div
+                        key="close"
+                        initial={{ rotate: -90, opacity: 0 }}
+                        animate={{ rotate: 0, opacity: 1 }}
+                        exit={{ rotate: 90, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <X size={24} />
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        key="menu"
+                        initial={{ rotate: 90, opacity: 0 }}
+                        animate={{ rotate: 0, opacity: 1 }}
+                        exit={{ rotate: -90, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <Menu size={24} />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.button>
+              </div>
             </div>
           </div>
-        </div>
-
-        {/* Bottom gold accent line */}
-        <motion.div
-          className="h-px bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent"
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-        />
-      </motion.header>
+        </motion.header>
+      </div>
 
       {/* Mobile Menu */}
       <MobileMenu

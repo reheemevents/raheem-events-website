@@ -22,10 +22,11 @@ git clone https://github.com/reheemevents/raheem-events-website.git
 ## Features
 
 - **107 Food Menu Items** across 14 categories with individual pages
+- **Menu Builder** - Custom menu selection tool with WhatsApp quote requests
 - **Two Venue Pages** - Israr Marriage Hall & Mumtaz Banquet Hall
-- **Wedding Packages** - Silver, Gold, Platinum tiers
-- **Bilingual Support** - English + Urdu with RTL layout
-- **Multi-step Booking Form** (4 steps) with validation
+- **FAQ Section** - Comprehensive FAQ page with category filtering
+- **Floating Header** - Modern pill-shaped header with backdrop blur
+- **Multi-step Booking Form** (4 steps) with WhatsApp-only contact
 - **WhatsApp Integration** - Floating button with pre-filled messages
 - **Click-to-Call** - Mobile-optimized phone buttons
 - **Photo Gallery** - Filterable by venue/category with lightbox
@@ -33,7 +34,7 @@ git clone https://github.com/reheemevents/raheem-events-website.git
 - **About Page** - Company story, mission, values, timeline
 - **Catering Page** - Event types, cuisines, hygiene section
 - **SEO Optimized** - Schema markup, meta tags, sitemap
-- **301 Static Pages** - Optimized for performance
+- **300+ Static Pages** - Optimized for performance
 
 ## Tech Stack
 
@@ -115,9 +116,11 @@ src/
 │   └── [locale]/          # Bilingual routing (en/ur)
 │       ├── page.tsx       # Home page
 │       ├── menu/          # Food menu catalog
+│       ├── menu-builder/  # Custom menu builder tool
 │       ├── venues/        # Venue pages
 │       ├── packages/      # Wedding packages
 │       ├── gallery/       # Photo gallery
+│       ├── faq/           # FAQ page
 │       ├── contact/       # Contact page
 │       └── book-now/      # Booking form
 ├── components/
@@ -125,6 +128,8 @@ src/
 │   ├── ui/                # Reusable UI components
 │   ├── home/              # Home page sections
 │   ├── menu/              # Menu components
+│   ├── menu-builder/      # Menu builder components
+│   ├── faq/               # FAQ accordion components
 │   ├── venue/             # Venue components
 │   └── common/            # Shared components
 ├── data/                  # JSON content files
@@ -142,6 +147,7 @@ Content is managed through JSON files in the `/data` directory:
 - `venues/*.json` - Venue information
 - `packages.json` - Wedding packages
 - `testimonials.json` - Client reviews
+- `faq.json` - FAQ questions and categories
 
 ## Deployment
 
@@ -173,6 +179,18 @@ NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_api_key
 
 ### January 2026 (Latest)
 
+#### New Features
+- **Menu Builder** - Interactive tool to build custom menus with category filtering, item selection, and WhatsApp quote requests
+- **FAQ Section** - Comprehensive FAQ page with accordion UI, category filtering, and quick link cards
+- **Floating Header** - Modern pill-shaped header with backdrop blur, gold accents, and smooth scroll transitions
+- **Menu Builder CTA** - Added promotional banners on Menu page, Home page, and Footer
+
+#### UI/UX Improvements
+- **WhatsApp-Only Contact** - Simplified booking form to WhatsApp-only contact (removed email option)
+- **Venue Capacity Updates** - Updated Israr Hall (700 guests) and Mumtaz Hall (1000-1200 guests) with floor breakdowns
+- **Hero Corner Decorations** - Repositioned gold corner borders for better visual balance
+- **Navigation Cleanup** - Removed FAQ from header, added to footer for cleaner navigation
+
 #### Gallery & Images
 - **Gallery Images Fixed** - Resolved issue where gallery images weren't displaying (only placeholder gradients were shown)
 - **24 Pakistani-Themed Images** - Added curated gallery with wedding venues, catering, and decor categories
@@ -200,6 +218,7 @@ NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_api_key
 
 ### Design Improvements
 
+- Modern floating header with rounded-full pill shape and backdrop blur
 - Replaced Framer Motion `whileHover` with CSS-based `hover:-translate-y-2` for better performance
 - Added `will-change-transform` for GPU-accelerated animations
 - Optimized line heights and text sizes for Nastaliq script readability

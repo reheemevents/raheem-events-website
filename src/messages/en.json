@@ -35,7 +35,9 @@
     "about": "About Us",
     "contact": "Contact",
     "bookNow": "Book Now",
-    "testimonials": "Testimonials"
+    "testimonials": "Testimonials",
+    "faq": "FAQ",
+    "menuBuilder": "Menu Builder"
   },
   "home": {
     "hero": {
@@ -309,6 +311,63 @@
       "title": "Server Error",
       "message": "Something went wrong on our end.",
       "button": "Try Again"
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to common questions about our services, venues, and booking process",
+    "badge": "Help Center",
+    "stillHaveQuestions": {
+      "title": "Still Have Questions?",
+      "subtitle": "Our team is ready to help you with any inquiries about our services"
+    },
+    "quickLinks": {
+      "venues": {
+        "title": "Explore Our Venues",
+        "description": "View details about Israr Marriage Hall and Mumtaz Banquet Hall"
+      },
+      "packages": {
+        "title": "View Packages",
+        "description": "Compare our Silver, Gold, and Platinum wedding packages"
+      },
+      "booking": {
+        "title": "Book Your Event",
+        "description": "Start your booking inquiry with our easy form"
+      }
+    }
+  },
+  "menuBuilder": {
+    "title": "Build Your Menu",
+    "subtitle": "Create a custom menu for your event by selecting from our 107+ dishes",
+    "badge": "Custom Menu",
+    "guestCount": "Number of Guests",
+    "eventType": "Event Type",
+    "selectItems": "Select Menu Items",
+    "selectedItems": "Selected Items",
+    "noItemsSelected": "No items selected yet",
+    "categories": "Categories",
+    "allCategories": "All Categories",
+    "addItem": "Add",
+    "removeItem": "Remove",
+    "clearAll": "Clear All",
+    "summary": {
+      "title": "Menu Summary",
+      "totalItems": "Total Items",
+      "categories": "Categories"
+    },
+    "actions": {
+      "getQuote": "Get Quote for This Menu",
+      "shareWhatsApp": "Share via WhatsApp",
+      "startOver": "Start Over"
+    },
+    "eventTypes": {
+      "wedding": "Wedding",
+      "mehndi": "Mehndi",
+      "barat": "Barat",
+      "walima": "Walima",
+      "corporate": "Corporate Event",
+      "birthday": "Birthday Party",
+      "other": "Other"
     }
   }
 }

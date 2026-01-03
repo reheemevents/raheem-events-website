@@ -22,7 +22,15 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
   const menuItems = [
     { href: "/", label: t("home"), icon: "01" },
-    { href: "/menu", label: t("menu"), icon: "02" },
+    {
+      href: "/menu",
+      label: t("menu"),
+      icon: "02",
+      children: [
+        { href: "/menu", label: "Full Menu" },
+        { href: "/menu-builder", label: t("menuBuilder") },
+      ],
+    },
     {
       href: "/venues",
       label: t("venues"),
@@ -34,7 +42,8 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     },
     { href: "/catering", label: t("catering"), icon: "04" },
     { href: "/gallery", label: t("gallery"), icon: "05" },
-    { href: "/contact", label: t("contact"), icon: "06" },
+    { href: "/faq", label: t("faq"), icon: "06" },
+    { href: "/contact", label: t("contact"), icon: "07" },
   ];
 
   const menuVariants = {

@@ -1,10 +1,12 @@
 import { setRequestLocale } from "next-intl/server";
 import { getTranslations } from "next-intl/server";
+import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/common/WhatsAppButton";
 import { PageHeading } from "@/components/ui/SectionHeading";
 import { CategoryFilter, MenuGrid } from "@/components/menu";
+import { Sparkles, ArrowRight } from "lucide-react";
 import categoriesData from "@/data/menu/categories.json";
 import allItemsData from "@/data/menu/all-items.json";
 
@@ -65,6 +67,51 @@ export default async function MenuPage({
 
           {/* Gold line at bottom */}
           <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
+        </section>
+
+        {/* Menu Builder CTA Banner */}
+        <section className="relative bg-gradient-to-r from-[#DA291C] to-[#B82318] py-6 overflow-hidden">
+          {/* Decorative pattern */}
+          <div
+            className="absolute inset-0 opacity-10"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2l4 3.25-4 3.25zM0 20h20v2H0v-2z'/%3E%3C/g%3E%3C/svg%3E")`,
+            }}
+          />
+
+          {/* Floating sparkle decorations */}
+          <div className="absolute top-2 left-[10%] text-white/20">
+            <Sparkles size={24} />
+          </div>
+          <div className="absolute bottom-2 right-[15%] text-white/20">
+            <Sparkles size={20} />
+          </div>
+
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
+                  <Sparkles className="w-6 h-6 text-[#D4AF37]" />
+                </div>
+                <div className="text-center sm:text-left">
+                  <h3 className="text-white font-heading text-lg md:text-xl font-semibold">
+                    Build Your Perfect Menu
+                  </h3>
+                  <p className="text-white/80 text-sm">
+                    Select your favorite dishes & get an instant quote via WhatsApp
+                  </p>
+                </div>
+              </div>
+
+              <Link
+                href="/menu-builder"
+                className="group inline-flex items-center gap-2 bg-white text-[#DA291C] px-6 py-3 rounded-sm font-semibold text-sm hover:bg-[#D4AF37] hover:text-[#1A1A1A] transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                Try Menu Builder
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </div>
         </section>
 
         {/* Menu content */}

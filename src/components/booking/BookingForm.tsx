@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 import {
@@ -9,12 +9,10 @@ import {
   Building2,
   User,
   Phone,
-  Mail,
   FileText,
   ChevronLeft,
   ChevronRight,
   MessageCircle,
-  CheckCircle2,
   Sparkles,
   Heart,
 } from "lucide-react";
@@ -34,7 +32,6 @@ interface FormData {
   venue: string;
   name: string;
   phone: string;
-  email: string;
   notes: string;
 }
 
@@ -45,7 +42,6 @@ const initialFormData: FormData = {
   venue: "",
   name: "",
   phone: "",
-  email: "",
   notes: "",
 };
 
@@ -61,7 +57,6 @@ export function BookingForm({ locale }: BookingFormProps) {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
   const steps = [
@@ -134,9 +129,6 @@ export function BookingForm({ locale }: BookingFormProps) {
       if (!formData.phone.trim()) {
         newErrors.phone = locale === "ur" ? "براہ کرم فون نمبر درج کریں" : "Please enter your phone number";
       }
-      if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-        newErrors.email = locale === "ur" ? "براہ کرم درست ای میل درج کریں" : "Please enter a valid email";
-      }
     }
 
     setErrors(newErrors);
@@ -155,18 +147,36 @@ export function BookingForm({ locale }: BookingFormProps) {
     }
   };
 
-  const handleSubmit = async () => {
+  const generateBookingMessage = () => {
+    const eventType = getEventTypeName(formData.eventType);
+    const venue = getVenueName(formData.venue);
+    const date = formatDate(formData.eventDate);
+
+    let message = `*New Booking Inquiry*\n\n`;
+    message += `*Event Details:*\n`;
+    message += `• Type: ${eventType}\n`;
+    message += `• Date: ${date}\n`;
+    message += `• Guests: ${formData.guestCount}\n`;
+    message += `• Venue: ${venue}\n\n`;
+    message += `*Contact Information:*\n`;
+    message += `• Name: ${formData.name}\n`;
+    message += `• Phone: ${formData.phone}\n`;
+    if (formData.notes) {
+      message += `\n*Additional Notes:*\n${formData.notes}\n`;
+    }
+    message += `\nPlease confirm availability and provide a quote. Thank you!`;
+    return message;
+  };
+
+  const handleSubmit = () => {
     if (!validateStep(3)) return;
 
-    setIsSubmitting(true);
+    const message = generateBookingMessage();
+    const whatsappUrl = getWhatsAppLink(CONTACT.whatsapp, message);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    // Open WhatsApp with the booking message
+    window.open(whatsappUrl, "_blank");
 
-    // Here you would typically send the data to your backend
-    console.log("Form submitted:", formData);
-
-    setIsSubmitting(false);
     setIsSuccess(true);
   };
 
@@ -187,248 +197,7 @@ export function BookingForm({ locale }: BookingFormProps) {
     }).format(date);
   };
 
-  // Step content components
-  const Step1EventDetails = () => (
-    <motion.div
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: -20 }}
-      className="space-y-6"
-    >
-      <div className="text-center mb-8">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#D4AF37]/10 mb-4">
-          <Calendar size={28} className="text-[#D4AF37]" />
-        </div>
-        <h2 className="font-heading text-2xl font-semibold text-[#1A1A1A] mb-2">
-          {t("steps.event")}
-        </h2>
-        <p className="text-[#6B7280]">
-          {locale === "ur"
-            ? "آپ کے ایونٹ کے بارے میں بتائیں"
-            : "Tell us about your event"}
-        </p>
-      </div>
-
-      <Select
-        label={t("form.eventType")}
-        placeholder={t("form.selectEventType")}
-        options={eventTypeOptions}
-        value={formData.eventType}
-        onChange={(value) => updateFormData("eventType", value)}
-        error={errors.eventType}
-      />
-
-      <DatePicker
-        label={t("form.eventDate")}
-        value={formData.eventDate}
-        onChange={(date) => updateFormData("eventDate", date)}
-        minDate={new Date()}
-        placeholder={locale === "ur" ? "تاریخ منتخب کریں" : "Select a date"}
-        error={errors.eventDate as string}
-      />
-
-      <Select
-        label={t("form.guestCount")}
-        placeholder={locale === "ur" ? "مہمانوں کی تعداد منتخب کریں" : "Select guest count"}
-        options={guestOptions}
-        value={formData.guestCount}
-        onChange={(value) => updateFormData("guestCount", value)}
-        error={errors.guestCount}
-      />
-    </motion.div>
-  );
-
-  const Step2Services = () => (
-    <motion.div
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: -20 }}
-      className="space-y-6"
-    >
-      <div className="text-center mb-8">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#D4AF37]/10 mb-4">
-          <Building2 size={28} className="text-[#D4AF37]" />
-        </div>
-        <h2 className="font-heading text-2xl font-semibold text-[#1A1A1A] mb-2">
-          {t("steps.services")}
-        </h2>
-        <p className="text-[#6B7280]">
-          {locale === "ur"
-            ? "اپنی خدمات منتخب کریں"
-            : "Choose your services"}
-        </p>
-      </div>
-
-      <Select
-        label={t("form.venue")}
-        placeholder={locale === "ur" ? "ویونیو منتخب کریں" : "Select a venue"}
-        options={venueOptions}
-        value={formData.venue}
-        onChange={(value) => updateFormData("venue", value)}
-        error={errors.venue}
-      />
-    </motion.div>
-  );
-
-  const Step3Contact = () => (
-    <motion.div
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: -20 }}
-      className="space-y-6"
-    >
-      <div className="text-center mb-8">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#D4AF37]/10 mb-4">
-          <User size={28} className="text-[#D4AF37]" />
-        </div>
-        <h2 className="font-heading text-2xl font-semibold text-[#1A1A1A] mb-2">
-          {t("steps.contact")}
-        </h2>
-        <p className="text-[#6B7280]">
-          {locale === "ur"
-            ? "اپنی رابطے کی معلومات درج کریں"
-            : "Enter your contact information"}
-        </p>
-      </div>
-
-      <Input
-        label={t("form.name")}
-        placeholder={locale === "ur" ? "اپنا مکمل نام درج کریں" : "Enter your full name"}
-        value={formData.name}
-        onChange={(e) => updateFormData("name", e.target.value)}
-        error={errors.name}
-        leftIcon={<User size={18} />}
-      />
-
-      <Input
-        label={t("form.phone")}
-        placeholder={locale === "ur" ? "مثال: 0300 1234567" : "e.g., 0300 1234567"}
-        value={formData.phone}
-        onChange={(e) => updateFormData("phone", e.target.value)}
-        error={errors.phone}
-        leftIcon={<Phone size={18} />}
-      />
-
-      <Input
-        label={`${t("form.email")} (${locale === "ur" ? "اختیاری" : "Optional"})`}
-        placeholder={locale === "ur" ? "اپنا ای میل درج کریں" : "Enter your email"}
-        value={formData.email}
-        onChange={(e) => updateFormData("email", e.target.value)}
-        error={errors.email}
-        leftIcon={<Mail size={18} />}
-      />
-
-      <Textarea
-        label={t("form.notes")}
-        placeholder={t("form.notesPlaceholder")}
-        value={formData.notes}
-        onChange={(e) => updateFormData("notes", e.target.value)}
-        rows={4}
-      />
-    </motion.div>
-  );
-
-  const Step4Summary = () => (
-    <motion.div
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: -20 }}
-      className="space-y-6"
-    >
-      <div className="text-center mb-8">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#D4AF37]/10 mb-4">
-          <FileText size={28} className="text-[#D4AF37]" />
-        </div>
-        <h2 className="font-heading text-2xl font-semibold text-[#1A1A1A] mb-2">
-          {t("summary.title")}
-        </h2>
-        <p className="text-[#6B7280]">
-          {locale === "ur"
-            ? "اپنی تفصیلات کی تصدیق کریں"
-            : "Review your booking details"}
-        </p>
-      </div>
-
-      <div className="bg-[#FAFAFA] rounded-sm border border-[#E5E5E5] divide-y divide-[#E5E5E5]">
-        {/* Event Details */}
-        <div className="p-4">
-          <h3 className="text-sm font-medium text-[#6B7280] mb-3">
-            {t("steps.event")}
-          </h3>
-          <div className="space-y-2">
-            <div className="flex justify-between">
-              <span className="text-[#6B7280]">{t("summary.eventType")}</span>
-              <span className="font-medium text-[#1A1A1A]">
-                {getEventTypeName(formData.eventType)}
-              </span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-[#6B7280]">{t("summary.date")}</span>
-              <span className="font-medium text-[#1A1A1A]">
-                {formatDate(formData.eventDate)}
-              </span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-[#6B7280]">{t("summary.guests")}</span>
-              <span className="font-medium text-[#1A1A1A]">
-                {formData.guestCount}
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Services */}
-        <div className="p-4">
-          <h3 className="text-sm font-medium text-[#6B7280] mb-3">
-            {t("steps.services")}
-          </h3>
-          <div className="space-y-2">
-            <div className="flex justify-between">
-              <span className="text-[#6B7280]">{t("summary.venue")}</span>
-              <span className="font-medium text-[#1A1A1A]">
-                {getVenueName(formData.venue)}
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Contact */}
-        <div className="p-4">
-          <h3 className="text-sm font-medium text-[#6B7280] mb-3">
-            {t("summary.contact")}
-          </h3>
-          <div className="space-y-2">
-            <div className="flex justify-between">
-              <span className="text-[#6B7280]">{t("form.name")}</span>
-              <span className="font-medium text-[#1A1A1A]">{formData.name}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-[#6B7280]">{t("form.phone")}</span>
-              <span className="font-medium text-[#1A1A1A]">{formData.phone}</span>
-            </div>
-            {formData.email && (
-              <div className="flex justify-between">
-                <span className="text-[#6B7280]">{t("form.email")}</span>
-                <span className="font-medium text-[#1A1A1A]">{formData.email}</span>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Notes */}
-        {formData.notes && (
-          <div className="p-4">
-            <h3 className="text-sm font-medium text-[#6B7280] mb-2">
-              {t("form.notes")}
-            </h3>
-            <p className="text-[#1A1A1A] text-sm">{formData.notes}</p>
-          </div>
-        )}
-      </div>
-    </motion.div>
-  );
-
-  const SuccessState = () => (
+  const renderSuccessState = () => (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -438,9 +207,9 @@ export function BookingForm({ locale }: BookingFormProps) {
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-        className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-[#10B981]/10 mb-6"
+        className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-[#25D366]/10 mb-6"
       >
-        <CheckCircle2 size={48} className="text-[#10B981]" />
+        <MessageCircle size={48} className="text-[#25D366]" />
       </motion.div>
 
       <motion.div
@@ -449,14 +218,20 @@ export function BookingForm({ locale }: BookingFormProps) {
         transition={{ delay: 0.4 }}
       >
         <h2 className="font-heading text-3xl font-bold text-[#1A1A1A] mb-4">
-          {t("success.title")}
+          {locale === "ur" ? "بکنگ بھیج دی گئی!" : "Booking Sent!"}
         </h2>
         <p className="text-[#6B7280] text-lg mb-8 max-w-md mx-auto">
-          {t("success.message")}
+          {locale === "ur"
+            ? "آپ کی بکنگ انکوائری واٹس ایپ پر بھیج دی گئی ہے۔ ہم جلد آپ سے رابطہ کریں گے۔"
+            : "Your booking inquiry has been sent via WhatsApp. We'll respond shortly!"}
         </p>
 
         <div className="space-y-4">
-          <p className="text-[#6B7280]">{t("success.whatsapp")}</p>
+          <p className="text-[#6B7280]">
+            {locale === "ur"
+              ? "مزید سوالات ہیں؟ براہ راست رابطہ کریں"
+              : "Have more questions? Contact us directly"}
+          </p>
           <a
             href={getWhatsAppLink(
               CONTACT.whatsapp,
@@ -472,7 +247,7 @@ export function BookingForm({ locale }: BookingFormProps) {
               leftIcon={<MessageCircle size={18} />}
               className="bg-[#25D366] hover:bg-[#128C7E]"
             >
-              {tCommon("whatsapp")}
+              {locale === "ur" ? "واٹس ایپ کھولیں" : "Open WhatsApp"}
             </Button>
           </a>
         </div>
@@ -521,7 +296,7 @@ export function BookingForm({ locale }: BookingFormProps) {
   if (isSuccess) {
     return (
       <div className="relative bg-white rounded-sm border border-[#E5E5E5] shadow-lg overflow-hidden">
-        <SuccessState />
+        {renderSuccessState()}
       </div>
     );
   }
@@ -538,10 +313,234 @@ export function BookingForm({ locale }: BookingFormProps) {
         {/* Form content */}
         <div className="max-w-lg mx-auto">
           <AnimatePresence mode="wait">
-            {currentStep === 1 && <Step1EventDetails key="step1" />}
-            {currentStep === 2 && <Step2Services key="step2" />}
-            {currentStep === 3 && <Step3Contact key="step3" />}
-            {currentStep === 4 && <Step4Summary key="step4" />}
+            {currentStep === 1 && (
+              <motion.div
+                key="step1"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                className="space-y-6"
+              >
+                <div className="text-center mb-8">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#D4AF37]/10 mb-4">
+                    <Calendar size={28} className="text-[#D4AF37]" />
+                  </div>
+                  <h2 className="font-heading text-2xl font-semibold text-[#1A1A1A] mb-2">
+                    {t("steps.event")}
+                  </h2>
+                  <p className="text-[#6B7280]">
+                    {locale === "ur"
+                      ? "آپ کے ایونٹ کے بارے میں بتائیں"
+                      : "Tell us about your event"}
+                  </p>
+                </div>
+
+                <Select
+                  label={t("form.eventType")}
+                  placeholder={t("form.selectEventType")}
+                  options={eventTypeOptions}
+                  value={formData.eventType}
+                  onChange={(value) => updateFormData("eventType", value)}
+                  error={errors.eventType}
+                />
+
+                <DatePicker
+                  label={t("form.eventDate")}
+                  value={formData.eventDate}
+                  onChange={(date) => updateFormData("eventDate", date)}
+                  minDate={new Date()}
+                  placeholder={locale === "ur" ? "تاریخ منتخب کریں" : "Select a date"}
+                  error={errors.eventDate as string}
+                />
+
+                <Select
+                  label={t("form.guestCount")}
+                  placeholder={locale === "ur" ? "مہمانوں کی تعداد منتخب کریں" : "Select guest count"}
+                  options={guestOptions}
+                  value={formData.guestCount}
+                  onChange={(value) => updateFormData("guestCount", value)}
+                  error={errors.guestCount}
+                />
+              </motion.div>
+            )}
+
+            {currentStep === 2 && (
+              <motion.div
+                key="step2"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                className="space-y-6"
+              >
+                <div className="text-center mb-8">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#D4AF37]/10 mb-4">
+                    <Building2 size={28} className="text-[#D4AF37]" />
+                  </div>
+                  <h2 className="font-heading text-2xl font-semibold text-[#1A1A1A] mb-2">
+                    {t("steps.services")}
+                  </h2>
+                  <p className="text-[#6B7280]">
+                    {locale === "ur"
+                      ? "اپنی خدمات منتخب کریں"
+                      : "Choose your services"}
+                  </p>
+                </div>
+
+                <Select
+                  label={t("form.venue")}
+                  placeholder={locale === "ur" ? "ویونیو منتخب کریں" : "Select a venue"}
+                  options={venueOptions}
+                  value={formData.venue}
+                  onChange={(value) => updateFormData("venue", value)}
+                  error={errors.venue}
+                />
+              </motion.div>
+            )}
+
+            {currentStep === 3 && (
+              <motion.div
+                key="step3"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                className="space-y-6"
+              >
+                <div className="text-center mb-8">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#D4AF37]/10 mb-4">
+                    <User size={28} className="text-[#D4AF37]" />
+                  </div>
+                  <h2 className="font-heading text-2xl font-semibold text-[#1A1A1A] mb-2">
+                    {t("steps.contact")}
+                  </h2>
+                  <p className="text-[#6B7280]">
+                    {locale === "ur"
+                      ? "اپنی رابطے کی معلومات درج کریں"
+                      : "Enter your contact information"}
+                  </p>
+                </div>
+
+                <Input
+                  label={t("form.name")}
+                  placeholder={locale === "ur" ? "اپنا مکمل نام درج کریں" : "Enter your full name"}
+                  value={formData.name}
+                  onChange={(e) => updateFormData("name", e.target.value)}
+                  error={errors.name}
+                  leftIcon={<User size={18} />}
+                />
+
+                <Input
+                  label={t("form.phone")}
+                  placeholder={locale === "ur" ? "مثال: 0300 1234567" : "e.g., 0300 1234567"}
+                  value={formData.phone}
+                  onChange={(e) => updateFormData("phone", e.target.value)}
+                  error={errors.phone}
+                  leftIcon={<Phone size={18} />}
+                />
+
+                <Textarea
+                  label={t("form.notes")}
+                  placeholder={t("form.notesPlaceholder")}
+                  value={formData.notes}
+                  onChange={(e) => updateFormData("notes", e.target.value)}
+                  rows={4}
+                />
+              </motion.div>
+            )}
+
+            {currentStep === 4 && (
+              <motion.div
+                key="step4"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                className="space-y-6"
+              >
+                <div className="text-center mb-8">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#D4AF37]/10 mb-4">
+                    <FileText size={28} className="text-[#D4AF37]" />
+                  </div>
+                  <h2 className="font-heading text-2xl font-semibold text-[#1A1A1A] mb-2">
+                    {t("summary.title")}
+                  </h2>
+                  <p className="text-[#6B7280]">
+                    {locale === "ur"
+                      ? "اپنی تفصیلات کی تصدیق کریں"
+                      : "Review your booking details"}
+                  </p>
+                </div>
+
+                <div className="bg-[#FAFAFA] rounded-sm border border-[#E5E5E5] divide-y divide-[#E5E5E5]">
+                  {/* Event Details */}
+                  <div className="p-4">
+                    <h3 className="text-sm font-medium text-[#6B7280] mb-3">
+                      {t("steps.event")}
+                    </h3>
+                    <div className="space-y-2">
+                      <div className="flex justify-between">
+                        <span className="text-[#6B7280]">{t("summary.eventType")}</span>
+                        <span className="font-medium text-[#1A1A1A]">
+                          {getEventTypeName(formData.eventType)}
+                        </span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-[#6B7280]">{t("summary.date")}</span>
+                        <span className="font-medium text-[#1A1A1A]">
+                          {formatDate(formData.eventDate)}
+                        </span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-[#6B7280]">{t("summary.guests")}</span>
+                        <span className="font-medium text-[#1A1A1A]">
+                          {formData.guestCount}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Services */}
+                  <div className="p-4">
+                    <h3 className="text-sm font-medium text-[#6B7280] mb-3">
+                      {t("steps.services")}
+                    </h3>
+                    <div className="space-y-2">
+                      <div className="flex justify-between">
+                        <span className="text-[#6B7280]">{t("summary.venue")}</span>
+                        <span className="font-medium text-[#1A1A1A]">
+                          {getVenueName(formData.venue)}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Contact */}
+                  <div className="p-4">
+                    <h3 className="text-sm font-medium text-[#6B7280] mb-3">
+                      {t("summary.contact")}
+                    </h3>
+                    <div className="space-y-2">
+                      <div className="flex justify-between">
+                        <span className="text-[#6B7280]">{t("form.name")}</span>
+                        <span className="font-medium text-[#1A1A1A]">{formData.name}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-[#6B7280]">{t("form.phone")}</span>
+                        <span className="font-medium text-[#1A1A1A]">{formData.phone}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Notes */}
+                  {formData.notes && (
+                    <div className="p-4">
+                      <h3 className="text-sm font-medium text-[#6B7280] mb-2">
+                        {t("form.notes")}
+                      </h3>
+                      <p className="text-[#1A1A1A] text-sm">{formData.notes}</p>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            )}
           </AnimatePresence>
 
           {/* Navigation buttons */}
@@ -571,10 +570,10 @@ export function BookingForm({ locale }: BookingFormProps) {
               <Button
                 variant="primary"
                 onClick={handleSubmit}
-                disabled={isSubmitting}
-                className="min-w-[140px]"
+                leftIcon={<MessageCircle size={18} />}
+                className="min-w-[180px] bg-[#25D366] hover:bg-[#128C7E]"
               >
-                {isSubmitting ? tCommon("sending") : t("submit")}
+                {locale === "ur" ? "واٹس ایپ پر بھیجیں" : "Send via WhatsApp"}
               </Button>
             )}
           </div>

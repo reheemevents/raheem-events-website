@@ -22,8 +22,10 @@
     "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80"
   ],
   "capacity": {
-    "seated": 400,
-    "buffet": 600
+    "total": "1000-1200",
+    "floors": [
+      { "name": "Ground Floor", "capacity": "1000-1200" }
+    ]
   },
   "amenities": [
     "ac",
