@@ -2,6 +2,14 @@
 
 A modern, bilingual (English/Urdu) website for **Raheem Event Management & Catering** (Est. 2005) showcasing catering services and two marriage halls: **Israr Marriage Hall** and **Mumtaz Banquet Hall**.
 
+## Repository
+
+**GitHub:** [https://github.com/reheemevents/raheem-events-website](https://github.com/reheemevents/raheem-events-website)
+
+```bash
+git clone https://github.com/reheemevents/raheem-events-website.git
+```
+
 ## Venues
 
 | Venue | Address | City |
@@ -40,6 +48,16 @@ A modern, bilingual (English/Urdu) website for **Raheem Event Management & Cater
 | [React Hook Form](https://react-hook-form.com/) | Form handling |
 | [Zod](https://zod.dev/) | Schema validation |
 
+## Typography
+
+| Font | Usage |
+|------|-------|
+| **Playfair Display** | Headings (English) |
+| **Inter** | Body text (English) |
+| **Noto Nastaliq Urdu** | All Urdu text - authentic Nastaliq script |
+
+The Urdu typography uses Noto Nastaliq Urdu from Google Fonts with optimized line heights and text sizes for proper Nastaliq readability.
+
 ## Development Tools & Skills
 
 This project was built using:
@@ -68,7 +86,7 @@ This project was built using:
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/reheemevents/raheem-events-website.git
 
 # Navigate to project directory
 cd raheem-events-website
@@ -151,10 +169,28 @@ NEXT_PUBLIC_WHATSAPP_NUMBER=923001234567
 NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_api_key
 ```
 
+## Recent Changes
+
+### January 2026
+
+- **Food Menu Showcase** - Added new home page section featuring 6 category cards and 4 popular dishes
+- **Urdu Typography** - Integrated Noto Nastaliq Urdu font for authentic Urdu text rendering
+- **Menu Card Animations** - Optimized hover animations with CSS transitions for smoother performance
+- **Real Food Images** - Updated all placeholder images with actual Raheem Events food photography
+- **Logo Integration** - Added custom logos to header and footer
+- **GitHub Repository** - Connected project to GitHub for version control
+
+### Design Improvements
+
+- Replaced Framer Motion `whileHover` with CSS-based `hover:-translate-y-2` for better performance
+- Added `will-change-transform` for GPU-accelerated animations
+- Optimized line heights and text sizes for Nastaliq script readability
+- Gold accent styling throughout with brand color consistency
+
 ## License
 
 This project is proprietary software developed for Raheem Event Management & Catering.
 
 ---
 
-Built with Claude Code using Frontend Design and Feature Development skills.
+Built with [Claude Code](https://claude.com/claude-code) using Frontend Design and Feature Development skills.
