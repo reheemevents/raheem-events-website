@@ -7,7 +7,6 @@ import {
   Calendar,
   Users,
   Building2,
-  Package,
   User,
   Phone,
   Mail,
@@ -25,7 +24,7 @@ import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
 import { Textarea } from "@/components/ui/Textarea";
 import { DatePicker } from "@/components/ui/DatePicker";
-import { CONTACT, EVENT_TYPES, PACKAGE_TIERS } from "@/lib/constants";
+import { CONTACT, EVENT_TYPES } from "@/lib/constants";
 import { getWhatsAppLink, getPhoneLink, cn } from "@/lib/utils";
 
 interface FormData {
@@ -33,7 +32,6 @@ interface FormData {
   eventDate: Date | undefined;
   guestCount: string;
   venue: string;
-  packageTier: string;
   name: string;
   phone: string;
   email: string;
@@ -45,7 +43,6 @@ const initialFormData: FormData = {
   eventDate: undefined,
   guestCount: "",
   venue: "",
-  packageTier: "",
   name: "",
   phone: "",
   email: "",
@@ -91,13 +88,6 @@ export function BookingForm({ locale }: BookingFormProps) {
     { value: "both", label: t("form.venueOptions.both") },
   ];
 
-  const packageOptions = [
-    { value: "silver", label: locale === "ur" ? "سلور" : "Silver" },
-    { value: "gold", label: locale === "ur" ? "گولڈ (مقبول)" : "Gold (Popular)" },
-    { value: "platinum", label: locale === "ur" ? "پلیٹینم" : "Platinum" },
-    { value: "custom", label: locale === "ur" ? "حسب ضرورت" : "Custom" },
-  ];
-
   const guestOptions = [
     { value: "100-200", label: "100 - 200" },
     { value: "200-300", label: "200 - 300" },
@@ -134,9 +124,6 @@ export function BookingForm({ locale }: BookingFormProps) {
     if (step === 2) {
       if (!formData.venue) {
         newErrors.venue = locale === "ur" ? "براہ کرم ویونیو منتخب کریں" : "Please select a venue";
-      }
-      if (!formData.packageTier) {
-        newErrors.packageTier = locale === "ur" ? "براہ کرم پیکج منتخب کریں" : "Please select a package";
       }
     }
 
@@ -189,10 +176,6 @@ export function BookingForm({ locale }: BookingFormProps) {
 
   const getVenueName = (value: string) => {
     return venueOptions.find((opt) => opt.value === value)?.label || value;
-  };
-
-  const getPackageName = (value: string) => {
-    return packageOptions.find((opt) => opt.value === value)?.label || value;
   };
 
   const formatDate = (date: Date | undefined) => {
@@ -284,42 +267,6 @@ export function BookingForm({ locale }: BookingFormProps) {
         onChange={(value) => updateFormData("venue", value)}
         error={errors.venue}
       />
-
-      <Select
-        label={t("form.package")}
-        placeholder={locale === "ur" ? "پیکج منتخب کریں" : "Select a package"}
-        options={packageOptions}
-        value={formData.packageTier}
-        onChange={(value) => updateFormData("packageTier", value)}
-        error={errors.packageTier}
-      />
-
-      {/* Package preview cards */}
-      <div className="grid grid-cols-3 gap-3 mt-6">
-        {[
-          { id: "silver", color: "#C0C0C0", label: locale === "ur" ? "سلور" : "Silver" },
-          { id: "gold", color: "#D4AF37", label: locale === "ur" ? "گولڈ" : "Gold" },
-          { id: "platinum", color: "#8B7355", label: locale === "ur" ? "پلیٹینم" : "Platinum" },
-        ].map((pkg) => (
-          <button
-            key={pkg.id}
-            type="button"
-            onClick={() => updateFormData("packageTier", pkg.id)}
-            className={cn(
-              "p-4 rounded-sm border-2 transition-all duration-300 text-center",
-              formData.packageTier === pkg.id
-                ? "border-[#D4AF37] bg-[#D4AF37]/5 shadow-md"
-                : "border-[#E5E5E5] hover:border-[#D4AF37]/50"
-            )}
-          >
-            <div
-              className="w-8 h-8 rounded-full mx-auto mb-2"
-              style={{ backgroundColor: pkg.color }}
-            />
-            <span className="text-sm font-medium text-[#1A1A1A]">{pkg.label}</span>
-          </button>
-        ))}
-      </div>
     </motion.div>
   );
 
@@ -440,12 +387,6 @@ export function BookingForm({ locale }: BookingFormProps) {
               <span className="text-[#6B7280]">{t("summary.venue")}</span>
               <span className="font-medium text-[#1A1A1A]">
                 {getVenueName(formData.venue)}
-              </span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-[#6B7280]">{t("summary.package")}</span>
-              <span className="font-medium text-[#1A1A1A]">
-                {getPackageName(formData.packageTier)}
               </span>
             </div>
           </div>

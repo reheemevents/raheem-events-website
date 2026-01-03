@@ -64,13 +64,6 @@ export const EVENT_TYPES = [
   { id: "other", name: "Other" },
 ] as const;
 
-// Package tiers
-export const PACKAGE_TIERS = [
-  { id: "silver", name: "Silver", color: "#C0C0C0" },
-  { id: "gold", name: "Gold", color: "#D4AF37" },
-  { id: "platinum", name: "Platinum", color: "#E5E4E2" },
-] as const;
-
 // Venue IDs
 export const VENUES = {
   ISRAR: "israr-marriage-hall",

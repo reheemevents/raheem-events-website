@@ -127,7 +127,6 @@ export default function Navigation() {
       ],
     },
     { href: "/catering", label: t("catering") },
-    { href: "/packages", label: t("packages") },
     { href: "/gallery", label: t("gallery") },
     { href: "/contact", label: t("contact") },
   ];

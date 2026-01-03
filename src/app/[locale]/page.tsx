@@ -6,7 +6,6 @@ import {
   ServicesOverview,
   WhyChooseUs,
   FoodMenuShowcase,
-  FeaturedPackages,
   GalleryPreview,
   TestimonialsCarousel,
   CTASection,
@@ -31,7 +30,6 @@ export default async function HomePage({
         <ServicesOverview />
         <WhyChooseUs />
         <FoodMenuShowcase />
-        <FeaturedPackages />
         <GalleryPreview />
         <TestimonialsCarousel />
         <CTASection />

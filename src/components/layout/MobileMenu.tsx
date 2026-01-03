@@ -31,7 +31,6 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       ],
     },
     { href: "/catering", label: t("catering") },
-    { href: "/packages", label: t("packages") },
     { href: "/gallery", label: t("gallery") },
     { href: "/contact", label: t("contact") },
   ];

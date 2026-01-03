@@ -46,13 +46,6 @@
     },
     {
       "label": {
-        "en": "Packages",
-        "ur": "پیکجز"
-      },
-      "href": "/packages"
-    },
-    {
-      "label": {
         "en": "Gallery",
         "ur": "گیلری"
       },
@@ -93,13 +86,6 @@
             "ur": "فوڈ مینو"
           },
           "href": "/menu"
-        },
-        {
-          "label": {
-            "en": "Packages",
-            "ur": "پیکجز"
-          },
-          "href": "/packages"
         }
       ]
     },
