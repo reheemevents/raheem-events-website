@@ -12,12 +12,12 @@ export const CONTACT = {
 
 // WhatsApp pre-filled messages
 export const WHATSAPP_MESSAGES = {
-  general: "Hi, I'd like to inquire about wedding catering / hall booking.",
-  booking: "Hi, I'd like to book an event. Please share the available dates.",
-  israrHall: "Hi, I'm interested in booking Israr Marriage Hall. Please share details.",
-  mumtazHall: "Hi, I'm interested in booking Mumtaz Banquet Hall. Please share details.",
-  catering: "Hi, I'd like to inquire about your catering services.",
-  customMenu: "Hi, I'd like to discuss a custom menu for my event.",
+  general: "Assalam o Alaikum! I'm reaching out from your website raheemevents.com. I'd like to inquire about your catering and hall booking services.",
+  booking: "Assalam o Alaikum! I'm reaching out from your website raheemevents.com. I'd like to book an event. Please share the available dates.",
+  israrHall: "Assalam o Alaikum! I'm reaching out from your website raheemevents.com. I'm interested in booking Israr Marriage Hall. Please share details.",
+  mumtazHall: "Assalam o Alaikum! I'm reaching out from your website raheemevents.com. I'm interested in booking Mumtaz Banquet Hall. Please share details.",
+  catering: "Assalam o Alaikum! I'm reaching out from your website raheemevents.com. I'd like to inquire about your catering services.",
+  customMenu: "Assalam o Alaikum! I'm reaching out from your website raheemevents.com. I'd like to discuss a custom menu for my event.",
 };
 
 // Social media links

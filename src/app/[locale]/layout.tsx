@@ -2,27 +2,38 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { Inter, Playfair_Display, Noto_Nastaliq_Urdu } from "next/font/google";
+import { Cormorant_Garamond, DM_Sans, Bodoni_Moda, Noto_Nastaliq_Urdu } from "next/font/google";
 import { getDirection } from "@/lib/utils";
 import "../globals.css";
 
-// Fonts
-const inter = Inter({
+// Fonts - Luxury Editorial Typography
+const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-heading",
   display: "swap",
 });
 
-const playfair = Playfair_Display({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const bodoniModa = Bodoni_Moda({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-display",
   display: "swap",
 });
 
 const notoNastaliq = Noto_Nastaliq_Urdu({
   subsets: ["arabic"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-noto-nastaliq",
+  variable: "--font-urdu",
   display: "swap",
 });
 
@@ -99,7 +110,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir={dir} suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${playfair.variable} ${notoNastaliq.variable} font-sans antialiased`}
+        className={`${cormorantGaramond.variable} ${dmSans.variable} ${bodoniModa.variable} ${notoNastaliq.variable} font-body antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
           {children}

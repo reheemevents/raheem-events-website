@@ -13,6 +13,7 @@
   /* Neutral Colors */
   --background: #FFFFFF;
   --surface: #F8F8F8;
+  --surface-warm: #FAF9F7;
   --border: #E5E5E5;
 
   /* Text Colors */
@@ -22,6 +23,8 @@
 
   /* Accent Colors */
   --accent-gold: #D4AF37;
+  --accent-gold-light: #E5C453;
+  --accent-gold-dark: #B8962E;
   --success: #10B981;
   --warning: #F59E0B;
   --error: #EF4444;
@@ -38,18 +41,18 @@
   --color-secondary-light: var(--secondary-light);
   --color-background: var(--background);
   --color-surface: var(--surface);
+  --color-surface-warm: var(--surface-warm);
   --color-border: var(--border);
   --color-foreground: var(--foreground);
   --color-text: var(--text);
   --color-text-muted: var(--text-muted);
   --color-text-light: var(--text-light);
   --color-accent-gold: var(--accent-gold);
+  --color-accent-gold-light: var(--accent-gold-light);
+  --color-accent-gold-dark: var(--accent-gold-dark);
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-error: var(--error);
-  --font-sans: var(--font-inter);
-  --font-heading: var(--font-playfair);
-  --font-urdu: var(--font-noto-nastaliq), 'Noto Nastaliq Urdu', serif;
 }
 
 /* RTL Support */
@@ -65,31 +68,39 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
-  line-height: 1.6;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  line-height: 1.7;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* Apply Next.js font variables when available */
+body.font-body {
+  font-family: var(--font-body), 'DM Sans', system-ui, sans-serif;
 }
 
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 /* Selection styling */
 ::selection {
-  background-color: var(--primary);
-  color: white;
+  background-color: var(--accent-gold);
+  color: var(--secondary);
 }
 
 /* Focus ring styling */
 :focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--accent-gold);
   outline-offset: 2px;
 }
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -97,21 +108,119 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--text-muted);
-  border-radius: 4px;
+  background: var(--accent-gold);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary);
+  background: var(--accent-gold-dark);
 }
+
+/* ============================
+   LUXURY TYPOGRAPHY SYSTEM
+   ============================ */
+
+/* Heading styles - Cormorant Garamond */
+h1, h2, h3, h4, h5, h6,
+.font-heading {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* When Next.js font variable is available, use it */
+body h1, body h2, body h3, body h4, body h5, body h6,
+body .font-heading {
+  font-family: var(--font-heading), 'Cormorant Garamond', Georgia, serif;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw + 0.5rem, 3.5rem);
+  font-weight: 400;
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw + 0.25rem, 2.25rem);
+  font-weight: 500;
+}
+
+h4 {
+  font-size: clamp(1.25rem, 2vw + 0.25rem, 1.75rem);
+  font-weight: 500;
+}
+
+/* Display font - Bodoni Moda for special emphasis */
+.font-display {
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+body .font-display {
+  font-family: var(--font-display), 'Bodoni Moda', Georgia, serif;
+}
+
+/* Italic heading accent - for luxury feel */
+.heading-italic {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+body .heading-italic {
+  font-family: var(--font-heading), 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+}
+
+/* Label/eyebrow text */
+.text-label {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* Body text */
+.text-body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.75;
+  letter-spacing: -0.01em;
+}
+
+/* Large body text */
+.text-body-lg {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  letter-spacing: -0.01em;
+}
+
+/* ============================
+   URDU TYPOGRAPHY
+   ============================ */
 
 /* Urdu/RTL specific font */
 .font-urdu,
 [lang="ur"] {
-  font-family: var(--font-noto-nastaliq), 'Noto Nastaliq Urdu', serif;
+  font-family: 'Noto Nastaliq Urdu', serif;
   line-height: 2.2;
   font-feature-settings: "kern" 1, "liga" 1;
   letter-spacing: 0;
+}
+
+body .font-urdu,
+body[lang="ur"],
+body [lang="ur"] {
+  font-family: var(--font-urdu), 'Noto Nastaliq Urdu', serif;
 }
 
 /* Urdu headings */
@@ -121,7 +230,7 @@ html {
 [lang="ur"] h4,
 [lang="ur"] h5,
 [lang="ur"] h6 {
-  font-family: var(--font-noto-nastaliq), 'Noto Nastaliq Urdu', serif;
+  font-family: var(--font-urdu), 'Noto Nastaliq Urdu', serif;
   font-weight: 700;
   line-height: 1.8;
 }
@@ -131,80 +240,88 @@ html {
 [lang="ur"] span,
 [lang="ur"] li,
 [lang="ur"] a {
-  font-family: var(--font-noto-nastaliq), 'Noto Nastaliq Urdu', serif;
+  font-family: var(--font-urdu), 'Noto Nastaliq Urdu', serif;
 }
 
 /* Urdu text size adjustments - Nastaliq needs slightly larger size for readability */
 [lang="ur"] .text-sm {
-  font-size: 0.9375rem; /* 15px instead of 14px */
+  font-size: 0.9375rem;
   line-height: 2;
 }
 
 [lang="ur"] .text-base {
-  font-size: 1.0625rem; /* 17px instead of 16px */
+  font-size: 1.0625rem;
   line-height: 2.2;
 }
 
 [lang="ur"] .text-lg {
-  font-size: 1.1875rem; /* 19px instead of 18px */
+  font-size: 1.1875rem;
   line-height: 2;
 }
 
 [lang="ur"] .text-xl {
-  font-size: 1.375rem; /* 22px instead of 20px */
+  font-size: 1.375rem;
   line-height: 1.9;
 }
 
 [lang="ur"] .text-2xl {
-  font-size: 1.625rem; /* 26px instead of 24px */
+  font-size: 1.625rem;
   line-height: 1.8;
 }
 
 [lang="ur"] .text-3xl {
-  font-size: 2rem; /* 32px instead of 30px */
+  font-size: 2rem;
   line-height: 1.7;
 }
 
 [lang="ur"] .text-4xl {
-  font-size: 2.5rem; /* 40px instead of 36px */
+  font-size: 2.5rem;
   line-height: 1.6;
 }
 
-/* Heading styles */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading), Georgia, serif;
-  font-weight: 600;
-  line-height: 1.2;
-}
+/* ============================
+   BUTTON STYLES
+   ============================ */
 
-/* Button base */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 2rem;
+  font-family: var(--font-body), system-ui, sans-serif;
   font-weight: 500;
-  border-radius: 0.5rem;
-  transition: all 0.3s ease;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-primary {
   background-color: var(--primary);
   color: white;
+  border: 2px solid var(--primary);
 }
 
 .btn-primary:hover {
   background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -5px rgba(218, 41, 28, 0.4);
 }
 
 .btn-secondary {
   background-color: var(--secondary);
   color: white;
+  border: 2px solid var(--secondary);
 }
 
 .btn-secondary:hover {
-  background-color: var(--secondary-light);
+  background-color: transparent;
+  color: var(--secondary);
 }
 
 .btn-outline {
@@ -218,71 +335,138 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
 }
 
+.btn-gold {
+  background-color: transparent;
+  border: 2px solid var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+.btn-gold:hover {
+  background-color: var(--accent-gold);
+  color: var(--secondary);
+}
+
 /* WhatsApp button */
 .btn-whatsapp {
   background-color: #25D366;
   color: white;
+  border: 2px solid #25D366;
 }
 
 .btn-whatsapp:hover {
   background-color: #128C7E;
+  border-color: #128C7E;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -5px rgba(37, 211, 102, 0.4);
 }
 
 /* Urdu button adjustments */
 [lang="ur"] .btn,
 [lang="ur"] button {
-  font-family: var(--font-noto-nastaliq), 'Noto Nastaliq Urdu', serif;
+  font-family: var(--font-urdu), 'Noto Nastaliq Urdu', serif;
   font-size: 1rem;
-  padding: 0.875rem 1.75rem;
+  padding: 1rem 2rem;
   line-height: 1.8;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
-/* Card styles */
+/* ============================
+   CARD STYLES
+   ============================ */
+
 .card {
   background: white;
-  border-radius: 1rem;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  transition: all 0.3s ease;
+  border-radius: 0;
+  box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  transition: border-color 0.4s ease;
+  pointer-events: none;
 }
 
 .card:hover {
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  transform: translateY(-2px);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
 }
 
-/* Section spacing */
+.card:hover::before {
+  border-color: var(--accent-gold);
+}
+
+/* ============================
+   SECTION & CONTAINER
+   ============================ */
+
 .section {
-  padding: 4rem 1rem;
+  padding: 5rem 1.5rem;
 }
 
 @media (min-width: 768px) {
   .section {
-    padding: 6rem 2rem;
-  }
-}
-
-/* Container */
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-@media (min-width: 640px) {
-  .container {
-    padding: 0 1.5rem;
+    padding: 8rem 2rem;
   }
 }
 
 @media (min-width: 1024px) {
+  .section {
+    padding: 10rem 2rem;
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 640px) {
   .container {
     padding: 0 2rem;
   }
 }
 
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 3rem;
+  }
+}
+
+/* ============================
+   DECORATIVE ELEMENTS
+   ============================ */
+
 /* Gold accent border */
 .gold-border {
-  border: 2px solid var(--accent-gold);
+  border: 1px solid var(--accent-gold);
+}
+
+/* Gold line accent */
+.gold-line {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent-gold) 0%, var(--accent-gold-light) 50%, var(--accent-gold) 100%);
+}
+
+.gold-line-animated {
+  background-size: 200% 100%;
+  animation: gold-shimmer 3s ease infinite;
+}
+
+@keyframes gold-shimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 /* Gradient overlays */
@@ -290,15 +474,22 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
 }
 
-/* Animation classes */
+.gradient-overlay-subtle {
+  background: linear-gradient(180deg, transparent 0%, rgba(26, 26, 26, 0.4) 50%, rgba(26, 26, 26, 0.85) 100%);
+}
+
+/* ============================
+   ANIMATIONS
+   ============================ */
+
 .animate-fade-in {
-  animation: fadeIn 0.5s ease-in-out;
+  animation: fadeIn 0.6s ease-out;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -306,20 +497,48 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Stagger animation delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
 /* Skeleton loading */
 .skeleton {
   background: linear-gradient(90deg, var(--surface) 25%, var(--border) 50%, var(--surface) 75%);
   background-size: 200% 100%;
   animation: skeleton-shimmer 1.5s infinite;
-}
-
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
 }
 
 @keyframes skeleton-shimmer {
@@ -331,12 +550,76 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Pulse animation for popular badge */
+/* Pulse animation for badges */
 @keyframes pulse-glow {
   0%, 100% {
     opacity: 1;
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
   }
   50% {
-    opacity: 0.5;
+    opacity: 0.9;
+    box-shadow: 0 0 20px 5px rgba(212, 175, 55, 0.2);
+  }
+}
+
+/* ============================
+   UTILITY CLASSES
+   ============================ */
+
+/* Text gradient - gold */
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-light) 50%, var(--accent-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hover reveal line */
+.hover-line {
+  position: relative;
+}
+
+.hover-line::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent-gold);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-line:hover::after {
+  width: 100%;
+}
+
+/* Image zoom on hover */
+.img-zoom {
+  overflow: hidden;
+}
+
+.img-zoom img {
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.img-zoom:hover img {
+  transform: scale(1.08);
+}
+
+/* ============================
+   MOBILE TOUCH TARGETS
+   ============================ */
+
+@media (max-width: 768px) {
+  .btn,
+  button,
+  a {
+    min-height: 48px;
+  }
+
+  .touch-target {
+    min-width: 48px;
+    min-height: 48px;
   }
 }
