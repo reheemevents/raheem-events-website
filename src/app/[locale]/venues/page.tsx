@@ -105,8 +105,7 @@ export default async function VenuesPage({
                         <div className="flex items-center gap-2 text-[#1A1A1A]">
                           <Users size={18} className="text-[#D4AF37]" />
                           <span className="text-sm">
-                            {t("capacity")}: {venue.capacity.seated}-
-                            {venue.capacity.buffet} {t("guests")}
+                            {t("capacity")}: {venue.capacity.total} {t("guests")}
                           </span>
                         </div>
                         <div className="flex items-center gap-2 text-[#1A1A1A]">
