@@ -321,7 +321,7 @@ export default async function AboutPage({
                   : "These principles guide us every day"
               }
               align="center"
-              decorationStyle="underline"
+              decorationStyle="line"
             />
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
@@ -359,7 +359,7 @@ export default async function AboutPage({
                   : "Years of experience, millions of memories"
               }
               align="center"
-              decorationStyle="underline"
+              decorationStyle="line"
             />
 
             <div className="relative mt-12">
