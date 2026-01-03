@@ -251,7 +251,7 @@ export default async function ItemDetailPage({
               <SectionHeading
                 title={t("relatedItems")}
                 align="center"
-                decorationStyle="underline"
+                decorationStyle="line"
               />
               <div className="mt-10">
                 <MenuGrid items={relatedItems} locale={locale} />

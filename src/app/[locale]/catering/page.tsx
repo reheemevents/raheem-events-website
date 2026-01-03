@@ -264,7 +264,7 @@ export default async function CateringPage({
                   : "Specialized menus for every type of celebration"
               }
               align="center"
-              decorationStyle="underline"
+              decorationStyle="line"
             />
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
@@ -310,7 +310,7 @@ export default async function CateringPage({
                   : "A world of flavors - tailored to your taste"
               }
               align="center"
-              decorationStyle="underline"
+              decorationStyle="line"
             />
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">

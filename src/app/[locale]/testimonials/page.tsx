@@ -234,7 +234,7 @@ export default async function TestimonialsPage({
                   : "Real stories from our happy clients"
               }
               align="center"
-              decorationStyle="underline"
+              decorationStyle="line"
             />
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
@@ -300,7 +300,7 @@ export default async function TestimonialsPage({
                   : "Hear directly from our clients"
               }
               align="center"
-              decorationStyle="underline"
+              decorationStyle="line"
             />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
