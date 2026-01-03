@@ -21,10 +21,7 @@ export async function generateMetadata({
 
   return {
     title: `${t("title")} | Raheem Event Management & Catering`,
-    description:
-      locale === "ur"
-        ? "ہمارے شاندار شادی ہالز دیکھیں - اصرار میرج ہال اور ممتاز بینکوئٹ ہال"
-        : "Explore our beautiful marriage halls - Israr Marriage Hall and Mumtaz Banquet Hall",
+    description: "Explore our beautiful marriage halls - Israr Marriage Hall and Mumtaz Banquet Hall",
   };
 }
 
@@ -70,17 +67,9 @@ export default async function VenuesPage({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {venues.map((venue) => {
-                const name = locale === "ur" ? venue.name.ur : venue.name.en;
-                const tagline =
-                  locale === "ur" ? venue.tagline.ur : venue.tagline.en;
-                const description =
-                  locale === "ur"
-                    ? venue.description.ur
-                    : venue.description.en;
-                const address =
-                  locale === "ur"
-                    ? venue.location.address.ur
-                    : venue.location.address.en;
+                const name = venue.name.en;
+                const tagline = venue.tagline.en;
+                const description = venue.description.en;
 
                 return (
                   <div
@@ -135,7 +124,7 @@ export default async function VenuesPage({
                             <ArrowRight size={18} className="rtl:rotate-180" />
                           }
                         >
-                          {locale === "ur" ? "مزید دیکھیں" : "View Details"}
+                          View Details
                         </Button>
                       </Link>
                     </div>

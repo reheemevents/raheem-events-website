@@ -254,7 +254,7 @@ export default async function ItemDetailPage({
                 decorationStyle="line"
               />
               <div className="mt-10">
-                <MenuGrid items={relatedItems} locale={locale} />
+                <MenuGrid items={relatedItems} />
               </div>
             </div>
           </section>

@@ -29,7 +29,6 @@ export default function Footer() {
       { href: "/catering", label: "Wedding Catering" },
       { href: "/catering", label: "Corporate Events" },
       { href: "/menu", label: "Food Menu" },
-      { href: "/packages", label: "Packages" },
     ],
     venues: [
       { href: "/venues/israr-marriage-hall", label: "Israr Marriage Hall" },
@@ -115,6 +114,21 @@ export default function Footer() {
                   <Mail size={14} className="text-[#D4AF37]" />
                 </span>
                 {CONTACT.email}
+              </a>
+
+              <a
+                href={CONTACT.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3 text-sm text-[#9CA3AF] hover:text-[#D4AF37] transition-colors group"
+              >
+                <span className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#D4AF37]/10 transition-colors flex-shrink-0">
+                  <MapPin size={14} className="text-[#D4AF37]" />
+                </span>
+                <span className="leading-relaxed">
+                  {CONTACT.address}
+                  <span className="block text-xs text-[#D4AF37] mt-1">Get Directions →</span>
+                </span>
               </a>
             </div>
           </motion.div>

@@ -7,7 +7,6 @@ import Link from "next/link";
 import Image from "next/image";
 import Navigation from "./Navigation";
 import MobileMenu from "./MobileMenu";
-import LanguageSwitcher from "./LanguageSwitcher";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -75,12 +74,6 @@ export default function Header() {
             <div className="hidden lg:flex items-center gap-8">
               <Navigation />
 
-              {/* Separator */}
-              <div className="w-px h-6 bg-gradient-to-b from-transparent via-[#D4AF37]/40 to-transparent" />
-
-              {/* Language Switcher */}
-              <LanguageSwitcher />
-
               {/* Book Now Button */}
               <Link href="/book-now">
                 <motion.button
@@ -101,7 +94,6 @@ export default function Header() {
 
             {/* Mobile Menu Toggle */}
             <div className="flex items-center gap-4 lg:hidden">
-              <LanguageSwitcher />
               <motion.button
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

@@ -10,84 +10,162 @@ import WhatsAppButton from "@/components/common/WhatsAppButton";
 import { PageHeading } from "@/components/ui/SectionHeading";
 import { X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 
-// Gallery images organized by category
+// Gallery images organized by category - Pakistani wedding venues, catering, and decor
 const galleryImages = [
+  // Wedding category
   {
     id: 1,
-    src: "https://images.unsplash.com/photo-1519741347686-c1e0aadf4611?w=600&q=80",
+    src: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=600&q=80",
     category: "wedding",
-    title: { en: "Elegant Wedding Setup", ur: "شاندار شادی کا سیٹ اپ" },
+    title: { en: "Wedding Stage Setup", ur: "شادی کا اسٹیج سیٹ اپ" },
   },
   {
     id: 2,
-    src: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80",
+    src: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80",
     category: "wedding",
-    title: { en: "Grand Reception", ur: "عظیم الشان استقبالیہ" },
+    title: { en: "Grand Reception Hall", ur: "عظیم الشان استقبالیہ ہال" },
   },
   {
     id: 3,
-    src: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=600&q=80",
+    src: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80",
+    category: "wedding",
+    title: { en: "Wedding Celebration", ur: "شادی کی تقریب" },
+  },
+  {
+    id: 4,
+    src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80",
+    category: "wedding",
+    title: { en: "Bride & Groom Stage", ur: "دلہا دلہن کا اسٹیج" },
+  },
+  // Israr Hall category
+  {
+    id: 5,
+    src: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&q=80",
     category: "israr",
     title: { en: "Israr Hall Interior", ur: "اصرار ہال کا اندرونی حصہ" },
   },
   {
-    id: 4,
-    src: "https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=600&q=80",
+    id: 6,
+    src: "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=600&q=80",
     category: "israr",
     title: { en: "Israr Hall Stage", ur: "اصرار ہال اسٹیج" },
   },
   {
-    id: 5,
-    src: "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?w=600&q=80",
+    id: 7,
+    src: "https://images.unsplash.com/photo-1478146059778-26028b07395a?w=600&q=80",
+    category: "israr",
+    title: { en: "Israr Hall Seating", ur: "اصرار ہال نشستیں" },
+  },
+  {
+    id: 8,
+    src: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=600&q=80",
+    category: "israr",
+    title: { en: "Israr Hall Entrance", ur: "اصرار ہال داخلہ" },
+  },
+  // Mumtaz Hall category
+  {
+    id: 9,
+    src: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=600&q=80",
     category: "mumtaz",
     title: { en: "Mumtaz Hall Setup", ur: "ممتاز ہال سیٹ اپ" },
   },
   {
-    id: 6,
-    src: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&q=80",
+    id: 10,
+    src: "https://images.unsplash.com/photo-1544078751-58fee2d8a03b?w=600&q=80",
     category: "mumtaz",
     title: { en: "Mumtaz Hall Decoration", ur: "ممتاز ہال سجاوٹ" },
   },
   {
-    id: 7,
-    src: "https://images.unsplash.com/photo-1555244162-803834f70033?w=600&q=80",
-    category: "catering",
-    title: { en: "Food Presentation", ur: "کھانے کی پیشکش" },
+    id: 11,
+    src: "https://images.unsplash.com/photo-1510076857177-7470076d4098?w=600&q=80",
+    category: "mumtaz",
+    title: { en: "Mumtaz Hall Lighting", ur: "ممتاز ہال لائٹنگ" },
   },
   {
-    id: 8,
-    src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80",
+    id: 12,
+    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
+    category: "mumtaz",
+    title: { en: "Mumtaz Hall Stage", ur: "ممتاز ہال اسٹیج" },
+  },
+  // Catering category - Pakistani food
+  {
+    id: 13,
+    src: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80",
     category: "catering",
-    title: { en: "Live Cooking Station", ur: "لائیو کوکنگ سٹیشن" },
+    title: { en: "Biryani Presentation", ur: "بریانی پریزنٹیشن" },
   },
   {
-    id: 9,
-    src: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=600&q=80",
+    id: 14,
+    src: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=600&q=80",
+    category: "catering",
+    title: { en: "BBQ Station", ur: "بی بی کیو سٹیشن" },
+  },
+  {
+    id: 15,
+    src: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=600&q=80",
+    category: "catering",
+    title: { en: "Dessert Display", ur: "میٹھے کی سجاوٹ" },
+  },
+  {
+    id: 16,
+    src: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&q=80",
+    category: "catering",
+    title: { en: "Chicken Karahi", ur: "چکن کڑاہی" },
+  },
+  {
+    id: 17,
+    src: "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=600&q=80",
+    category: "catering",
+    title: { en: "Seekh Kebab", ur: "سیخ کباب" },
+  },
+  {
+    id: 18,
+    src: "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=600&q=80",
+    category: "catering",
+    title: { en: "Mutton Qorma", ur: "مٹن قورمہ" },
+  },
+  {
+    id: 19,
+    src: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80",
+    category: "catering",
+    title: { en: "Naan & Roti", ur: "نان اور روٹی" },
+  },
+  {
+    id: 20,
+    src: "https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=600&q=80",
+    category: "catering",
+    title: { en: "Gulab Jamun", ur: "گلاب جامن" },
+  },
+  // Decor category
+  {
+    id: 21,
+    src: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=600&q=80",
     category: "decor",
     title: { en: "Stage Decoration", ur: "اسٹیج سجاوٹ" },
   },
   {
-    id: 10,
-    src: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&q=80",
+    id: 22,
+    src: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&q=80",
     category: "decor",
     title: { en: "Floral Arrangements", ur: "پھولوں کی سجاوٹ" },
   },
   {
-    id: 11,
-    src: "https://images.unsplash.com/photo-1530023367847-a683933f4172?w=600&q=80",
-    category: "wedding",
-    title: { en: "Wedding Ceremony", ur: "شادی کی تقریب" },
+    id: 23,
+    src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80",
+    category: "decor",
+    title: { en: "Table Centerpiece", ur: "میز کی سجاوٹ" },
   },
   {
-    id: 12,
-    src: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&q=80",
-    category: "catering",
-    title: { en: "Dessert Display", ur: "میٹھے کی سجاوٹ" },
+    id: 24,
+    src: "https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?w=600&q=80",
+    category: "decor",
+    title: { en: "Wedding Lighting", ur: "شادی کی لائٹنگ" },
   },
 ];
 
 const categories = [
   { id: "all", label: { en: "All", ur: "سب" } },
+  { id: "wedding", label: { en: "Weddings", ur: "شادیاں" } },
   { id: "israr", label: { en: "Israr Hall", ur: "اصرار ہال" } },
   { id: "mumtaz", label: { en: "Mumtaz Hall", ur: "ممتاز ہال" } },
   { id: "catering", label: { en: "Catering", ur: "کیٹرنگ" } },
@@ -189,8 +267,17 @@ export default function GalleryPage() {
                     className="relative aspect-square group cursor-pointer overflow-hidden rounded-sm"
                     onClick={() => openLightbox(index)}
                   >
-                    {/* Placeholder gradient */}
+                    {/* Background placeholder */}
                     <div className="absolute inset-0 bg-gradient-to-br from-[#2D2D2D] to-[#1A1A1A]" />
+
+                    {/* Actual image */}
+                    <Image
+                      src={image.src}
+                      alt={image.title.en}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
 
                     {/* Hover overlay */}
                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
@@ -255,6 +342,19 @@ export default function GalleryPage() {
                 className="relative w-full max-w-5xl aspect-video mx-4"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-[#2D2D2D] to-[#1A1A1A] rounded-sm" />
+                <Image
+                  src={filteredImages[currentImageIndex]?.src || ""}
+                  alt={filteredImages[currentImageIndex]?.title.en || "Gallery image"}
+                  fill
+                  className="object-contain rounded-sm"
+                  sizes="(max-width: 1280px) 100vw, 1280px"
+                />
+                {/* Image title */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-sm">
+                  <p className="text-white text-lg font-medium text-center">
+                    {filteredImages[currentImageIndex]?.title.en}
+                  </p>
+                </div>
               </motion.div>
 
               {/* Image counter */}

@@ -8,6 +8,8 @@ export const CONTACT = {
   phone: "+92 344 4477751",
   whatsapp: "923444477751",
   email: "info@raheemevents.com",
+  address: "Haul Rd, C/2 Sector F 1 New Mirpur City, 10250",
+  googleMapsUrl: "https://maps.google.com/maps/dir//Raheem+Event+Management+%26+Catering+Haul+Rd+C%2F2+Sector+F+1+New+Mirpur+City,+10250/@33.1446881,73.7530306,10z/data=!4m5!4m4!1m0!1m2!1m1!1s0xa367da044dce6227:0x5a0142a1b1dc2e42",
 };
 
 // WhatsApp pre-filled messages

@@ -134,7 +134,7 @@
     "amenities": "Amenities",
     "eventTypes": "Event Types",
     "location": "Location",
-    "viewOnMap": "View on Map",
+    "viewOnMap": "Get Directions",
     "bookThisVenue": "Book This Venue",
     "requestPricing": "Request Pricing",
     "features": "Features"
@@ -157,6 +157,7 @@
     "subtitle": "Explore our beautiful events and venues",
     "filters": {
       "all": "All",
+      "wedding": "Weddings",
       "israr": "Israr Hall",
       "mumtaz": "Mumtaz Hall",
       "catering": "Catering",

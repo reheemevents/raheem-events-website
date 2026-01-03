@@ -70,6 +70,9 @@ export default function HeroSlider() {
       {/* Overlay gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
 
+      {/* Bottom fade with dark reddish tint */}
+      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#3D0A07] via-[#2A0805]/80 to-transparent" />
+
       {/* Decorative pattern overlay */}
       <div
         className="absolute inset-0 opacity-[0.03]"
@@ -78,9 +81,9 @@ export default function HeroSlider() {
         }}
       />
 
-      {/* Gold corner decorations */}
-      <div className="absolute top-8 left-8 w-24 h-24 border-t-2 border-l-2 border-[#D4AF37]/60" />
-      <div className="absolute top-8 right-8 w-24 h-24 border-t-2 border-r-2 border-[#D4AF37]/60" />
+      {/* Gold corner decorations - positioned below header (h-20 = 80px) */}
+      <div className="absolute top-24 left-8 w-24 h-24 border-t-2 border-l-2 border-[#D4AF37]/60" />
+      <div className="absolute top-24 right-8 w-24 h-24 border-t-2 border-r-2 border-[#D4AF37]/60" />
       <div className="absolute bottom-8 left-8 w-24 h-24 border-b-2 border-l-2 border-[#D4AF37]/60" />
       <div className="absolute bottom-8 right-8 w-24 h-24 border-b-2 border-r-2 border-[#D4AF37]/60" />
 

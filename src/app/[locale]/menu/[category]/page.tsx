@@ -82,14 +82,17 @@ export default async function CategoryPage({
       <Header />
       <main className="min-h-screen bg-[#FAFAFA]">
         {/* Hero section */}
-        <section
-          className="relative pt-32 pb-16"
-          style={{
-            backgroundImage: `linear-gradient(to bottom, rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.95)), url(${categoryData.image})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
+        <section className="relative pt-32 pb-16 bg-[#1A1A1A] overflow-hidden">
+          {/* Background image with proper encoding */}
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `linear-gradient(to bottom, rgba(26, 26, 26, 0.85), rgba(26, 26, 26, 0.95)), url("${encodeURI(categoryData.image)}")`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          />
+
           {/* Pattern overlay */}
           <div
             className="absolute inset-0 opacity-[0.03]"
@@ -143,14 +146,12 @@ export default async function CategoryPage({
             {/* Stats */}
             <div className="flex items-center justify-between mb-8">
               <p className="text-[#6B7280]">
-                {locale === "ur"
-                  ? `${sortedItems.length} آئٹمز دکھا رہے ہیں`
-                  : `Showing ${sortedItems.length} items`}
+                {`Showing ${sortedItems.length} items`}
               </p>
             </div>
 
             {/* Menu grid */}
-            <MenuGrid items={sortedItems} locale={locale} />
+            <MenuGrid items={sortedItems} />
           </div>
         </section>
       </main>

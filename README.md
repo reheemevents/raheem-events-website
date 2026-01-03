@@ -171,7 +171,25 @@ NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_api_key
 
 ## Recent Changes
 
-### January 2026
+### January 2026 (Latest)
+
+#### Gallery & Images
+- **Gallery Images Fixed** - Resolved issue where gallery images weren't displaying (only placeholder gradients were shown)
+- **24 Pakistani-Themed Images** - Added curated gallery with wedding venues, catering, and decor categories
+- **Lightbox Enhancement** - Added image titles and proper navigation in lightbox view
+- **Next.js Image Component** - Migrated from CSS background-image to Next.js Image for better optimization
+
+#### Contact & Location
+- **Business Address Added** - Added main office address to footer and contact page
+- **Google Maps Integration** - Embedded Google Maps with exact business location
+- **Get Directions Links** - Added clickable directions buttons with proper Google Maps URLs
+- **Place ID Integration** - Used Google Maps Place ID for accurate business marker
+
+#### Language Simplification
+- **English-Only Mode** - Simplified website to English-only (Urdu retained only for menu item names)
+- **Removed Locale Conditionals** - Cleaned up locale-based conditionals from venue and contact pages
+
+### Earlier Updates
 
 - **Food Menu Showcase** - Added new home page section featuring 6 category cards and 4 popular dishes
 - **Urdu Typography** - Integrated Noto Nastaliq Urdu font for authentic Urdu text rendering
@@ -186,6 +204,15 @@ NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_api_key
 - Added `will-change-transform` for GPU-accelerated animations
 - Optimized line heights and text sizes for Nastaliq script readability
 - Gold accent styling throughout with brand color consistency
+
+## Known Issues & Fixes
+
+| Issue | Solution |
+|-------|----------|
+| Gallery images not showing | Fixed by adding Next.js Image component instead of only placeholder gradients |
+| Dev server lock file error | Delete `.next` folder and restart: `rmdir /s /q .next && npm run dev` |
+| Port already in use | Kill node processes: `taskkill /F /IM node.exe` (Windows) |
+| Turbopack cache error | Delete cache folder: `.next/dev/cache/turbopack` |
 
 ## License
 

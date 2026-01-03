@@ -79,25 +79,11 @@ export function getInitials(name: string): string {
 /**
  * Format date for display
  */
-export function formatDate(date: Date | string, locale: string = "en"): string {
+export function formatDate(date: Date | string): string {
   const d = typeof date === "string" ? new Date(date) : date;
-  return new Intl.DateTimeFormat(locale === "ur" ? "ur-PK" : "en-PK", {
+  return new Intl.DateTimeFormat("en-PK", {
     year: "numeric",
     month: "long",
     day: "numeric",
   }).format(d);
-}
-
-/**
- * Check if the locale is RTL
- */
-export function isRTL(locale: string): boolean {
-  return locale === "ur";
-}
-
-/**
- * Get direction based on locale
- */
-export function getDirection(locale: string): "ltr" | "rtl" {
-  return isRTL(locale) ? "rtl" : "ltr";
 }

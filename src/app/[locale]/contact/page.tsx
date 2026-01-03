@@ -28,10 +28,7 @@ export async function generateMetadata({
 
   return {
     title: `${t("title")} | Raheem Event Management & Catering`,
-    description:
-      locale === "ur"
-        ? "ہم سے رابطہ کریں - فون، واٹس ایپ، یا ای میل کے ذریعے"
-        : "Contact us - via phone, WhatsApp, or email",
+    description: "Contact us - via phone, WhatsApp, or email",
   };
 }
 
@@ -48,19 +45,13 @@ export default async function ContactPage({
   const venues = [
     {
       data: israrData,
-      name: locale === "ur" ? israrData.name.ur : israrData.name.en,
-      address:
-        locale === "ur"
-          ? israrData.location.address.ur
-          : israrData.location.address.en,
+      name: israrData.name.en,
+      address: israrData.location.address.en,
     },
     {
       data: mumtazData,
-      name: locale === "ur" ? mumtazData.name.ur : mumtazData.name.en,
-      address:
-        locale === "ur"
-          ? mumtazData.location.address.ur
-          : mumtazData.location.address.en,
+      name: mumtazData.name.en,
+      address: mumtazData.location.address.en,
     },
   ];
 
@@ -167,15 +158,11 @@ export default async function ContactPage({
                   </div>
                   <div className="space-y-2 text-[#6B7280]">
                     <div className="flex justify-between">
-                      <span>
-                        {locale === "ur" ? "پیر - جمعہ" : "Monday - Friday"}
-                      </span>
+                      <span>Monday - Friday</span>
                       <span>9:00 AM - 9:00 PM</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>
-                        {locale === "ur" ? "ہفتہ - اتوار" : "Saturday - Sunday"}
-                      </span>
+                      <span>Saturday - Sunday</span>
                       <span>10:00 AM - 10:00 PM</span>
                     </div>
                   </div>
@@ -210,8 +197,34 @@ export default async function ContactPage({
                 </div>
               </div>
 
-              {/* Venue locations */}
+              {/* Main Address & Locations */}
               <div>
+                {/* Main Business Address */}
+                <div className="bg-gradient-to-br from-[#1A1A1A] to-[#2A2A2A] p-6 rounded-sm mb-8">
+                  <div className="flex items-start gap-4">
+                    <span className="w-12 h-12 rounded-full bg-[#D4AF37]/20 flex items-center justify-center flex-shrink-0">
+                      <MapPin size={24} className="text-[#D4AF37]" />
+                    </span>
+                    <div className="flex-1">
+                      <h3 className="font-heading text-lg font-semibold text-white mb-2">
+                        Main Office
+                      </h3>
+                      <p className="text-white/80 mb-4">
+                        {CONTACT.address}
+                      </p>
+                      <a
+                        href={CONTACT.googleMapsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-[#D4AF37] text-[#1A1A1A] px-4 py-2 rounded-sm font-medium hover:bg-[#C9A432] transition-colors"
+                      >
+                        <MapPin size={16} />
+                        Get Directions
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
                 <h2 className="font-heading text-2xl font-semibold text-[#1A1A1A] mb-8">
                   {t("locations.title")}
                 </h2>
@@ -247,10 +260,7 @@ export default async function ContactPage({
                             rel="noopener noreferrer"
                             className="inline-flex items-center text-[#D4AF37] font-medium hover:underline"
                           >
-                            {locale === "ur"
-                              ? "نقشے پر دیکھیں"
-                              : "View on Map"}{" "}
-                            →
+                            Get Directions →
                           </a>
                         </div>
                       </div>
@@ -258,19 +268,29 @@ export default async function ContactPage({
                   ))}
                 </div>
 
-                {/* Map placeholder */}
-                <div className="mt-8 aspect-video bg-[#E5E5E5] rounded-sm overflow-hidden relative">
-                  <div className="absolute inset-0 flex items-center justify-center text-[#6B7280]">
-                    <div className="text-center">
-                      <MapPin size={48} className="mx-auto mb-2 opacity-50" />
-                      <p>
-                        {locale === "ur"
-                          ? "گوگل میپ یہاں"
-                          : "Google Map Embed Here"}
-                      </p>
-                    </div>
-                  </div>
+                {/* Google Maps Embed */}
+                <div className="mt-8 aspect-video rounded-sm overflow-hidden border border-[#E5E5E5]">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.5!2d73.7530306!3d33.1446881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa367da044dce6227%3A0x5a0142a1b1dc2e42!2sRaheem%20Event%20Management%20%26%20Catering!5e0!3m2!1sen!2s!4v1704000000000!5m2!1sen!2s"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Raheem Event Management & Catering Location"
+                  />
                 </div>
+                <p className="mt-2 text-sm text-[#6B7280] text-center">
+                  <a
+                    href={CONTACT.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[#D4AF37] transition-colors"
+                  >
+                    Open in Google Maps →
+                  </a>
+                </p>
               </div>
             </div>
           </div>

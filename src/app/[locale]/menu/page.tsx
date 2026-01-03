@@ -81,14 +81,12 @@ export default async function MenuPage({
             {/* Stats */}
             <div className="flex items-center justify-between mb-8">
               <p className="text-[#6B7280]">
-                {locale === "ur"
-                  ? `${sortedItems.length} آئٹمز دکھا رہے ہیں`
-                  : `Showing ${sortedItems.length} items`}
+                {`Showing ${sortedItems.length} items`}
               </p>
             </div>
 
             {/* Menu grid */}
-            <MenuGrid items={sortedItems} locale={locale} />
+            <MenuGrid items={sortedItems} />
           </div>
         </section>
       </main>

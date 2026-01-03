@@ -45,16 +45,16 @@ const amenityIcons: Record<string, React.ReactNode> = {
   valet: <Car size={20} />,
 };
 
-const amenityLabels: Record<string, { en: string; ur: string }> = {
-  ac: { en: "Air Conditioning", ur: "ایئر کنڈیشننگ" },
-  parking: { en: "Parking Available", ur: "پارکنگ دستیاب" },
-  generator: { en: "Generator Backup", ur: "جنریٹر بیک اپ" },
-  stage: { en: "Custom Stage", ur: "حسب ضرورت اسٹیج" },
-  sound: { en: "Sound System", ur: "ساؤنڈ سسٹم" },
-  lighting: { en: "Designer Lighting", ur: "ڈیزائنر لائٹنگ" },
-  catering: { en: "In-house Catering", ur: "اندرون خانہ کیٹرنگ" },
-  decor: { en: "Decor Services", ur: "سجاوٹ کی خدمات" },
-  valet: { en: "Valet Parking", ur: "ویلٹ پارکنگ" },
+const amenityLabels: Record<string, string> = {
+  ac: "Air Conditioning",
+  parking: "Parking Available",
+  generator: "Generator Backup",
+  stage: "Custom Stage",
+  sound: "Sound System",
+  lighting: "Designer Lighting",
+  catering: "In-house Catering",
+  decor: "Decor Services",
+  valet: "Valet Parking",
 };
 
 export function generateStaticParams() {
@@ -74,12 +74,11 @@ export async function generateMetadata({
     return { title: "Venue Not Found" };
   }
 
-  const name = locale === "ur" ? venue.name.ur : venue.name.en;
+  const name = venue.name.en;
 
   return {
     title: `${name} | Raheem Event Management & Catering`,
-    description:
-      locale === "ur" ? venue.description.ur : venue.description.en,
+    description: venue.description.en,
   };
 }
 
@@ -99,18 +98,13 @@ export default async function VenueDetailPage({
     notFound();
   }
 
-  const name = locale === "ur" ? venue.name.ur : venue.name.en;
-  const tagline = locale === "ur" ? venue.tagline.ur : venue.tagline.en;
-  const description =
-    locale === "ur" ? venue.description.ur : venue.description.en;
-  const address =
-    locale === "ur" ? venue.location.address.ur : venue.location.address.en;
-  const features = locale === "ur" ? venue.features.ur : venue.features.en;
+  const name = venue.name.en;
+  const tagline = venue.tagline.en;
+  const description = venue.description.en;
+  const address = venue.location.address.en;
+  const features = venue.features.en;
 
-  const whatsappMessage =
-    locale === "ur"
-      ? `السلام علیکم! میں ${name} کے بارے میں معلومات چاہتا/چاہتی ہوں۔`
-      : `Hi! I would like to inquire about booking ${name}.`;
+  const whatsappMessage = `Hi! I would like to inquire about booking ${name}.`;
 
   return (
     <>
@@ -145,7 +139,7 @@ export default async function VenueDetailPage({
                   href="/"
                   className="text-white/60 hover:text-[#D4AF37] transition-colors"
                 >
-                  {locale === "ur" ? "ہوم" : "Home"}
+                  Home
                 </Link>
                 <ChevronRight
                   size={14}
@@ -201,7 +195,7 @@ export default async function VenueDetailPage({
                 {/* Description */}
                 <div>
                   <h2 className="font-heading text-2xl font-semibold text-[#1A1A1A] mb-4">
-                    {locale === "ur" ? "جائزہ" : "Overview"}
+                    Overview
                   </h2>
                   <p className="text-[#6B7280] leading-relaxed text-lg">
                     {description}
@@ -244,9 +238,7 @@ export default async function VenueDetailPage({
                           {amenityIcons[amenity]}
                         </span>
                         <span className="text-[#1A1A1A]">
-                          {locale === "ur"
-                            ? amenityLabels[amenity]?.ur
-                            : amenityLabels[amenity]?.en}
+                          {amenityLabels[amenity]}
                         </span>
                       </div>
                     ))}
@@ -286,9 +278,7 @@ export default async function VenueDetailPage({
                     </h3>
 
                     <p className="text-[#6B7280] mb-6">
-                      {locale === "ur"
-                        ? "آج ہی رابطہ کریں اور اپنی تقریب کی تاریخ بک کرائیں"
-                        : "Contact us today to book your event date"}
+                      Contact us today to book your event date
                     </p>
 
                     {/* CTA buttons */}

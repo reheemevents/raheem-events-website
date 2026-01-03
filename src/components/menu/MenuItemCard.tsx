@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { PopularBadge } from "@/components/ui/Badge";
+import { Star } from "lucide-react";
 
 interface MenuItemCardProps {
   id: string;
@@ -11,7 +11,6 @@ interface MenuItemCardProps {
   category: string;
   image: string;
   isPopular?: boolean;
-  locale: string;
 }
 
 export default function MenuItemCard({
@@ -20,9 +19,8 @@ export default function MenuItemCard({
   category,
   image,
   isPopular,
-  locale,
 }: MenuItemCardProps) {
-  const displayName = locale === "ur" ? name.ur : name.en;
+  const displayName = name.en;
 
   return (
     <motion.div
@@ -33,44 +31,44 @@ export default function MenuItemCard({
       className="group"
     >
       <Link href={`/menu/${category}/${id}`} className="block">
-        <div className="relative bg-white rounded-sm overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.15)] hover:-translate-y-2 transition-all duration-300 ease-out will-change-transform">
-          {/* Gold border on hover */}
-          <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#D4AF37] transition-colors duration-200 rounded-sm z-10 pointer-events-none" />
-
-          {/* Corner accents */}
-          <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10" />
-          <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10" />
-
-          {/* Image container */}
-          <div className="relative aspect-square overflow-hidden">
+        <div className="relative bg-white rounded-2xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-300 ease-out">
+          {/* Image container - clean, no overlay */}
+          <div className="relative aspect-square overflow-hidden rounded-t-2xl">
             <Image
               src={image}
               alt={displayName}
               fill
-              className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
             />
-
-            {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
 
             {/* Popular badge */}
             {isPopular && (
-              <div className="absolute top-3 right-3 z-10">
-                <PopularBadge />
+              <div className="absolute top-3 left-3 z-10">
+                <div className="flex items-center gap-1 px-2.5 py-1.5 bg-[#D4AF37] text-white text-[10px] font-semibold uppercase tracking-wide rounded-full shadow-md">
+                  <Star size={10} className="fill-current" />
+                  <span>Popular</span>
+                </div>
               </div>
             )}
           </div>
 
-          {/* Content */}
-          <div className="p-4">
-            <h3 className="font-heading text-lg font-semibold text-[#1A1A1A] group-hover:text-[#DA291C] transition-colors duration-200 line-clamp-1">
+          {/* Content section - below image with fixed height for consistency */}
+          <div className="p-3 md:p-4 bg-white h-[70px] sm:h-[80px] md:h-[90px] flex flex-col justify-center">
+            {/* Gold accent line */}
+            <div className="w-6 sm:w-8 h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#D4AF37]/40 mb-1.5 sm:mb-2 group-hover:w-10 sm:group-hover:w-12 transition-all duration-300" />
+
+            <span className="block text-[14px] sm:text-[16px] md:text-[18px] font-semibold text-[#1A1A1A] group-hover:text-[#DA291C] transition-colors duration-200 truncate leading-snug">
               {displayName}
-            </h3>
-            {locale === "en" && name.ur && (
-              <p className="text-sm text-[#6B7280] mt-1 font-urdu">{name.ur}</p>
+            </span>
+
+            {name.ur && (
+              <p className="text-[11px] sm:text-[12px] text-[#8B7355] mt-0.5 font-urdu truncate">{name.ur}</p>
             )}
           </div>
+
+          {/* Subtle border on hover */}
+          <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-[#D4AF37]/30 transition-colors duration-300 pointer-events-none" />
         </div>
       </Link>
     </motion.div>

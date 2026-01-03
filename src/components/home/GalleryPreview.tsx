@@ -8,45 +8,46 @@ import { ArrowRight, Maximize2 } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 
+// Gallery images - Pakistani wedding venues, catering, and decor
 const galleryImages = [
   {
     id: 1,
-    src: "https://images.unsplash.com/photo-1519741347686-c1e0aadf4611?w=800&q=80",
-    alt: "Elegant wedding setup",
+    src: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=800&q=80",
+    alt: "Wedding stage setup",
     category: "wedding",
     span: "col-span-2 row-span-2",
   },
   {
     id: 2,
-    src: "https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=600&q=80",
+    src: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=600&q=80",
     alt: "Stage decoration",
     category: "decor",
     span: "col-span-1 row-span-1",
   },
   {
     id: 3,
-    src: "https://images.unsplash.com/photo-1555244162-803834f70033?w=600&q=80",
-    alt: "Food presentation",
+    src: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80",
+    alt: "Biryani presentation",
     category: "catering",
     span: "col-span-1 row-span-1",
   },
   {
     id: 4,
-    src: "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?w=600&q=80",
+    src: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&q=80",
     alt: "Venue interior",
     category: "venue",
     span: "col-span-1 row-span-2",
   },
   {
     id: 5,
-    src: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80",
-    alt: "Wedding celebration",
+    src: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80",
+    alt: "Wedding reception hall",
     category: "wedding",
     span: "col-span-1 row-span-1",
   },
   {
     id: 6,
-    src: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=600&q=80",
+    src: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&q=80",
     alt: "Floral arrangements",
     category: "decor",
     span: "col-span-1 row-span-1",
@@ -86,14 +87,16 @@ export default function GalleryPreview() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className={`relative group cursor-pointer overflow-hidden rounded-sm ${image.span}`}
             >
-              {/* Placeholder gradient */}
-              <div
-                className="absolute inset-0 bg-gradient-to-br from-[#2D2D2D] to-[#1A1A1A]"
-                style={{
-                  backgroundImage: `url(${image.src})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
+              {/* Background placeholder */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#2D2D2D] to-[#1A1A1A]" />
+
+              {/* Actual image */}
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                sizes="(max-width: 768px) 50vw, 25vw"
               />
 
               {/* Hover overlay */}

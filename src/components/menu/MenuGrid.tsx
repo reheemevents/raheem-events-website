@@ -13,7 +13,6 @@ interface MenuItem {
 
 interface MenuGridProps {
   items: MenuItem[];
-  locale: string;
 }
 
 const containerVariants = {
@@ -26,13 +25,11 @@ const containerVariants = {
   },
 };
 
-export default function MenuGrid({ items, locale }: MenuGridProps) {
+export default function MenuGrid({ items }: MenuGridProps) {
   if (items.length === 0) {
     return (
       <div className="text-center py-16">
-        <p className="text-[#6B7280] text-lg">
-          {locale === "ur" ? "کوئی آئٹمز نہیں ملے" : "No items found"}
-        </p>
+        <p className="text-[#6B7280] text-lg">No items found</p>
       </div>
     );
   }
@@ -52,7 +49,6 @@ export default function MenuGrid({ items, locale }: MenuGridProps) {
           category={item.category}
           image={item.image}
           isPopular={item.isPopular}
-          locale={locale}
         />
       ))}
     </motion.div>
