@@ -1,0 +1,136 @@
+{
+  "categories": [
+    {
+      "id": "bbq",
+      "name": { "en": "BBQ", "ur": "بی بی کیو" },
+      "slug": "bbq",
+      "description": {
+        "en": "Delicious grilled and barbecued meats cooked to perfection",
+        "ur": "بہترین طریقے سے پکایا گیا مزیدار گرلڈ اور بی بی کیو گوشت"
+      },
+      "image": "/images/menu/raheem_food_images/BBQ/047_Chicken Tikka.webp",
+      "itemCount": 15
+    },
+    {
+      "id": "beverages",
+      "name": { "en": "Beverages", "ur": "مشروبات" },
+      "slug": "beverages",
+      "description": {
+        "en": "Refreshing drinks and traditional beverages",
+        "ur": "تازگی بخش مشروبات اور روایتی ڈرنکس"
+      },
+      "image": "/images/menu/raheem_food_images/Beverages/087_Milk Tea.webp",
+      "itemCount": 8
+    },
+    {
+      "id": "chinese",
+      "name": { "en": "Chinese Food", "ur": "چائنیز فوڈ" },
+      "slug": "chinese",
+      "description": {
+        "en": "Authentic Chinese cuisine with Pakistani flavors",
+        "ur": "پاکستانی ذائقے کے ساتھ اصلی چائنیز کھانے"
+      },
+      "image": "/images/menu/raheem_food_images/Chinese Food/044_Chicken Shashlik.webp",
+      "itemCount": 6
+    },
+    {
+      "id": "dall",
+      "name": { "en": "Dall", "ur": "دال" },
+      "slug": "dall",
+      "description": {
+        "en": "Traditional lentil dishes prepared with aromatic spices",
+        "ur": "خوشبودار مصالحوں کے ساتھ تیار روایتی دال کے پکوان"
+      },
+      "image": "/images/menu/raheem_food_images/Dall/056_Dall Mash.webp",
+      "itemCount": 5
+    },
+    {
+      "id": "dessert",
+      "name": { "en": "Dessert", "ur": "میٹھا" },
+      "slug": "dessert",
+      "description": {
+        "en": "Sweet treats and traditional Pakistani desserts",
+        "ur": "میٹھے پکوان اور روایتی پاکستانی میٹھائیاں"
+      },
+      "image": "/images/menu/raheem_food_images/Dessert/065_Garam Gulab Jaman.webp",
+      "itemCount": 19
+    },
+    {
+      "id": "fish",
+      "name": { "en": "Fish", "ur": "مچھلی" },
+      "slug": "fish",
+      "description": {
+        "en": "Fresh fish prepared in various styles",
+        "ur": "مختلف انداز میں تیار تازہ مچھلی"
+      },
+      "image": "/images/menu/raheem_food_images/Fish/062_Fry Fish.webp",
+      "itemCount": 3
+    },
+    {
+      "id": "nihari-haleem",
+      "name": { "en": "Nihari / Haleem", "ur": "نہاری / حلیم" },
+      "slug": "nihari-haleem",
+      "description": {
+        "en": "Slow-cooked traditional delicacies",
+        "ur": "آہستہ پکائی گئی روایتی لذیذ ڈشز"
+      },
+      "image": "/images/menu/raheem_food_images/Nihari - Haleem/010_Beef Nihari.webp",
+      "itemCount": 6
+    },
+    {
+      "id": "qorma-curry",
+      "name": { "en": "Qorma / Curry", "ur": "قورمہ / سالن" },
+      "slug": "qorma-curry",
+      "description": {
+        "en": "Rich and flavorful curries and qormas",
+        "ur": "لذیذ اور مزیدار قورمے اور سالن"
+      },
+      "image": "/images/menu/raheem_food_images/Qorma - Curry/043_Chicken Qorma Daig.webp",
+      "itemCount": 15
+    },
+    {
+      "id": "rice",
+      "name": { "en": "Rice", "ur": "چاول" },
+      "slug": "rice",
+      "description": {
+        "en": "Aromatic rice dishes including biryanis and pulaos",
+        "ur": "خوشبودار چاول کے پکوان بشمول بریانی اور پلاؤ"
+      },
+      "image": "/images/menu/raheem_food_images/Rice/025_Chicken Biryani.webp",
+      "itemCount": 18
+    },
+    {
+      "id": "sauce-salad",
+      "name": { "en": "Sauce / Salad", "ur": "چٹنی / سلاد" },
+      "slug": "sauce-salad",
+      "description": {
+        "en": "Fresh salads and accompanying sauces",
+        "ur": "تازہ سلاد اور ساتھ کی چٹنیاں"
+      },
+      "image": "/images/menu/raheem_food_images/Souce - Salad/068_Green Salad.webp",
+      "itemCount": 11
+    },
+    {
+      "id": "street-food",
+      "name": { "en": "Street Food", "ur": "سٹریٹ فوڈ" },
+      "slug": "street-food",
+      "description": {
+        "en": "Popular Pakistani street food favorites",
+        "ur": "مقبول پاکستانی سٹریٹ فوڈ"
+      },
+      "image": "/images/menu/raheem_food_images/Street Food/117_Samosa.webp",
+      "itemCount": 8
+    },
+    {
+      "id": "tandoor",
+      "name": { "en": "Tandoor", "ur": "تندور" },
+      "slug": "tandoor",
+      "description": {
+        "en": "Clay oven baked breads",
+        "ur": "تندور میں پکی روٹیاں"
+      },
+      "image": "/images/menu/raheem_food_images/Tandoor/108_Plain Naan.webp",
+      "itemCount": 11
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": {
+    "en": "Raheem Event Management & Catering",
+    "ur": "رحیم ایونٹ مینجمنٹ اینڈ کیٹرنگ"
+  },
+  "tagline": {
+    "en": "Creating Unforgettable Celebrations",
+    "ur": "یادگار تقریبات کی تخلیق"
+  },
+  "description": {
+    "en": "Raheem Events offers premium venues, catering, and full-service event planning for weddings, corporate events, and special celebrations. We take care of everything from décor to catering, ensuring your event is flawless.",
+    "ur": "رحیم ایونٹس شادیوں، کارپوریٹ تقریبات اور خصوصی جشن کے لیے پریمیم مقامات، کیٹرنگ اور مکمل ایونٹ پلاننگ فراہم کرتا ہے۔ ہم سجاوٹ سے لے کر کیٹرنگ تک سب کچھ سنبھالتے ہیں۔"
+  },
+  "url": "https://raheemevents.com",
+  "logo": "/Logo/logo.png",
+  "logoDark": "/Logo/logo-dark.svg",
+  "favicon": "/favicon.ico",
+  "defaultLocale": "en",
+  "locales": ["en", "ur"],
+  "contact": {
+    "businessName": {
+      "en": "Raheem Event Management & Catering",
+      "ur": "رحیم ایونٹ مینجمنٹ اینڈ کیٹرنگ"
+    },
+    "email": "info@raheemevents.com",
+    "phone": "+92 344 4477751",
+    "whatsapp": "923444477751",
+    "businessHours": [
+      {
+        "days": {
+          "en": "Monday - Saturday",
+          "ur": "پیر - ہفتہ"
+        },
+        "hours": "10:00 AM - 10:00 PM"
+      },
+      {
+        "days": {
+          "en": "Sunday",
+          "ur": "اتوار"
+        },
+        "hours": "2:00 PM - 10:00 PM"
+      }
+    ],
+    "socialMedia": {
+      "facebook": "https://facebook.com/raheemevents",
+      "instagram": "https://instagram.com/raheemevents"
+    }
+  }
+}

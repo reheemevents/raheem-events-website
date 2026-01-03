@@ -1,0 +1,79 @@
+{
+  "id": "mumtaz-banquet-hall",
+  "name": {
+    "en": "Mumtaz Banquet Hall",
+    "ur": "ممتاز بینکوئٹ ہال"
+  },
+  "slug": "mumtaz-banquet-hall",
+  "tagline": {
+    "en": "Elegance Redefined",
+    "ur": "شان و شوکت کی نئی تعریف"
+  },
+  "description": {
+    "en": "Mumtaz Banquet Hall combines luxury with tradition to create the perfect setting for your memorable events. Our dedicated team ensures every detail is taken care of.",
+    "ur": "ممتاز بینکوئٹ ہال آپ کے یادگار پروگراموں کے لیے بہترین ماحول بنانے کے لیے عیش و آرام کو روایت کے ساتھ ملاتا ہے۔ ہماری سرشار ٹیم ہر تفصیل کا خیال رکھتی ہے۔"
+  },
+  "heroImage": "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?w=1600&q=80",
+  "images": [
+    "https://images.unsplash.com/photo-1519741347686-c1e0aadf4611?w=800&q=80",
+    "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80",
+    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
+    "https://images.unsplash.com/photo-1530023367847-a683933f4172?w=800&q=80",
+    "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80"
+  ],
+  "capacity": {
+    "seated": 400,
+    "buffet": 600
+  },
+  "amenities": [
+    "ac",
+    "parking",
+    "generator",
+    "stage",
+    "sound",
+    "lighting",
+    "catering",
+    "decor",
+    "wheelchair"
+  ],
+  "eventTypes": [
+    "wedding",
+    "mehndi",
+    "barat",
+    "walima",
+    "corporate",
+    "birthday"
+  ],
+  "location": {
+    "address": {
+      "en": "Sajid Plaza, New Mirpur City, 10250",
+      "ur": "ساجد پلازا، نیو میرپور سٹی، ۱۰۲۵۰"
+    },
+    "city": "Mirpur, AJK",
+    "mapUrl": "https://maps.google.com/?q=Mumtaz+Banquet+Hall+Sajid+Plaza+New+Mirpur+City+10250"
+  },
+  "contact": {
+    "phone": "+92 344 4477751",
+    "whatsapp": "923444477751"
+  },
+  "features": {
+    "en": [
+      "Luxurious crystal chandeliers",
+      "Central air conditioning",
+      "Premium sound and lighting",
+      "Multiple stage options",
+      "VIP lounge area",
+      "Professional event coordination",
+      "Ample parking space"
+    ],
+    "ur": [
+      "شاندار کرسٹل فانوس",
+      "مرکزی ایئر کنڈیشننگ",
+      "پریمیم ساؤنڈ اور لائٹنگ",
+      "متعدد اسٹیج آپشنز",
+      "وی آئی پی لاؤنج ایریا",
+      "پروفیشنل ایونٹ کوآرڈینیشن",
+      "کافی پارکنگ کی جگہ"
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "israr-marriage-hall",
+  "name": {
+    "en": "Israr Marriage Hall",
+    "ur": "اصرار میرج ہال"
+  },
+  "slug": "israr-marriage-hall",
+  "tagline": {
+    "en": "Where Dreams Come True",
+    "ur": "جہاں خواب سچ ہوتے ہیں"
+  },
+  "description": {
+    "en": "Israr Marriage Hall offers an elegant and spacious venue for your special celebrations. Located in the heart of Mirpur, we provide exceptional service with modern amenities to ensure your event is nothing short of perfect.",
+    "ur": "اصرار میرج ہال آپ کی خاص تقریبات کے لیے ایک شاندار اور وسیع مقام فراہم کرتا ہے۔ میرپور کے مرکز میں واقع، ہم جدید سہولیات اور بہترین خدمات کے ساتھ یقینی بناتے ہیں کہ آپ کا پروگرام بالکل کامل ہو۔"
+  },
+  "heroImage": "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1600&q=80",
+  "images": [
+    "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80",
+    "https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=800&q=80",
+    "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800&q=80",
+    "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80",
+    "https://images.unsplash.com/photo-1529543544277-750e04f46b23?w=800&q=80"
+  ],
+  "capacity": {
+    "seated": 500,
+    "buffet": 700
+  },
+  "amenities": [
+    "ac",
+    "parking",
+    "generator",
+    "stage",
+    "sound",
+    "lighting",
+    "catering",
+    "decor",
+    "valet"
+  ],
+  "eventTypes": [
+    "wedding",
+    "mehndi",
+    "barat",
+    "walima",
+    "corporate",
+    "birthday"
+  ],
+  "location": {
+    "address": {
+      "en": "Shaban Plaza, Kotli Rd E, Sector F-1, Sector F, Mirpur, AJK",
+      "ur": "شاباں پلازا، کوٹلی روڈ ای، سیکٹر ایف-۱، سیکٹر ایف، میرپور، آزاد کشمیر"
+    },
+    "city": "Mirpur, AJK",
+    "mapUrl": "https://maps.google.com/?q=Israr+Marriage+Hall+Shaban+Plaza+Kotli+Rd+Mirpur+AJK"
+  },
+  "contact": {
+    "phone": "+92 344 4477751",
+    "whatsapp": "923444477751"
+  },
+  "features": {
+    "en": [
+      "Grand entrance with valet parking",
+      "Climate-controlled main hall",
+      "State-of-the-art sound system",
+      "Customizable stage designs",
+      "Separate bridal room",
+      "In-house catering available",
+      "24/7 generator backup",
+      "Professional event coordination"
+    ],
+    "ur": [
+      "ویلٹ پارکنگ کے ساتھ شاندار داخلہ",
+      "ائیر کنڈیشنڈ مین ہال",
+      "جدید ساؤنڈ سسٹم",
+      "حسب ضرورت اسٹیج ڈیزائن",
+      "علیحدہ دلہن کا کمرہ",
+      "اندرون خانہ کیٹرنگ دستیاب",
+      "۲۴/۷ جنریٹر بیک اپ",
+      "پروفیشنل ایونٹ کوآرڈینیشن"
+    ]
+  }
+}

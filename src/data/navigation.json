@@ -1,0 +1,165 @@
+{
+  "mainNav": [
+    {
+      "label": {
+        "en": "Home",
+        "ur": "ہوم"
+      },
+      "href": "/"
+    },
+    {
+      "label": {
+        "en": "Menu",
+        "ur": "مینو"
+      },
+      "href": "/menu"
+    },
+    {
+      "label": {
+        "en": "Venues",
+        "ur": "ویونیوز"
+      },
+      "href": "/venues",
+      "children": [
+        {
+          "label": {
+            "en": "Israr Marriage Hall",
+            "ur": "اصرار میرج ہال"
+          },
+          "href": "/venues/israr-marriage-hall"
+        },
+        {
+          "label": {
+            "en": "Mumtaz Banquet Hall",
+            "ur": "ممتاز بینکوئٹ ہال"
+          },
+          "href": "/venues/mumtaz-banquet-hall"
+        }
+      ]
+    },
+    {
+      "label": {
+        "en": "Catering",
+        "ur": "کیٹرنگ"
+      },
+      "href": "/catering"
+    },
+    {
+      "label": {
+        "en": "Packages",
+        "ur": "پیکجز"
+      },
+      "href": "/packages"
+    },
+    {
+      "label": {
+        "en": "Gallery",
+        "ur": "گیلری"
+      },
+      "href": "/gallery"
+    },
+    {
+      "label": {
+        "en": "Contact",
+        "ur": "رابطہ"
+      },
+      "href": "/contact"
+    }
+  ],
+  "footerNav": {
+    "services": {
+      "title": {
+        "en": "Services",
+        "ur": "خدمات"
+      },
+      "links": [
+        {
+          "label": {
+            "en": "Wedding Catering",
+            "ur": "شادی کیٹرنگ"
+          },
+          "href": "/catering"
+        },
+        {
+          "label": {
+            "en": "Corporate Events",
+            "ur": "کارپوریٹ ایونٹس"
+          },
+          "href": "/catering"
+        },
+        {
+          "label": {
+            "en": "Food Menu",
+            "ur": "فوڈ مینو"
+          },
+          "href": "/menu"
+        },
+        {
+          "label": {
+            "en": "Packages",
+            "ur": "پیکجز"
+          },
+          "href": "/packages"
+        }
+      ]
+    },
+    "venues": {
+      "title": {
+        "en": "Venues",
+        "ur": "ویونیوز"
+      },
+      "links": [
+        {
+          "label": {
+            "en": "Israr Marriage Hall",
+            "ur": "اصرار میرج ہال"
+          },
+          "href": "/venues/israr-marriage-hall"
+        },
+        {
+          "label": {
+            "en": "Mumtaz Banquet Hall",
+            "ur": "ممتاز بینکوئٹ ہال"
+          },
+          "href": "/venues/mumtaz-banquet-hall"
+        },
+        {
+          "label": {
+            "en": "Gallery",
+            "ur": "گیلری"
+          },
+          "href": "/gallery"
+        }
+      ]
+    },
+    "company": {
+      "title": {
+        "en": "Company",
+        "ur": "کمپنی"
+      },
+      "links": [
+        {
+          "label": {
+            "en": "About Us",
+            "ur": "ہمارے بارے میں"
+          },
+          "href": "/about"
+        },
+        {
+          "label": {
+            "en": "Testimonials",
+            "ur": "تعریفیں"
+          },
+          "href": "/testimonials"
+        },
+        {
+          "label": {
+            "en": "Contact",
+            "ur": "رابطہ"
+          },
+          "href": "/contact"
+        }
+      ]
+    }
+  }
+}

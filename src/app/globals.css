@@ -1,26 +1,342 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary Brand Colors */
+  --primary: #DA291C;
+  --primary-dark: #B82318;
+  --primary-light: #FF4D42;
+
+  /* Secondary Colors */
+  --secondary: #1A1A1A;
+  --secondary-light: #333333;
+
+  /* Neutral Colors */
+  --background: #FFFFFF;
+  --surface: #F8F8F8;
+  --border: #E5E5E5;
+
+  /* Text Colors */
+  --text: #1A1A1A;
+  --text-muted: #6B7280;
+  --text-light: #9CA3AF;
+
+  /* Accent Colors */
+  --accent-gold: #D4AF37;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error: #EF4444;
+
+  /* Foreground/Background for compatibility */
+  --foreground: var(--text);
 }
 
 @theme inline {
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-secondary: var(--secondary);
+  --color-secondary-light: var(--secondary-light);
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-text-light: var(--text-light);
+  --color-accent-gold: var(--accent-gold);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-playfair);
+  --font-urdu: var(--font-noto-nastaliq), 'Noto Nastaliq Urdu', serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* RTL Support */
+[dir="rtl"] {
+  text-align: right;
 }
 
+[dir="rtl"] .rtl\:space-x-reverse > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+/* Base Styles */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection styling */
+::selection {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Focus ring styling */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
+
+/* Urdu/RTL specific font */
+.font-urdu,
+[lang="ur"] {
+  font-family: var(--font-noto-nastaliq), 'Noto Nastaliq Urdu', serif;
+  line-height: 2.2;
+  font-feature-settings: "kern" 1, "liga" 1;
+  letter-spacing: 0;
+}
+
+/* Urdu headings */
+[lang="ur"] h1,
+[lang="ur"] h2,
+[lang="ur"] h3,
+[lang="ur"] h4,
+[lang="ur"] h5,
+[lang="ur"] h6 {
+  font-family: var(--font-noto-nastaliq), 'Noto Nastaliq Urdu', serif;
+  font-weight: 700;
+  line-height: 1.8;
+}
+
+/* Urdu body text adjustments */
+[lang="ur"] p,
+[lang="ur"] span,
+[lang="ur"] li,
+[lang="ur"] a {
+  font-family: var(--font-noto-nastaliq), 'Noto Nastaliq Urdu', serif;
+}
+
+/* Urdu text size adjustments - Nastaliq needs slightly larger size for readability */
+[lang="ur"] .text-sm {
+  font-size: 0.9375rem; /* 15px instead of 14px */
+  line-height: 2;
+}
+
+[lang="ur"] .text-base {
+  font-size: 1.0625rem; /* 17px instead of 16px */
+  line-height: 2.2;
+}
+
+[lang="ur"] .text-lg {
+  font-size: 1.1875rem; /* 19px instead of 18px */
+  line-height: 2;
+}
+
+[lang="ur"] .text-xl {
+  font-size: 1.375rem; /* 22px instead of 20px */
+  line-height: 1.9;
+}
+
+[lang="ur"] .text-2xl {
+  font-size: 1.625rem; /* 26px instead of 24px */
+  line-height: 1.8;
+}
+
+[lang="ur"] .text-3xl {
+  font-size: 2rem; /* 32px instead of 30px */
+  line-height: 1.7;
+}
+
+[lang="ur"] .text-4xl {
+  font-size: 2.5rem; /* 40px instead of 36px */
+  line-height: 1.6;
+}
+
+/* Heading styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), Georgia, serif;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Button base */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: var(--secondary-light);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* WhatsApp button */
+.btn-whatsapp {
+  background-color: #25D366;
+  color: white;
+}
+
+.btn-whatsapp:hover {
+  background-color: #128C7E;
+}
+
+/* Urdu button adjustments */
+[lang="ur"] .btn,
+[lang="ur"] button {
+  font-family: var(--font-noto-nastaliq), 'Noto Nastaliq Urdu', serif;
+  font-size: 1rem;
+  padding: 0.875rem 1.75rem;
+  line-height: 1.8;
+}
+
+/* Card styles */
+.card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  transform: translateY(-2px);
+}
+
+/* Section spacing */
+.section {
+  padding: 4rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 6rem 2rem;
+  }
+}
+
+/* Container */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+/* Gold accent border */
+.gold-border {
+  border: 2px solid var(--accent-gold);
+}
+
+/* Gradient overlays */
+.gradient-overlay {
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
+}
+
+/* Animation classes */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(90deg, var(--surface) 25%, var(--border) 50%, var(--surface) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Pulse animation for popular badge */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }

@@ -1,0 +1,312 @@
+{
+  "common": {
+    "siteName": "Raheem Event Management & Catering",
+    "tagline": "Creating Unforgettable Celebrations",
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "bookNow": "Book Now",
+    "contactUs": "Contact Us",
+    "getQuote": "Get Quote",
+    "callNow": "Call Now",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Retry",
+    "close": "Close",
+    "menu": "Menu",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "sending": "Sending...",
+    "success": "Success",
+    "all": "All"
+  },
+  "nav": {
+    "home": "Home",
+    "menu": "Menu",
+    "venues": "Venues",
+    "catering": "Catering",
+    "packages": "Packages",
+    "gallery": "Gallery",
+    "about": "About Us",
+    "contact": "Contact",
+    "bookNow": "Book Now",
+    "testimonials": "Testimonials"
+  },
+  "home": {
+    "hero": {
+      "title": "Creating Unforgettable Celebrations",
+      "subtitle": "Premium catering services and elegant marriage halls for your special occasions",
+      "cta1": "Book Your Event",
+      "cta2": "View Our Venues"
+    },
+    "services": {
+      "title": "Our Services",
+      "subtitle": "Everything you need for a perfect celebration",
+      "catering": {
+        "title": "Catering Services",
+        "description": "Delicious Pakistani cuisine prepared by expert chefs"
+      },
+      "israr": {
+        "title": "Israr Marriage Hall",
+        "description": "Elegant venue for up to 700 guests"
+      },
+      "mumtaz": {
+        "title": "Mumtaz Banquet Hall",
+        "description": "Luxurious setting for up to 600 guests"
+      }
+    },
+    "whyUs": {
+      "title": "Why Choose Us",
+      "subtitle": "Years of experience in creating memorable events",
+      "stats": {
+        "years": "Years Experience",
+        "events": "Events Completed",
+        "clients": "Happy Clients",
+        "dishes": "Menu Items"
+      }
+    },
+    "packages": {
+      "title": "Wedding Packages",
+      "subtitle": "Choose the perfect package for your special day",
+      "viewAll": "View All Packages"
+    },
+    "gallery": {
+      "title": "Our Gallery",
+      "subtitle": "A glimpse of our beautiful events",
+      "viewAll": "View Full Gallery"
+    },
+    "testimonials": {
+      "title": "What Our Clients Say",
+      "subtitle": "Hear from our happy couples"
+    },
+    "cta": {
+      "title": "Ready to Plan Your Event?",
+      "subtitle": "Contact us today to discuss your requirements",
+      "button": "Get Started"
+    },
+    "menu": {
+      "title": "Our Delicious Menu",
+      "subtitle": "107+ authentic Pakistani dishes prepared with love",
+      "popular": "Popular Dishes",
+      "viewAll": "View Full Menu",
+      "items": "items",
+      "categories": {
+        "rice": "Rice Dishes",
+        "bbq": "BBQ",
+        "qorma-curry": "Qorma & Curry",
+        "dessert": "Desserts",
+        "tandoor": "Tandoor",
+        "street-food": "Street Food"
+      },
+      "stats": {
+        "dishes": "Delicious Dishes",
+        "categories": "Categories",
+        "halal": "Halal Certified"
+      }
+    }
+  },
+  "menu": {
+    "title": "Our Menu",
+    "subtitle": "Explore our delicious food offerings",
+    "categories": "Categories",
+    "items": "items",
+    "allItems": "All Items",
+    "popular": "Popular",
+    "vegetarian": "Vegetarian",
+    "addToInquiry": "Add to Inquiry",
+    "relatedItems": "Related Items",
+    "perHead": "per head",
+    "viewDetails": "View Details"
+  },
+  "venues": {
+    "title": "Our Venues",
+    "subtitle": "Two stunning locations for your special events",
+    "capacity": "Capacity",
+    "seated": "Seated",
+    "buffet": "Buffet",
+    "guests": "guests",
+    "amenities": "Amenities",
+    "eventTypes": "Event Types",
+    "location": "Location",
+    "viewOnMap": "View on Map",
+    "bookThisVenue": "Book This Venue",
+    "requestPricing": "Request Pricing",
+    "features": "Features"
+  },
+  "packages": {
+    "title": "Wedding Packages",
+    "subtitle": "Choose the perfect package for your celebration",
+    "silver": "Silver",
+    "gold": "Gold",
+    "platinum": "Platinum",
+    "popular": "Most Popular",
+    "includes": "What's Included",
+    "startingFrom": "Starting from",
+    "perHead": "per head",
+    "customQuote": "Get Custom Quote",
+    "compare": "Compare Packages"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "Explore our beautiful events and venues",
+    "filters": {
+      "all": "All",
+      "israr": "Israr Hall",
+      "mumtaz": "Mumtaz Hall",
+      "catering": "Catering",
+      "decor": "Décor"
+    },
+    "beforeAfter": "Before & After"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with us for bookings and inquiries",
+    "form": {
+      "name": "Your Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "eventType": "Event Type",
+      "message": "Your Message",
+      "submit": "Send Message",
+      "success": "Thank you! We'll get back to you soon.",
+      "error": "Something went wrong. Please try again."
+    },
+    "info": {
+      "title": "Contact Information",
+      "hours": "Business Hours"
+    },
+    "locations": {
+      "title": "Our Locations"
+    }
+  },
+  "booking": {
+    "title": "Book Your Event",
+    "subtitle": "Fill out the form below and we'll get back to you",
+    "steps": {
+      "event": "Event Details",
+      "services": "Services",
+      "contact": "Contact Info",
+      "confirm": "Confirm"
+    },
+    "form": {
+      "eventType": "Event Type",
+      "selectEventType": "Select event type",
+      "eventDate": "Event Date",
+      "guestCount": "Number of Guests",
+      "venue": "Select Venue",
+      "venueOptions": {
+        "israr": "Israr Marriage Hall",
+        "mumtaz": "Mumtaz Banquet Hall",
+        "cateringOnly": "Catering Only",
+        "both": "Both Venues"
+      },
+      "package": "Select Package",
+      "name": "Full Name",
+      "phone": "Phone Number",
+      "email": "Email Address",
+      "notes": "Additional Notes",
+      "notesPlaceholder": "Any special requirements or questions..."
+    },
+    "summary": {
+      "title": "Booking Summary",
+      "eventType": "Event Type",
+      "date": "Date",
+      "guests": "Guests",
+      "venue": "Venue",
+      "package": "Package",
+      "contact": "Contact"
+    },
+    "submit": "Submit Inquiry",
+    "success": {
+      "title": "Thank You!",
+      "message": "Your booking inquiry has been submitted. We'll contact you within 24 hours.",
+      "whatsapp": "Or chat with us on WhatsApp"
+    }
+  },
+  "catering": {
+    "title": "Catering Services",
+    "subtitle": "Delicious food for every occasion",
+    "eventTypes": {
+      "title": "Events We Cater",
+      "wedding": "Weddings",
+      "corporate": "Corporate Events",
+      "mehndi": "Mehndi",
+      "barat": "Barat",
+      "walima": "Walima",
+      "birthday": "Birthday & Private"
+    },
+    "cuisines": {
+      "title": "Our Cuisines",
+      "pakistani": "Pakistani Traditional",
+      "bbq": "BBQ & Grills",
+      "continental": "Continental",
+      "chinese": "Chinese"
+    },
+    "hygiene": {
+      "title": "Quality & Hygiene",
+      "subtitle": "Your health is our priority",
+      "points": [
+        "Fresh ingredients sourced daily",
+        "Trained professional kitchen staff",
+        "Strict hygiene protocols",
+        "Quality assurance at every step"
+      ]
+    },
+    "customMenu": {
+      "title": "Custom Menu",
+      "description": "Can't find what you're looking for? We can create a custom menu for your event.",
+      "button": "Request Custom Menu"
+    }
+  },
+  "testimonials": {
+    "title": "Testimonials",
+    "subtitle": "What our clients say about us",
+    "googleReviews": "Google Reviews"
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Our story and commitment to excellence",
+    "story": {
+      "title": "Our Story",
+      "content": "For over 20 years, Raheem Event Management & Catering has been creating unforgettable celebrations for families across Pakistan. What started as a small catering business has grown into a full-service event management company with two beautiful venues."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "content": "To provide exceptional catering and event services that exceed our clients' expectations, making every celebration a memorable experience."
+    },
+    "values": {
+      "title": "Our Values",
+      "quality": "Quality",
+      "service": "Service",
+      "tradition": "Tradition",
+      "innovation": "Innovation"
+    }
+  },
+  "footer": {
+    "description": "Premium catering services and elegant marriage halls for your special occasions.",
+    "services": "Services",
+    "venues": "Venues",
+    "company": "Company",
+    "contact": "Contact",
+    "followUs": "Follow Us",
+    "copyright": "© {year} Raheem Event Management & Catering. All rights reserved.",
+    "quickContact": "Quick Contact"
+  },
+  "errors": {
+    "404": {
+      "title": "Page Not Found",
+      "message": "The page you're looking for doesn't exist.",
+      "button": "Go Home"
+    },
+    "500": {
+      "title": "Server Error",
+      "message": "Something went wrong on our end.",
+      "button": "Try Again"
+    }
+  }
+}

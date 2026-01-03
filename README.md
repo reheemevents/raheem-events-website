@@ -1,36 +1,160 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Raheem Event Management & Catering
+
+A modern, bilingual (English/Urdu) website for **Raheem Event Management & Catering** (Est. 2005) showcasing catering services and two marriage halls: **Israr Marriage Hall** and **Mumtaz Banquet Hall**.
+
+## Venues
+
+| Venue | Address | City |
+|-------|---------|------|
+| **Israr Marriage Hall** | Shaban Plaza, Kotli Rd E, Sector F-1, Sector F | Mirpur, AJK |
+| **Mumtaz Banquet Hall** | Sajid Plaza, New Mirpur City, 10250 | Mirpur, AJK |
+
+**Contact:** +92 344 4477751
+
+## Features
+
+- **107 Food Menu Items** across 14 categories with individual pages
+- **Two Venue Pages** - Israr Marriage Hall & Mumtaz Banquet Hall
+- **Wedding Packages** - Silver, Gold, Platinum tiers
+- **Bilingual Support** - English + Urdu with RTL layout
+- **Multi-step Booking Form** (4 steps) with validation
+- **WhatsApp Integration** - Floating button with pre-filled messages
+- **Click-to-Call** - Mobile-optimized phone buttons
+- **Photo Gallery** - Filterable by venue/category with lightbox
+- **Testimonials Page** - Client reviews & video testimonials
+- **About Page** - Company story, mission, values, timeline
+- **Catering Page** - Event types, cuisines, hygiene section
+- **SEO Optimized** - Schema markup, meta tags, sitemap
+- **301 Static Pages** - Optimized for performance
+
+## Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| [Next.js 14](https://nextjs.org/) | React framework with App Router |
+| [TypeScript](https://www.typescriptlang.org/) | Type safety |
+| [Tailwind CSS](https://tailwindcss.com/) | Styling with RTL support |
+| [next-intl](https://next-intl-docs.vercel.app/) | Internationalization (EN/UR) |
+| [Framer Motion](https://www.framer.com/motion/) | Animations |
+| [Lucide React](https://lucide.dev/) | Icons |
+| [React Hook Form](https://react-hook-form.com/) | Form handling |
+| [Zod](https://zod.dev/) | Schema validation |
+
+## Development Tools & Skills
+
+This project was built using:
+
+- **Claude Code** - AI-powered development assistant
+- **Frontend Design Skill** - For creating distinctive, production-grade UI components
+- **Feature Development Skill** - For guided feature development with architecture focus
+
+## Brand Colors
+
+| Color | Hex | Usage |
+|-------|-----|-------|
+| Primary Red | `#DA291C` | Buttons, CTAs, highlights |
+| Black | `#1A1A1A` | Headers, navigation, text |
+| White | `#FFFFFF` | Backgrounds, cards |
+| Gold | `#D4AF37` | Premium accents |
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18.17 or later
+- npm or yarn
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone <repository-url>
+
+# Navigate to project directory
+cd raheem-events-website
+
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the website.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/
+│   └── [locale]/          # Bilingual routing (en/ur)
+│       ├── page.tsx       # Home page
+│       ├── menu/          # Food menu catalog
+│       ├── venues/        # Venue pages
+│       ├── packages/      # Wedding packages
+│       ├── gallery/       # Photo gallery
+│       ├── contact/       # Contact page
+│       └── book-now/      # Booking form
+├── components/
+│   ├── layout/            # Header, Footer, Navigation
+│   ├── ui/                # Reusable UI components
+│   ├── home/              # Home page sections
+│   ├── menu/              # Menu components
+│   ├── venue/             # Venue components
+│   └── common/            # Shared components
+├── data/                  # JSON content files
+├── messages/              # Translation files (en.json, ur.json)
+├── lib/                   # Utilities and helpers
+└── types/                 # TypeScript definitions
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Content Management
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Content is managed through JSON files in the `/data` directory:
 
-## Deploy on Vercel
+- `site.json` - Site-wide configuration
+- `menu/*.json` - Food items by category
+- `venues/*.json` - Venue information
+- `packages.json` - Wedding packages
+- `testimonials.json` - Client reviews
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Recommended deployment on [Vercel](https://vercel.com):
+
+```bash
+npm install -g vercel
+vercel
+```
+
+## Environment Variables
+
+Create a `.env.local` file:
+
+```env
+# EmailJS Configuration
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+
+# WhatsApp Number
+NEXT_PUBLIC_WHATSAPP_NUMBER=923001234567
+
+# Google Maps API (optional)
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_api_key
+```
+
+## License
+
+This project is proprietary software developed for Raheem Event Management & Catering.
+
+---
+
+Built with Claude Code using Frontend Design and Feature Development skills.
