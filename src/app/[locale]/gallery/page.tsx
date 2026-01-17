@@ -40,27 +40,27 @@ const galleryImages = [
   // Israr Hall category
   {
     id: 5,
-    src: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&q=80",
+    src: "/images/gallery/israr-marriage-hall/images/israr-hall-1.jpeg",
+    category: "israr",
+    title: { en: "Israr Marriage Hall", ur: "اصرار میرج ہال" },
+  },
+  {
+    id: 6,
+    src: "/images/gallery/israr-marriage-hall/images/israr-hall-2.jpeg",
     category: "israr",
     title: { en: "Israr Hall Interior", ur: "اصرار ہال کا اندرونی حصہ" },
   },
   {
-    id: 6,
-    src: "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=600&q=80",
-    category: "israr",
-    title: { en: "Israr Hall Stage", ur: "اصرار ہال اسٹیج" },
-  },
-  {
     id: 7,
-    src: "https://images.unsplash.com/photo-1478146059778-26028b07395a?w=600&q=80",
+    src: "/images/gallery/israr-marriage-hall/images/israr-hall-3.jpeg",
     category: "israr",
-    title: { en: "Israr Hall Seating", ur: "اصرار ہال نشستیں" },
+    title: { en: "Israr Hall Setup", ur: "اصرار ہال سیٹ اپ" },
   },
   {
     id: 8,
-    src: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=600&q=80",
+    src: "/images/gallery/israr-marriage-hall/images/israr-hall-4.jpeg",
     category: "israr",
-    title: { en: "Israr Hall Entrance", ur: "اصرار ہال داخلہ" },
+    title: { en: "Israr Hall Decor", ur: "اصرار ہال سجاوٹ" },
   },
   // Mumtaz Hall category
   {
