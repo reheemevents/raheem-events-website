@@ -301,14 +301,12 @@ export function generateAggregateRatingSchema(
 // ==================== SCHEMA INJECTION HELPER ====================
 
 /**
- * Helper component to inject JSON-LD schema into page
- * Usage: <SchemaScript schema={generateOrganizationSchema()} />
+ * Generates script tag props for JSON-LD schema injection
+ * Returns the stringified schema for use in dangerouslySetInnerHTML
  */
-export function SchemaScript({ schema }: { schema: any }) {
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
+export function getSchemaScriptProps(schema: any) {
+  return {
+    type: "application/ld+json" as const,
+    dangerouslySetInnerHTML: { __html: JSON.stringify(schema) },
+  };
 }

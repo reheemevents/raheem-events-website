@@ -3,7 +3,7 @@
  * Single import point for all SEO utilities
  *
  * Usage:
- * import { generateOrganizationSchema, generatePageMetadata, generateMenuItemAlt } from '@/lib/seo';
+ * import { generateOrganizationSchema, generatePageMetadata, generateMenuItemAlt, SchemaScript } from '@/lib/seo';
  */
 
 // Export all types
@@ -20,3 +20,6 @@ export * from "./seo/constants";
 
 // Export all alt text utilities
 export * from "./seo/alt-text";
+
+// Export Schema Script component
+export { SchemaScript } from "./seo/SchemaScript";

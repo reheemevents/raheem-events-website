@@ -9,19 +9,7 @@ import { SITE_URL } from "@/lib/seo/constants";
 
 // Import menu data
 import categoriesData from "@/data/menu/categories.json";
-import bbqItems from "@/data/menu/bbq.json";
-import beveragesItems from "@/data/menu/beverages.json";
-import chineseItems from "@/data/menu/chinese.json";
-import dallItems from "@/data/menu/dall.json";
-import dessertItems from "@/data/menu/dessert.json";
-import fishItems from "@/data/menu/fish";
-import nihariHaleemItems from "@/data/menu/nihari-haleem.json";
-import qormaCurryItems from "@/data/menu/qorma-curry.json";
-import riceItems from "@/data/menu/rice.json";
-import sadqaItems from "@/data/menu/sadqa.json";
-import sauceSaladItems from "@/data/menu/sauce-salad.json";
-import streetFoodItems from "@/data/menu/street-food.json";
-import tandoorItems from "@/data/menu/tandoor.json";
+import allItemsData from "@/data/menu/all-items.json";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = SITE_URL;
@@ -126,24 +114,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // ==================== MENU ITEM ROUTES ====================
 
-  // Combine all menu items from all categories
-  const allMenuItems = [
-    ...bbqItems.items,
-    ...beveragesItems.items,
-    ...chineseItems.items,
-    ...dallItems.items,
-    ...dessertItems.items,
-    ...fishItems.items,
-    ...nihariHaleemItems.items,
-    ...qormaCurryItems.items,
-    ...riceItems.items,
-    ...sadqaItems.items,
-    ...sauceSaladItems.items,
-    ...streetFoodItems.items,
-    ...tandoorItems.items,
-  ];
-
-  const menuItemRoutes: MetadataRoute.Sitemap = allMenuItems.map((item) => ({
+  // Use all menu items from all-items.json
+  const menuItemRoutes: MetadataRoute.Sitemap = allItemsData.items.map((item) => ({
     url: `${baseUrl}/menu/${item.category}/${item.id}`,
     lastModified: now,
     changeFrequency: "monthly" as const,
