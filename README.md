@@ -138,6 +138,158 @@ src/
 └── types/                 # TypeScript definitions
 ```
 
+## SEO Implementation
+
+This website implements enterprise-grade SEO optimized for AI-powered search engines including Schema.org structured data, dynamic sitemaps, and complete metadata.
+
+### SEO Features
+
+- **8 Schema.org Types**: Organization, LocalBusiness, EventVenue, MenuItem, FAQPage, BreadcrumbList, AggregateRating, FoodEstablishment
+- **Dynamic Sitemap**: Auto-generates 133+ routes (11 static + 2 venues + 13 categories + 107+ menu items)
+- **Complete Metadata**: OpenGraph, Twitter Cards, Canonical URLs on all pages
+- **AI Bot Optimization**: Explicitly allows GPTBot, ClaudeBot, Google-Extended, PerplexityBot
+- **Automatic SEO**: New content inherits proper SEO without manual work
+- **Enhanced Alt Text**: Descriptive, AI-parseable image descriptions
+- **Type-Safe**: Full TypeScript coverage for all SEO functions
+
+### SEO Architecture
+
+```
+src/lib/seo/
+├── types.ts        # TypeScript interfaces for all schemas
+├── schema.ts       # Schema.org JSON-LD generators
+├── metadata.ts     # Metadata generation utilities
+├── constants.ts    # SEO constants (site URL, business info)
+└── alt-text.ts     # Enhanced alt text generator
+
+src/app/
+├── sitemap.ts      # Dynamic sitemap (133+ routes)
+└── robots.ts       # Robots.txt with AI bot directives
+```
+
+### Schema Types by Page
+
+| Page | Schemas |
+|------|---------|
+| All Pages | Organization, LocalBusiness |
+| Home | Enhanced metadata with breadcrumbs |
+| Venue Detail | EventVenue, BreadcrumbList |
+| Menu Item | MenuItem, BreadcrumbList |
+| Catering | FoodEstablishment |
+| FAQ | FAQPage (auto-generated from faq.json) |
+| Testimonials | AggregateRating |
+
+### Adding New Content with Automatic SEO
+
+#### New Menu Item
+
+1. Add to `src/data/menu/[category].json`:
+   ```json
+   {
+     "id": "new-dish",
+     "name": { "en": "New Dish", "ur": "نیا ڈش" },
+     "category": "rice",
+     "image": "/images/menu/rice/new-dish.webp",
+     "isPopular": false
+   }
+   ```
+2. Add image to `public/images/menu/rice/new-dish.webp`
+3. **SEO is automatic**: Sitemap, schema, metadata, alt text all generated
+
+#### New Venue
+
+1. Add JSON to `src/data/venues/new-venue.json`
+2. Add to venues list in sitemap generator
+3. **SEO is automatic**: Sitemap, EventVenue schema, metadata all generated
+
+#### New FAQ
+
+1. Add to `src/data/faq.json`:
+   ```json
+   {
+     "question": { "en": "Your question?", "ur": "آپ کا سوال؟" },
+     "answer": { "en": "Your answer.", "ur": "آپ کا جواب۔" }
+   }
+   ```
+2. **SEO is automatic**: FAQPage schema updates, Google indexes immediately
+
+### Testing SEO
+
+```bash
+# Build and start production server
+npm run build
+npm run start
+
+# Test SEO routes
+http://localhost:3000/sitemap.xml    # Should show 133+ URLs
+http://localhost:3000/robots.txt     # Should show AI bot directives
+
+# Validate schemas
+# Visit any page, view page source, search for "application/ld+json"
+```
+
+### Validation Tools
+
+- **Google Rich Results Test**: https://search.google.com/test/rich-results
+- **Schema.org Validator**: https://validator.schema.org/
+- **Facebook Debugger**: https://developers.facebook.com/tools/debug/
+- **Twitter Card Validator**: https://cards-dev.twitter.com/validator
+
+### SEO Functions
+
+Import from `@/lib/seo`:
+
+```typescript
+// Schema generators
+generateOrganizationSchema()
+generateLocalBusinessSchema()
+generateEventVenueSchema(venueData, locale)
+generateMenuItemSchema(item, categoryName, locale)
+generateFAQPageSchema(faqItems, locale)
+generateBreadcrumbSchema(items)
+generateAggregateRatingSchema(ratingData)
+generateFoodEstablishmentSchema()
+
+// Metadata generators
+generatePageMetadata(options)
+generateHomeMetadata(locale)
+generateMenuMetadata(locale)
+generateCateringMetadata(locale)
+generateVenueMetadata(venue, locale)
+generateMenuItemMetadata(item, category, locale)
+// ... and more
+
+// Alt text generators
+generateMenuItemAlt(item, locale)
+generateCategoryImageAlt(categorySlug, locale)
+generateVenueImageAlt(venueName, imageIndex, locale)
+generateHeroImageAlt(slideIndex, locale)
+```
+
+### Troubleshooting SEO
+
+**Schema not appearing?**
+- Check browser console for JSON errors
+- Verify JSON.stringify() output in page source
+- Ensure schemas are injected in component return
+
+**Sitemap not updating?**
+- Delete `.next` folder and rebuild
+- Verify JSON data files are in correct format
+- Check sitemap.ts imports match actual file names
+
+**Rich results not showing?**
+- Test with Google Rich Results Test
+- Allow 1-2 weeks for Google to re-crawl after changes
+- Verify canonical URLs are correct
+
+### Performance Impact
+
+- Minimal: JSON-LD adds ~2-5KB per page
+- No render blocking: Schemas load after page content
+- Type-safe: Catches errors at build time
+- Zero runtime overhead: All generation happens at build time
+
 ## Content Management
 
 Content is managed through JSON files in the `/data` directory:

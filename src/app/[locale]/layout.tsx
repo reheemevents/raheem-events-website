@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Cormorant_Garamond, DM_Sans, Bodoni_Moda, Noto_Nastaliq_Urdu } from "next/font/google";
 import "../globals.css";
+import { generateOrganizationSchema, generateLocalBusinessSchema, SchemaScript } from "@/lib/seo";
 
 // Fonts - Luxury Editorial Typography
 const cormorantGaramond = Cormorant_Garamond({
@@ -42,13 +43,16 @@ export function generateStaticParams() {
 
 export async function generateMetadata() {
   return {
-    title: "Raheem Event Management & Catering | Wedding Halls & Catering Services",
-    description: "Premium catering services and elegant marriage halls - Israr Marriage Hall and Mumtaz Banquet Hall. Book your wedding, mehndi, barat, or walima today.",
+    title: {
+      template: "%s | Raheem Event Management & Catering",
+      default: "Raheem Event Management & Catering | Wedding Halls & Catering Services",
+    },
+    description: "Premium catering services and elegant marriage halls in Mirpur, AJK - Israr Marriage Hall and Mumtaz Banquet Hall. Book your wedding, mehndi, barat, or walima today.",
     keywords: [
       "wedding hall",
       "marriage hall",
       "catering services",
-      "Lahore",
+      "Mirpur AJK",
       "Pakistan",
       "wedding catering",
       "mehndi",
@@ -56,12 +60,50 @@ export async function generateMetadata() {
       "walima",
       "Israr Marriage Hall",
       "Mumtaz Banquet Hall",
+      "halal catering",
+      "event management",
     ],
+    authors: [{ name: "Raheem Event Management & Catering" }],
+    creator: "Raheem Event Management & Catering",
+    publisher: "Raheem Event Management & Catering",
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
+    metadataBase: new URL("https://raheemevents.com"),
     openGraph: {
       title: "Raheem Event Management & Catering | Wedding Halls & Catering Services",
-      description: "Premium catering services and elegant marriage halls - Israr Marriage Hall and Mumtaz Banquet Hall. Book your wedding, mehndi, barat, or walima today.",
+      description: "Premium catering services and elegant marriage halls in Mirpur, AJK - Israr Marriage Hall and Mumtaz Banquet Hall. Book your wedding, mehndi, barat, or walima today.",
+      url: "https://raheemevents.com",
+      siteName: "Raheem Event Management & Catering",
       locale: "en_US",
       type: "website",
+      images: [
+        {
+          url: "https://raheemevents.com/images/og-default.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Raheem Event Management & Catering",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Raheem Event Management & Catering | Wedding Halls & Catering Services",
+      description: "Premium catering services and elegant marriage halls in Mirpur, AJK",
+      images: ["https://raheemevents.com/images/og-default.jpg"],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
   };
 }
@@ -87,7 +129,11 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning>
+    <html lang={locale} dir={locale === "ur" ? "rtl" : "ltr"} suppressHydrationWarning>
+      <head>
+        <SchemaScript schema={generateOrganizationSchema()} />
+        <SchemaScript schema={generateLocalBusinessSchema()} />
+      </head>
       <body
         className={`${cormorantGaramond.variable} ${dmSans.variable} ${bodoniModa.variable} ${notoNastaliq.variable} font-body antialiased`}
       >

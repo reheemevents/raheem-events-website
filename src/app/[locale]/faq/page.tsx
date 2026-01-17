@@ -10,6 +10,7 @@ import { HelpCircle, Phone, MessageCircle, MapPin } from "lucide-react";
 import { CONTACT } from "@/lib/constants";
 import { getWhatsAppLink, getPhoneLink } from "@/lib/utils";
 import faqData from "@/data/faq.json";
+import { generateFAQMetadata, generateFAQPageSchema, SchemaScript } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -17,12 +18,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "faq" });
-
-  return {
-    title: `${t("title")} | Raheem Event Management & Catering`,
-    description: "Find answers to common questions about our catering services, venues, booking process, and pricing at Raheem Event Management & Catering.",
-  };
+  return generateFAQMetadata(locale);
 }
 
 export default async function FAQPage({
@@ -37,6 +33,7 @@ export default async function FAQPage({
 
   return (
     <>
+      <SchemaScript schema={generateFAQPageSchema(faqData.questions, locale)} />
       <Header />
       <main className="min-h-screen bg-[#FAFAFA]">
         {/* Hero section */}

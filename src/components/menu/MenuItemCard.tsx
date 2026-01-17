@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Star } from "lucide-react";
+import { generateMenuItemAlt } from "@/lib/seo";
 
 interface MenuItemCardProps {
   id: string;
@@ -36,7 +37,7 @@ export default function MenuItemCard({
           <div className="relative aspect-square overflow-hidden rounded-t-2xl">
             <Image
               src={image}
-              alt={displayName}
+              alt={generateMenuItemAlt({ id, name, category, image }, "en")}
               fill
               className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"

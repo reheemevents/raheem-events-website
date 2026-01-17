@@ -7,6 +7,7 @@ import Image from "next/image";
 import { ArrowRight, UtensilsCrossed } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
+import { generateMenuItemAlt, getCategoryName } from "@/lib/seo";
 
 // Featured categories with images from actual menu
 const categories = [
@@ -111,7 +112,7 @@ export default function FoodMenuShowcase() {
                   {/* Image */}
                   <Image
                     src={category.image}
-                    alt={t(`categories.${category.id}`)}
+                    alt={`${getCategoryName(category.id, "en")} menu - Authentic Pakistani cuisine for weddings and events`}
                     fill
                     className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
@@ -182,7 +183,7 @@ export default function FoodMenuShowcase() {
                     <div className="relative aspect-square overflow-hidden rounded-t-2xl">
                       <Image
                         src={item.image}
-                        alt={item.name.en}
+                        alt={generateMenuItemAlt(item, "en")}
                         fill
                         className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                         sizes="(max-width: 640px) 50vw, 25vw"

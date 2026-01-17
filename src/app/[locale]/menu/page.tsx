@@ -9,6 +9,7 @@ import { CategoryFilter, MenuGrid } from "@/components/menu";
 import { Sparkles, ArrowRight } from "lucide-react";
 import categoriesData from "@/data/menu/categories.json";
 import allItemsData from "@/data/menu/all-items.json";
+import { generateMenuMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -16,15 +17,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "menu" });
-
-  return {
-    title: `${t("title")} | Raheem Event Management & Catering`,
-    description:
-      locale === "ur"
-        ? "ہمارے 100+ مزیدار کھانوں کی فہرست دیکھیں - بریانی، قورمہ، بی بی کیو، میٹھے اور بہت کچھ"
-        : "Explore our menu of 100+ delicious dishes - Biryani, Qorma, BBQ, Desserts and more",
-  };
+  return generateMenuMetadata(locale);
 }
 
 export default async function MenuPage({

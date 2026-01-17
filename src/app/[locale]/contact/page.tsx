@@ -16,6 +16,7 @@ import { CONTACT } from "@/lib/constants";
 import { getPhoneLink, getWhatsAppLink } from "@/lib/utils";
 import israrData from "@/data/venues/israr.json";
 import mumtazData from "@/data/venues/mumtaz.json";
+import { generateContactMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -23,10 +24,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "contact" });
-
   return {
-    title: `${t("title")} | Raheem Event Management & Catering`,
+    ...generateContactMetadata(locale),
     description: "Contact us via phone or WhatsApp",
   };
 }

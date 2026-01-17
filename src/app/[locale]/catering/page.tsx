@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import { CONTACT } from "@/lib/constants";
 import { getWhatsAppLink, getPhoneLink } from "@/lib/utils";
+import { generateCateringMetadata, generateFoodEstablishmentSchema, SchemaScript } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -33,15 +34,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "catering" });
-
-  return {
-    title: `${t("title")} | Raheem Event Management & Catering`,
-    description:
-      locale === "ur"
-        ? "شادی، مہندی، ولیمہ اور کارپوریٹ ایونٹس کے لیے بہترین کیٹرنگ سروسز - پاکستانی، بی بی کیو، چائنیز، کانٹی نینٹل"
-        : "Premium catering services for weddings, mehndi, walima and corporate events - Pakistani, BBQ, Chinese, Continental",
-  };
+  return generateCateringMetadata(locale);
 }
 
 export default async function CateringPage({
@@ -193,6 +186,7 @@ export default async function CateringPage({
 
   return (
     <>
+      <SchemaScript schema={generateFoodEstablishmentSchema()} />
       <Header />
       <main className="min-h-screen bg-[#FAFAFA]">
         {/* Hero section */}

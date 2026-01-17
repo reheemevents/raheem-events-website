@@ -12,6 +12,12 @@ import {
   CTASection,
 } from "@/components/home";
 import WhatsAppButton from "@/components/common/WhatsAppButton";
+import { generateHomeMetadata, generateBreadcrumbSchema, SchemaScript } from "@/lib/seo";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return generateHomeMetadata(locale);
+}
 
 export default async function HomePage({
   params,
