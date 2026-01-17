@@ -159,10 +159,10 @@ export default function HeroSlider() {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`transition-all duration-300 ${
+              className={`rounded-full transition-all duration-300 ${
                 index === currentSlide
-                  ? "w-8 h-1.5 bg-[#D4AF37]"
-                  : "w-1.5 h-1.5 bg-white/40 hover:bg-white/60 rounded-full"
+                  ? "w-2.5 h-2.5 bg-[#D4AF37] scale-125"
+                  : "w-2 h-2 bg-white/40 hover:bg-white/60"
               }`}
             />
           ))}

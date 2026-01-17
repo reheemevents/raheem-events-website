@@ -95,11 +95,11 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             className="fixed top-0 right-0 bottom-0 w-full max-w-[340px] bg-[#FAFAF8] z-[70] lg:hidden shadow-2xl overflow-hidden"
           >
             {/* Decorative gold border */}
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#D4AF37] via-[#C9A227] to-[#D4AF37]" />
+            <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#D4AF37] via-[#C9A227] to-[#D4AF37] pointer-events-none" />
 
             {/* Background pattern */}
             <div
-              className="absolute inset-0 opacity-[0.02]"
+              className="absolute inset-0 opacity-[0.02] pointer-events-none"
               style={{
                 backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D4AF37' fill-opacity='1'%3E%3Cpath d='M20 20h20v20H20z'/%3E%3C/g%3E%3C/svg%3E")`,
               }}
@@ -113,13 +113,14 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               className="relative flex items-center justify-between px-6 py-5 border-b border-[#E8E4DC]"
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-[#D4AF37] to-[#C9A227] flex items-center justify-center">
-                  <span className="text-white font-heading font-bold text-lg">R</span>
-                </div>
-                <div>
-                  <p className="text-xs text-[#8B7355] uppercase tracking-[0.15em]">Menu</p>
-                  <p className="text-sm font-heading font-semibold text-[#1A1A1A]">Raheem Events</p>
-                </div>
+                <Image
+                  src="/Logo/logo.png"
+                  alt="Raheem Events"
+                  width={120}
+                  height={40}
+                  className="h-8 w-auto"
+                  priority
+                />
               </div>
               <motion.button
                 whileTap={{ scale: 0.9 }}
