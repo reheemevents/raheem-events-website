@@ -23,6 +23,7 @@ import {
   Utensils,
   Palette,
   Star,
+  Images,
 } from "lucide-react";
 import { getWhatsAppLink, getPhoneLink } from "@/lib/utils";
 import israrData from "@/data/venues/israr.json";
@@ -343,6 +344,25 @@ export default async function VenueDetailPage({
                         {t("viewOnMap")} →
                       </a>
                     </div>
+
+                    {/* Gallery CTA */}
+                    {slug === "israr-marriage-hall" && (
+                      <div className="mt-6 pt-6 border-t border-[#E5E5E5]">
+                        <h4 className="font-medium text-[#1A1A1A] mb-2 flex items-center gap-2">
+                          <Images size={16} className="text-[#D4AF37]" />
+                          Photo & Video Gallery
+                        </h4>
+                        <p className="text-[#6B7280] text-sm mb-3">
+                          View our venue images and video tours
+                        </p>
+                        <Link
+                          href="/gallery"
+                          className="text-[#D4AF37] text-sm font-medium hover:underline"
+                        >
+                          View Gallery →
+                        </Link>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

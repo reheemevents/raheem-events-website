@@ -8,155 +8,215 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/common/WhatsAppButton";
 import { PageHeading } from "@/components/ui/SectionHeading";
-import { X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, Maximize2, Play } from "lucide-react";
 
-// Gallery images organized by category - Pakistani wedding venues, catering, and decor
-const galleryImages = [
+// Gallery media (images and videos) organized by category - Pakistani wedding venues, catering, and decor
+const galleryMedia = [
   // Wedding category
   {
     id: 1,
+    type: "image",
     src: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=600&q=80",
     category: "wedding",
     title: { en: "Wedding Stage Setup", ur: "شادی کا اسٹیج سیٹ اپ" },
   },
   {
     id: 2,
+    type: "image",
     src: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80",
     category: "wedding",
     title: { en: "Grand Reception Hall", ur: "عظیم الشان استقبالیہ ہال" },
   },
   {
     id: 3,
+    type: "image",
     src: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80",
     category: "wedding",
     title: { en: "Wedding Celebration", ur: "شادی کی تقریب" },
   },
   {
     id: 4,
+    type: "image",
     src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80",
     category: "wedding",
     title: { en: "Bride & Groom Stage", ur: "دلہا دلہن کا اسٹیج" },
   },
-  // Israr Hall category
+  // Israr Hall category - Images
   {
     id: 5,
+    type: "image",
     src: "/images/gallery/israr-marriage-hall/images/israr-hall-1.jpeg",
     category: "israr",
     title: { en: "Israr Marriage Hall", ur: "اصرار میرج ہال" },
   },
   {
     id: 6,
+    type: "image",
     src: "/images/gallery/israr-marriage-hall/images/israr-hall-2.jpeg",
     category: "israr",
     title: { en: "Israr Hall Interior", ur: "اصرار ہال کا اندرونی حصہ" },
   },
   {
     id: 7,
+    type: "image",
     src: "/images/gallery/israr-marriage-hall/images/israr-hall-3.jpeg",
     category: "israr",
     title: { en: "Israr Hall Setup", ur: "اصرار ہال سیٹ اپ" },
   },
   {
     id: 8,
+    type: "image",
     src: "/images/gallery/israr-marriage-hall/images/israr-hall-4.jpeg",
     category: "israr",
     title: { en: "Israr Hall Decor", ur: "اصرار ہال سجاوٹ" },
   },
-  // Mumtaz Hall category
+  // Israr Hall category - Videos
   {
     id: 9,
+    type: "video",
+    src: "/images/gallery/israr-marriage-hall/videos/israr-hall-video-1.mp4",
+    category: "israr",
+    title: { en: "Israr Hall Video Tour", ur: "اصرار ہال ویڈیو ٹور" },
+  },
+  {
+    id: 10,
+    type: "video",
+    src: "/images/gallery/israr-marriage-hall/videos/israr-hall-video-2.mp4",
+    category: "israr",
+    title: { en: "Israr Hall Event Setup", ur: "اصرار ہال ایونٹ سیٹ اپ" },
+  },
+  {
+    id: 11,
+    type: "video",
+    src: "/images/gallery/israr-marriage-hall/videos/israr-hall-video-3.mp4",
+    category: "israr",
+    title: { en: "Israr Hall Facilities", ur: "اصرار ہال سہولیات" },
+  },
+  {
+    id: 12,
+    type: "video",
+    src: "/images/gallery/israr-marriage-hall/videos/israr-hall-video-4.mp4",
+    category: "israr",
+    title: { en: "Israr Hall Walkthrough", ur: "اصرار ہال واک تھرو" },
+  },
+  {
+    id: 13,
+    type: "video",
+    src: "/images/gallery/israr-marriage-hall/videos/israr-hall-video-5.mp4",
+    category: "israr",
+    title: { en: "Israr Hall Complete View", ur: "اصرار ہال مکمل منظر" },
+  },
+  // Mumtaz Hall category
+  {
+    id: 14,
+    type: "image",
     src: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=600&q=80",
     category: "mumtaz",
     title: { en: "Mumtaz Hall Setup", ur: "ممتاز ہال سیٹ اپ" },
   },
   {
-    id: 10,
+    id: 15,
+    type: "image",
     src: "https://images.unsplash.com/photo-1544078751-58fee2d8a03b?w=600&q=80",
     category: "mumtaz",
     title: { en: "Mumtaz Hall Decoration", ur: "ممتاز ہال سجاوٹ" },
   },
   {
-    id: 11,
+    id: 16,
+    type: "image",
     src: "https://images.unsplash.com/photo-1510076857177-7470076d4098?w=600&q=80",
     category: "mumtaz",
     title: { en: "Mumtaz Hall Lighting", ur: "ممتاز ہال لائٹنگ" },
   },
   {
-    id: 12,
+    id: 17,
+    type: "image",
     src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
     category: "mumtaz",
     title: { en: "Mumtaz Hall Stage", ur: "ممتاز ہال اسٹیج" },
   },
   // Catering category - Pakistani food
   {
-    id: 13,
+    id: 18,
+    type: "image",
     src: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80",
     category: "catering",
     title: { en: "Biryani Presentation", ur: "بریانی پریزنٹیشن" },
   },
   {
-    id: 14,
+    id: 19,
+    type: "image",
     src: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=600&q=80",
     category: "catering",
     title: { en: "BBQ Station", ur: "بی بی کیو سٹیشن" },
   },
   {
-    id: 15,
+    id: 20,
+    type: "image",
     src: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=600&q=80",
     category: "catering",
     title: { en: "Dessert Display", ur: "میٹھے کی سجاوٹ" },
   },
   {
-    id: 16,
+    id: 21,
+    type: "image",
     src: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&q=80",
     category: "catering",
     title: { en: "Chicken Karahi", ur: "چکن کڑاہی" },
   },
   {
-    id: 17,
+    id: 22,
+    type: "image",
     src: "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=600&q=80",
     category: "catering",
     title: { en: "Seekh Kebab", ur: "سیخ کباب" },
   },
   {
-    id: 18,
+    id: 23,
+    type: "image",
     src: "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=600&q=80",
     category: "catering",
     title: { en: "Mutton Qorma", ur: "مٹن قورمہ" },
   },
   {
-    id: 19,
+    id: 24,
+    type: "image",
     src: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80",
     category: "catering",
     title: { en: "Naan & Roti", ur: "نان اور روٹی" },
   },
   {
-    id: 20,
+    id: 25,
+    type: "image",
     src: "https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=600&q=80",
     category: "catering",
     title: { en: "Gulab Jamun", ur: "گلاب جامن" },
   },
   // Decor category
   {
-    id: 21,
+    id: 26,
+    type: "image",
     src: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=600&q=80",
     category: "decor",
     title: { en: "Stage Decoration", ur: "اسٹیج سجاوٹ" },
   },
   {
-    id: 22,
+    id: 27,
+    type: "image",
     src: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&q=80",
     category: "decor",
     title: { en: "Floral Arrangements", ur: "پھولوں کی سجاوٹ" },
   },
   {
-    id: 23,
+    id: 28,
+    type: "image",
     src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80",
     category: "decor",
     title: { en: "Table Centerpiece", ur: "میز کی سجاوٹ" },
   },
   {
-    id: 24,
+    id: 29,
+    type: "image",
     src: "https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?w=600&q=80",
     category: "decor",
     title: { en: "Wedding Lighting", ur: "شادی کی لائٹنگ" },
@@ -178,10 +238,10 @@ export default function GalleryPage() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const filteredImages =
+  const filteredMedia =
     activeCategory === "all"
-      ? galleryImages
-      : galleryImages.filter((img) => img.category === activeCategory);
+      ? galleryMedia
+      : galleryMedia.filter((item) => item.category === activeCategory);
 
   const openLightbox = (index: number) => {
     setCurrentImageIndex(index);
@@ -194,13 +254,13 @@ export default function GalleryPage() {
     document.body.style.overflow = "unset";
   };
 
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % filteredImages.length);
+  const nextMedia = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % filteredMedia.length);
   };
 
-  const prevImage = () => {
+  const prevMedia = () => {
     setCurrentImageIndex(
-      (prev) => (prev - 1 + filteredImages.length) % filteredImages.length
+      (prev) => (prev - 1 + filteredMedia.length) % filteredMedia.length
     );
   };
 
@@ -256,9 +316,9 @@ export default function GalleryPage() {
               className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
             >
               <AnimatePresence mode="popLayout">
-                {filteredImages.map((image, index) => (
+                {filteredMedia.map((item, index) => (
                   <motion.div
-                    key={image.id}
+                    key={item.id}
                     layout
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -270,31 +330,50 @@ export default function GalleryPage() {
                     {/* Background placeholder */}
                     <div className="absolute inset-0 bg-gradient-to-br from-[#2D2D2D] to-[#1A1A1A]" />
 
-                    {/* Actual image */}
-                    <Image
-                      src={image.src}
-                      alt={image.title.en}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    />
+                    {/* Media content - Image or Video */}
+                    {item.type === "image" ? (
+                      <Image
+                        src={item.src}
+                        alt={item.title.en}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      />
+                    ) : (
+                      <>
+                        <video
+                          src={item.src}
+                          className="absolute inset-0 w-full h-full object-cover"
+                          muted
+                          playsInline
+                        />
+                        {/* Play button overlay for videos */}
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/30 z-10">
+                          <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center transition-transform group-hover:scale-110">
+                            <Play size={24} className="text-[#1A1A1A] ml-1" fill="currentColor" />
+                          </div>
+                        </div>
+                      </>
+                    )}
 
                     {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" />
 
                     {/* Gold border on hover */}
-                    <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#D4AF37] transition-colors duration-300 rounded-sm z-20" />
+                    <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#D4AF37] transition-colors duration-300 rounded-sm z-30" />
 
                     {/* Corner accents */}
-                    <div className="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" />
-                    <div className="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" />
+                    <div className="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-40" />
+                    <div className="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-40" />
 
-                    {/* Hover content */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30">
-                      <div className="w-12 h-12 rounded-full bg-[#D4AF37] flex items-center justify-center mb-3">
-                        <Maximize2 size={20} className="text-[#1A1A1A]" />
+                    {/* Hover content - only for images */}
+                    {item.type === "image" && (
+                      <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50">
+                        <div className="w-12 h-12 rounded-full bg-[#D4AF37] flex items-center justify-center mb-3">
+                          <Maximize2 size={20} className="text-[#1A1A1A]" />
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </motion.div>
                 ))}
               </AnimatePresence>
@@ -321,19 +400,19 @@ export default function GalleryPage() {
 
               {/* Navigation arrows */}
               <button
-                onClick={prevImage}
+                onClick={prevMedia}
                 className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors z-50"
               >
                 <ChevronLeft size={24} />
               </button>
               <button
-                onClick={nextImage}
+                onClick={nextMedia}
                 className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors z-50"
               >
                 <ChevronRight size={24} />
               </button>
 
-              {/* Image */}
+              {/* Media content - Image or Video */}
               <motion.div
                 key={currentImageIndex}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -341,25 +420,37 @@ export default function GalleryPage() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 className="relative w-full max-w-5xl aspect-video mx-4"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#2D2D2D] to-[#1A1A1A] rounded-sm" />
-                <Image
-                  src={filteredImages[currentImageIndex]?.src || ""}
-                  alt={filteredImages[currentImageIndex]?.title.en || "Gallery image"}
-                  fill
-                  className="object-contain rounded-sm"
-                  sizes="(max-width: 1280px) 100vw, 1280px"
-                />
-                {/* Image title */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-sm">
+                {filteredMedia[currentImageIndex]?.type === "image" ? (
+                  <>
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#2D2D2D] to-[#1A1A1A] rounded-sm" />
+                    <Image
+                      src={filteredMedia[currentImageIndex]?.src || ""}
+                      alt={filteredMedia[currentImageIndex]?.title.en || "Gallery image"}
+                      fill
+                      className="object-contain rounded-sm"
+                      sizes="(max-width: 1280px) 100vw, 1280px"
+                    />
+                  </>
+                ) : (
+                  <video
+                    src={filteredMedia[currentImageIndex]?.src || ""}
+                    className="w-full h-full object-contain rounded-sm"
+                    controls
+                    autoPlay
+                    playsInline
+                  />
+                )}
+                {/* Media title */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-sm pointer-events-none">
                   <p className="text-white text-lg font-medium text-center">
-                    {filteredImages[currentImageIndex]?.title.en}
+                    {filteredMedia[currentImageIndex]?.title.en}
                   </p>
                 </div>
               </motion.div>
 
-              {/* Image counter */}
+              {/* Media counter */}
               <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/60 text-sm">
-                {currentImageIndex + 1} / {filteredImages.length}
+                {currentImageIndex + 1} / {filteredMedia.length}
               </div>
             </motion.div>
           )}

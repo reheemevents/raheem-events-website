@@ -82,7 +82,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-[#1A1A1A]/60 backdrop-blur-md z-40 lg:hidden"
+            className="fixed inset-0 bg-[#1A1A1A]/60 backdrop-blur-md z-[60] lg:hidden"
             onClick={onClose}
           />
 
@@ -92,7 +92,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             initial="closed"
             animate="open"
             exit="closed"
-            className="fixed top-0 right-0 bottom-0 w-full max-w-[340px] bg-[#FAFAF8] z-50 lg:hidden shadow-2xl overflow-hidden"
+            className="fixed top-0 right-0 bottom-0 w-full max-w-[340px] bg-[#FAFAF8] z-[70] lg:hidden shadow-2xl overflow-hidden"
           >
             {/* Decorative gold border */}
             <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#D4AF37] via-[#C9A227] to-[#D4AF37]" />
