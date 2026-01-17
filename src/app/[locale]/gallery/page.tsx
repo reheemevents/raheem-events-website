@@ -10,37 +10,8 @@ import WhatsAppButton from "@/components/common/WhatsAppButton";
 import { PageHeading } from "@/components/ui/SectionHeading";
 import { X, ChevronLeft, ChevronRight, Maximize2, Play } from "lucide-react";
 
-// Gallery media (images and videos) organized by category - Pakistani wedding venues, catering, and decor
+// Gallery media (images and videos) - Real venue photos and videos
 const galleryMedia = [
-  // Wedding category
-  {
-    id: 1,
-    type: "image",
-    src: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=600&q=80",
-    category: "wedding",
-    title: { en: "Wedding Stage Setup", ur: "شادی کا اسٹیج سیٹ اپ" },
-  },
-  {
-    id: 2,
-    type: "image",
-    src: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80",
-    category: "wedding",
-    title: { en: "Grand Reception Hall", ur: "عظیم الشان استقبالیہ ہال" },
-  },
-  {
-    id: 3,
-    type: "image",
-    src: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80",
-    category: "wedding",
-    title: { en: "Wedding Celebration", ur: "شادی کی تقریب" },
-  },
-  {
-    id: 4,
-    type: "image",
-    src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80",
-    category: "wedding",
-    title: { en: "Bride & Groom Stage", ur: "دلہا دلہن کا اسٹیج" },
-  },
   // Israr Hall category - Images
   {
     id: 5,
@@ -106,130 +77,11 @@ const galleryMedia = [
     category: "israr",
     title: { en: "Israr Hall Complete View", ur: "اصرار ہال مکمل منظر" },
   },
-  // Mumtaz Hall category
-  {
-    id: 14,
-    type: "image",
-    src: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=600&q=80",
-    category: "mumtaz",
-    title: { en: "Mumtaz Hall Setup", ur: "ممتاز ہال سیٹ اپ" },
-  },
-  {
-    id: 15,
-    type: "image",
-    src: "https://images.unsplash.com/photo-1544078751-58fee2d8a03b?w=600&q=80",
-    category: "mumtaz",
-    title: { en: "Mumtaz Hall Decoration", ur: "ممتاز ہال سجاوٹ" },
-  },
-  {
-    id: 16,
-    type: "image",
-    src: "https://images.unsplash.com/photo-1510076857177-7470076d4098?w=600&q=80",
-    category: "mumtaz",
-    title: { en: "Mumtaz Hall Lighting", ur: "ممتاز ہال لائٹنگ" },
-  },
-  {
-    id: 17,
-    type: "image",
-    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
-    category: "mumtaz",
-    title: { en: "Mumtaz Hall Stage", ur: "ممتاز ہال اسٹیج" },
-  },
-  // Catering category - Pakistani food
-  {
-    id: 18,
-    type: "image",
-    src: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80",
-    category: "catering",
-    title: { en: "Biryani Presentation", ur: "بریانی پریزنٹیشن" },
-  },
-  {
-    id: 19,
-    type: "image",
-    src: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=600&q=80",
-    category: "catering",
-    title: { en: "BBQ Station", ur: "بی بی کیو سٹیشن" },
-  },
-  {
-    id: 20,
-    type: "image",
-    src: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=600&q=80",
-    category: "catering",
-    title: { en: "Dessert Display", ur: "میٹھے کی سجاوٹ" },
-  },
-  {
-    id: 21,
-    type: "image",
-    src: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&q=80",
-    category: "catering",
-    title: { en: "Chicken Karahi", ur: "چکن کڑاہی" },
-  },
-  {
-    id: 22,
-    type: "image",
-    src: "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=600&q=80",
-    category: "catering",
-    title: { en: "Seekh Kebab", ur: "سیخ کباب" },
-  },
-  {
-    id: 23,
-    type: "image",
-    src: "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=600&q=80",
-    category: "catering",
-    title: { en: "Mutton Qorma", ur: "مٹن قورمہ" },
-  },
-  {
-    id: 24,
-    type: "image",
-    src: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80",
-    category: "catering",
-    title: { en: "Naan & Roti", ur: "نان اور روٹی" },
-  },
-  {
-    id: 25,
-    type: "image",
-    src: "https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=600&q=80",
-    category: "catering",
-    title: { en: "Gulab Jamun", ur: "گلاب جامن" },
-  },
-  // Decor category
-  {
-    id: 26,
-    type: "image",
-    src: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=600&q=80",
-    category: "decor",
-    title: { en: "Stage Decoration", ur: "اسٹیج سجاوٹ" },
-  },
-  {
-    id: 27,
-    type: "image",
-    src: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&q=80",
-    category: "decor",
-    title: { en: "Floral Arrangements", ur: "پھولوں کی سجاوٹ" },
-  },
-  {
-    id: 28,
-    type: "image",
-    src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80",
-    category: "decor",
-    title: { en: "Table Centerpiece", ur: "میز کی سجاوٹ" },
-  },
-  {
-    id: 29,
-    type: "image",
-    src: "https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?w=600&q=80",
-    category: "decor",
-    title: { en: "Wedding Lighting", ur: "شادی کی لائٹنگ" },
-  },
 ];
 
 const categories = [
   { id: "all", label: { en: "All", ur: "سب" } },
-  { id: "wedding", label: { en: "Weddings", ur: "شادیاں" } },
   { id: "israr", label: { en: "Israr Hall", ur: "اصرار ہال" } },
-  { id: "mumtaz", label: { en: "Mumtaz Hall", ur: "ممتاز ہال" } },
-  { id: "catering", label: { en: "Catering", ur: "کیٹرنگ" } },
-  { id: "decor", label: { en: "Decor", ur: "سجاوٹ" } },
 ];
 
 export default function GalleryPage() {
