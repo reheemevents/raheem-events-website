@@ -206,7 +206,7 @@ export default function FoodMenuShowcase() {
                       <span className="block text-[14px] sm:text-[16px] md:text-[18px] font-semibold text-[#1A1A1A] group-hover:text-[#DA291C] transition-colors duration-200 truncate leading-snug">
                         {item.name.en}
                       </span>
-                      <p className="text-[11px] sm:text-[12px] text-[#8B7355] mt-0.5 font-urdu truncate">
+                      <p className="text-[11px] sm:text-[12px] text-[#8B7355] mt-0.5 font-urdu leading-relaxed pb-1 overflow-hidden">
                         {item.name.ur}
                       </p>
                     </div>

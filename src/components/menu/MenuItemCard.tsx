@@ -63,7 +63,7 @@ export default function MenuItemCard({
             </span>
 
             {name.ur && (
-              <p className="text-[11px] sm:text-[12px] text-[#8B7355] mt-0.5 font-urdu truncate">{name.ur}</p>
+              <p className="text-[11px] sm:text-[12px] text-[#8B7355] mt-0.5 font-urdu leading-relaxed pb-1 overflow-hidden">{name.ur}</p>
             )}
           </div>
 
