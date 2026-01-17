@@ -48,7 +48,7 @@ export function generateOrganizationSchema(): OrganizationSchema {
     name: BUSINESS.name,
     url: SITE_URL,
     logo: `${SITE_URL}${DEFAULT_IMAGES.logo}`,
-    image: DEFAULT_IMAGES.hero,
+    image: [...DEFAULT_IMAGES.hero],
     description: BUSINESS.description.en,
     foundingDate: BUSINESS.foundingDate,
     telephone: CONTACT.phone,
@@ -77,7 +77,7 @@ export function generateLocalBusinessSchema(): LocalBusinessSchema {
     "@type": ["LocalBusiness", "FoodEstablishment", "EventVenue"],
     "@id": SCHEMA_IDS.business,
     name: BUSINESS.name,
-    image: DEFAULT_IMAGES.hero,
+    image: [...DEFAULT_IMAGES.hero],
     telephone: CONTACT.phone,
     priceRange: BUSINESS_DETAILS.priceRange,
     address: {
@@ -96,11 +96,11 @@ export function generateLocalBusinessSchema(): LocalBusinessSchema {
     url: SITE_URL,
     openingHoursSpecification: OPENING_HOURS.map((hours) => ({
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: hours.dayOfWeek,
+      dayOfWeek: [...hours.dayOfWeek],
       opens: hours.opens,
       closes: hours.closes,
     })),
-    servesCuisine: BUSINESS_DETAILS.cuisines,
+    servesCuisine: [...BUSINESS_DETAILS.cuisines],
     paymentAccepted: BUSINESS_DETAILS.paymentAccepted,
     currenciesAccepted: BUSINESS_DETAILS.currenciesAccepted,
     aggregateRating: {
@@ -181,7 +181,7 @@ export function generateFoodEstablishmentSchema(): FoodEstablishmentSchema {
     "@context": "https://schema.org",
     "@type": "FoodEstablishment",
     name: BUSINESS.name,
-    servesCuisine: BUSINESS_DETAILS.cuisines,
+    servesCuisine: [...BUSINESS_DETAILS.cuisines],
     hasMenu: `${SITE_URL}/menu`,
     priceRange: BUSINESS_DETAILS.priceRange,
     acceptsReservations: "True",
@@ -194,7 +194,7 @@ export function generateFoodEstablishmentSchema(): FoodEstablishmentSchema {
       addressCountry: ADDRESS.addressCountry,
     },
     telephone: CONTACT.phone,
-    image: DEFAULT_IMAGES.hero,
+    image: [...DEFAULT_IMAGES.hero],
   };
 }
 
