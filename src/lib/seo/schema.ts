@@ -248,10 +248,10 @@ export function generateFAQPageSchema(
     "@type": "FAQPage",
     mainEntity: faqItems.map((item) => ({
       "@type": "Question",
-      name: item.question[locale as keyof typeof item.question] || item.question.en,
+      name: item.question,
       acceptedAnswer: {
         "@type": "Answer",
-        text: item.answer[locale as keyof typeof item.answer] || item.answer.en,
+        text: item.answer,
       },
     })),
   };

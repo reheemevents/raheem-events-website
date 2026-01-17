@@ -289,15 +289,10 @@ export interface Category {
 }
 
 export interface FAQItem {
-  question: {
-    en: string;
-    ur: string;
-  };
-  answer: {
-    en: string;
-    ur: string;
-  };
-  category?: string;
+  id: string;
+  category: string;
+  question: string;
+  answer: string;
 }
 
 export interface RatingData {
