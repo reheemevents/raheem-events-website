@@ -29,7 +29,7 @@ git clone https://github.com/reheemevents/raheem-events-website.git
 - **Multi-step Booking Form** (4 steps) with WhatsApp-only contact
 - **WhatsApp Integration** - Floating button with pre-filled messages
 - **Click-to-Call** - Mobile-optimized phone buttons
-- **Photo Gallery** - Filterable by venue/category with lightbox
+- **Photo & Video Gallery** - Filterable by venue/category with lightbox, video player support
 - **Testimonials Page** - Client reviews & video testimonials
 - **About Page** - Company story, mission, values, timeline
 - **Catering Page** - Event types, cuisines, hygiene section
@@ -186,15 +186,20 @@ NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_api_key
 - **Menu Builder CTA** - Added promotional banners on Menu page, Home page, and Footer
 
 #### UI/UX Improvements
+- **Mobile Menu Fix** - Fixed z-index issue preventing mobile navigation items from being clickable
 - **WhatsApp-Only Contact** - Simplified booking form to WhatsApp-only contact (removed email option)
 - **Venue Capacity Updates** - Updated Israr Hall (700 guests) and Mumtaz Hall (1000-1200 guests) with floor breakdowns
 - **Hero Corner Decorations** - Repositioned gold corner borders for better visual balance
 - **Navigation Cleanup** - Removed FAQ from header, added to footer for cleaner navigation
 
-#### Gallery & Images
+#### Gallery & Media
+- **Video Gallery Support** - Added full video playback support with lightbox video player, controls, and autoplay
+- **Israr Hall Media** - Added 4 real venue images and 5 video tours of Israr Marriage Hall
+- **Gallery CTA on Venue Pages** - Added "Photo & Video Gallery" link in Israr Hall booking card
+- **Mixed Media Grid** - Gallery displays both images and videos with play button overlays for videos
 - **Gallery Images Fixed** - Resolved issue where gallery images weren't displaying (only placeholder gradients were shown)
-- **24 Pakistani-Themed Images** - Added curated gallery with wedding venues, catering, and decor categories
-- **Lightbox Enhancement** - Added image titles and proper navigation in lightbox view
+- **29 Total Media Items** - 24 images + 5 videos across wedding, venues, catering, and decor categories
+- **Lightbox Enhancement** - Added media titles, proper navigation, and video controls in lightbox view
 - **Next.js Image Component** - Migrated from CSS background-image to Next.js Image for better optimization
 
 #### Contact & Location
@@ -228,7 +233,8 @@ NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_api_key
 
 | Issue | Solution |
 |-------|----------|
-| Gallery images not showing | Fixed by adding Next.js Image component instead of only placeholder gradients |
+| Mobile menu not clickable | Fixed by increasing z-index values (backdrop: z-[60], menu: z-[70]) |
+| Gallery images not showing | Fixed by adding Next.js Image component with proper paths |
 | Dev server lock file error | Delete `.next` folder and restart: `rmdir /s /q .next && npm run dev` |
 | Port already in use | Kill node processes: `taskkill /F /IM node.exe` (Windows) |
 | Turbopack cache error | Delete cache folder: `.next/dev/cache/turbopack` |
