@@ -11,6 +11,7 @@ import { Users, MapPin, ArrowRight } from "lucide-react";
 import israrData from "@/data/venues/israr.json";
 import mumtazData from "@/data/venues/mumtaz.json";
 import marqueeData from "@/data/venues/marquee.json";
+import { generateVenuesMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -18,12 +19,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "venues" });
-
-  return {
-    title: `${t("title")} | Raheem Event Management & Catering`,
-    description: "Explore our beautiful venues - Israr Marriage Hall, Mumtaz Banquet Hall and a Marquee available for up to 1500 guests",
-  };
+  return generateVenuesMetadata(locale);
 }
 
 export default async function VenuesPage({

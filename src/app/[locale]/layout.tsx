@@ -44,10 +44,10 @@ export function generateStaticParams() {
 export async function generateMetadata() {
   return {
     title: {
-      template: "%s | Raheem Event Management & Catering",
-      default: "Raheem Event Management & Catering | Wedding Halls & Catering Services",
+      template: "%s | Raheem Events",
+      default: "Marriage Halls & Wedding Catering in Mirpur AJK | Raheem Events",
     },
-    description: "Premium catering services and elegant marriage halls in Mirpur, AJK - Israr Marriage Hall and Mumtaz Banquet Hall. Book your wedding, mehndi, barat, or walima today.",
+    description: "Wedding venues and catering in Mirpur, AJK since 2005 - Israr Marriage Hall, Mumtaz Banquet Hall and a marquee for 1500 guests. Book your wedding, mehndi, barat or walima today.",
     keywords: [
       "wedding hall",
       "marriage hall",
@@ -60,6 +60,7 @@ export async function generateMetadata() {
       "walima",
       "Israr Marriage Hall",
       "Mumtaz Banquet Hall",
+      "marquee Mirpur",
       "halal catering",
       "event management",
     ],
@@ -74,7 +75,7 @@ export async function generateMetadata() {
     metadataBase: new URL("https://raheemevents.com"),
     openGraph: {
       title: "Raheem Event Management & Catering | Wedding Halls & Catering Services",
-      description: "Premium catering services and elegant marriage halls in Mirpur, AJK - Israr Marriage Hall and Mumtaz Banquet Hall. Book your wedding, mehndi, barat, or walima today.",
+      description: "Wedding venues and catering in Mirpur, AJK since 2005 - Israr Marriage Hall, Mumtaz Banquet Hall and a marquee for 1500 guests. Book your wedding, mehndi, barat or walima today.",
       url: "https://raheemevents.com",
       siteName: "Raheem Event Management & Catering",
       locale: "en_US",

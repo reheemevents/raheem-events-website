@@ -12,7 +12,6 @@ import type {
   FAQPageSchema,
   BreadcrumbListSchema,
   AggregateRatingSchema,
-  VenueData,
   MenuItem,
   FAQItem,
   RatingData,
@@ -103,13 +102,8 @@ export function generateLocalBusinessSchema(): LocalBusinessSchema {
     servesCuisine: [...BUSINESS_DETAILS.cuisines],
     paymentAccepted: BUSINESS_DETAILS.paymentAccepted,
     currenciesAccepted: BUSINESS_DETAILS.currenciesAccepted,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: RATING.ratingValue,
-      bestRating: RATING.bestRating,
-      ratingCount: RATING.ratingCount,
-      reviewCount: RATING.reviewCount,
-    },
+    // No aggregateRating: Google ignores self-served ratings on LocalBusiness and
+    // can flag them as spammy markup. Ratings come from the Google Business Profile.
   };
 }
 
@@ -119,55 +113,42 @@ export function generateLocalBusinessSchema(): LocalBusinessSchema {
  * Generates EventVenue schema for specific venue pages
  * Auto-populates from venue JSON data
  */
-export function generateEventVenueSchema(
-  venueData: VenueData,
-  locale: string = "en"
-): EventVenueSchema {
-  const venueName = venueData.name[locale as keyof typeof venueData.name] || venueData.name.en;
-  const venueDescription =
-    venueData.description[locale as keyof typeof venueData.description] || venueData.description.en;
-
-  // Generate venue-specific images array
-  const venueImages = venueData.images.map((img) => {
-    // If image is already a full URL, use it; otherwise prepend SITE_URL
-    return img.startsWith("http") ? img : `${SITE_URL}${img}`;
-  });
+export function generateEventVenueSchema(venueData: {
+  name: { en: string };
+  slug: string;
+  description: { en: string };
+  capacity: { total: string | number };
+  amenities?: string[];
+  location: { address: { en: string } };
+  poster?: string;
+}): EventVenueSchema {
+  // Venues without a street address (e.g. the marquee) only list the town
+  const hasStreetAddress = /plaza|road|rd\b|sector/i.test(venueData.location.address.en);
 
   return {
     "@context": "https://schema.org",
     "@type": "EventVenue",
-    name: venueName,
-    description: venueDescription,
-    image: venueImages,
+    name: venueData.name.en,
+    description: venueData.description.en,
+    image: [venueData.poster ? `${SITE_URL}${venueData.poster}` : `${SITE_URL}${DEFAULT_IMAGES.ogDefault}`],
     address: {
       "@type": "PostalAddress",
-      streetAddress: ADDRESS.streetAddress,
+      ...(hasStreetAddress && { streetAddress: venueData.location.address.en }),
       addressLocality: ADDRESS.addressLocality,
       addressRegion: ADDRESS.addressRegion,
-      postalCode: ADDRESS.postalCode,
       addressCountry: ADDRESS.addressCountry,
     },
     telephone: CONTACT.phone,
     url: `${SITE_URL}/venues/${venueData.slug}`,
-    maximumAttendeeCapacity: venueData.capacity.total,
+    maximumAttendeeCapacity: Number(venueData.capacity.total),
     amenityFeature: (venueData.amenities || []).map((amenity) => ({
       "@type": "LocationFeatureSpecification",
       name: amenity,
+      value: true,
     })),
-    smokingAllowed: false,
     publicAccess: true,
     isAccessibleForFree: false,
-    geo: venueData.location
-      ? {
-          "@type": "GeoCoordinates",
-          latitude: venueData.location.lat,
-          longitude: venueData.location.lng,
-        }
-      : {
-          "@type": "GeoCoordinates",
-          latitude: GEO_COORDINATES.latitude,
-          longitude: GEO_COORDINATES.longitude,
-        },
+    parentOrganization: { "@id": SCHEMA_IDS.business },
   };
 }
 

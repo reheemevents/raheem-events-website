@@ -36,14 +36,14 @@ export const CONTACT = {
 // ==================== ADDRESS ====================
 
 export const ADDRESS = {
-  streetAddress: "Main Allama Iqbal Road",
+  streetAddress: "Haul Rd, C/2 Sector F-1, New Mirpur City",
   addressLocality: "Mirpur",
-  addressRegion: "AJK",
+  addressRegion: "Azad Kashmir",
   postalCode: "10250",
   addressCountry: "PK",
   formatted: {
-    en: "Main Allama Iqbal Road, Mirpur, AJK 10250, Pakistan",
-    ur: "مین علامہ اقبال روڈ، میرپور، آزاد کشمیر 10250، پاکستان",
+    en: "Haul Rd, C/2 Sector F-1, New Mirpur City, Mirpur, AJK 10250, Pakistan",
+    ur: "ہال روڈ، سی/2 سیکٹر ایف-1، نیو میرپور سٹی، میرپور، آزاد کشمیر 10250، پاکستان",
   },
 } as const;
 

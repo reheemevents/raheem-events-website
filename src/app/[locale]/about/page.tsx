@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { CONTACT } from "@/lib/constants";
 import { getWhatsAppLink, getPhoneLink } from "@/lib/utils";
+import { generateAboutMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -30,15 +31,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "about" });
-
-  return {
-    title: `${t("title")} | Raheem Event Management & Catering`,
-    description:
-      locale === "ur"
-        ? "رحیم ایونٹ مینجمنٹ اینڈ کیٹرنگ - 20 سال سے زیادہ عرصے سے یادگار تقریبات بنا رہے ہیں"
-        : "Raheem Event Management & Catering - Creating memorable celebrations for over 20 years",
-  };
+  return generateAboutMetadata(locale);
 }
 
 export default async function AboutPage({

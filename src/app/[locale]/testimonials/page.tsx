@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { CONTACT } from "@/lib/constants";
 import { getWhatsAppLink, getPhoneLink } from "@/lib/utils";
+import { generateTestimonialsMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -27,15 +28,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "testimonials" });
-
-  return {
-    title: `${t("title")} | Raheem Event Management & Catering`,
-    description:
-      locale === "ur"
-        ? "ہمارے خوش گاہکوں کی تعریفیں اور ریویوز پڑھیں - 500+ کامیاب تقریبات"
-        : "Read testimonials and reviews from our happy clients - 500+ successful events",
-  };
+  return generateTestimonialsMetadata(locale);
 }
 
 export default async function TestimonialsPage({

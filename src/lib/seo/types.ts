@@ -108,6 +108,7 @@ export interface EventVenueSchema extends SchemaBase {
   publicAccess?: boolean;
   isAccessibleForFree?: boolean;
   geo?: GeoCoordinates;
+  parentOrganization?: { "@id": string };
 }
 
 // ==================== FOOD ESTABLISHMENT SCHEMA ====================

@@ -15,6 +15,7 @@ import { CONTACT } from "@/lib/constants";
 import { getWhatsAppLink, getPhoneLink } from "@/lib/utils";
 import categoriesData from "@/data/menu/categories.json";
 import allItemsData from "@/data/menu/all-items.json";
+import { generateMenuItemMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return allItemsData.items.map((item) => ({
@@ -38,18 +39,10 @@ export async function generateMetadata({
     };
   }
 
-  const itemName = locale === "ur" ? itemData.name.ur : itemData.name.en;
+  const categoryName =
+    categoriesData.categories.find((c) => c.slug === itemData.category)?.name.en ?? itemData.category;
 
-  return {
-    title: `${itemName} | Raheem Event Management & Catering`,
-    description:
-      locale === "ur"
-        ? `${itemName} - ہماری مزیدار کیٹرنگ کے لیے آرڈر کریں`
-        : `${itemName} - Order for your event catering`,
-    openGraph: {
-      images: [itemData.image],
-    },
-  };
+  return generateMenuItemMetadata(itemData, categoryName, locale);
 }
 
 export default async function ItemDetailPage({

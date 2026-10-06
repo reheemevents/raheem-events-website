@@ -7,6 +7,7 @@ import MenuBuilder from "@/components/menu-builder/MenuBuilder";
 import { ChefHat } from "lucide-react";
 import menuData from "@/data/menu/all-items.json";
 import categoriesData from "@/data/menu/categories.json";
+import { generateMenuBuilderMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -14,12 +15,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "menuBuilder" });
-
-  return {
-    title: `${t("title")} | Raheem Event Management & Catering`,
-    description: "Create a custom menu for your event by selecting from our 107+ dishes. Build your perfect catering menu and get a quote instantly.",
-  };
+  return generateMenuBuilderMetadata(locale);
 }
 
 export default async function MenuBuilderPage({

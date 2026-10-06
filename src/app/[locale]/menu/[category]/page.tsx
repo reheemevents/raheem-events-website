@@ -10,6 +10,7 @@ import { CategoryFilter, MenuGrid } from "@/components/menu";
 import { ChevronRight } from "lucide-react";
 import categoriesData from "@/data/menu/categories.json";
 import allItemsData from "@/data/menu/all-items.json";
+import { generateCategoryMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return categoriesData.categories.map((category) => ({
@@ -34,14 +35,7 @@ export async function generateMetadata({
     };
   }
 
-  const categoryName =
-    locale === "ur" ? categoryData.name.ur : categoryData.name.en;
-
-  return {
-    title: `${categoryName} | Raheem Event Management & Catering`,
-    description:
-      locale === "ur" ? categoryData.description.ur : categoryData.description.en,
-  };
+  return generateCategoryMetadata(categoryData, locale);
 }
 
 export default async function CategoryPage({

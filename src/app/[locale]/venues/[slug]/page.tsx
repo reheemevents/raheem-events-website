@@ -29,6 +29,7 @@ import { getWhatsAppLink, getPhoneLink } from "@/lib/utils";
 import israrData from "@/data/venues/israr.json";
 import mumtazData from "@/data/venues/mumtaz.json";
 import marqueeData from "@/data/venues/marquee.json";
+import { generateVenueMetadata, generateEventVenueSchema, generateBreadcrumbSchema, SchemaScript } from "@/lib/seo";
 
 const venues = {
   "israr-marriage-hall": israrData,
@@ -77,12 +78,7 @@ export async function generateMetadata({
     return { title: "Venue Not Found" };
   }
 
-  const name = venue.name.en;
-
-  return {
-    title: `${name} | Raheem Event Management & Catering`,
-    description: venue.description.en,
-  };
+  return generateVenueMetadata(venue, locale);
 }
 
 export default async function VenueDetailPage({
@@ -113,6 +109,14 @@ export default async function VenueDetailPage({
 
   return (
     <>
+      <SchemaScript schema={generateEventVenueSchema(venue)} />
+      <SchemaScript
+        schema={generateBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Venues", url: "/venues" },
+          { name, url: `/venues/${venue.slug}` },
+        ])}
+      />
       <Header />
       <main className="min-h-screen bg-[#FAFAFA]">
         {/* Hero section */}

@@ -25,10 +25,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  return {
-    ...generateContactMetadata(locale),
-    description: "Contact us via phone or WhatsApp",
-  };
+  return generateContactMetadata(locale);
 }
 
 export default async function ContactPage({

@@ -4,23 +4,25 @@
  */
 
 import type { Metadata } from "next";
-import type {
-  MetadataOptions,
-  VenueData,
-  MenuItem,
-  Category,
-  OpenGraphImage,
-} from "./types";
+import type { MetadataOptions, OpenGraphImage } from "./types";
 
 import {
   SITE_URL,
   SITE_NAME,
-  BUSINESS,
+  SITE_NAME_SHORT,
+  CONTACT,
   DEFAULT_METADATA,
   DEFAULT_IMAGES,
 } from "./constants";
 
 // ==================== MAIN METADATA GENERATOR ====================
+
+const DEFAULT_OG_IMAGE: OpenGraphImage = {
+  url: `${SITE_URL}${DEFAULT_IMAGES.ogDefault}`,
+  width: 1200,
+  height: 630,
+  alt: SITE_NAME,
+};
 
 /**
  * Generates complete page metadata with OpenGraph, Twitter Cards, and canonical URLs
@@ -32,30 +34,23 @@ export function generatePageMetadata(options: MetadataOptions): Metadata {
     description,
     url,
     type = DEFAULT_METADATA.type,
-    images = [
-      {
-        url: `${SITE_URL}${DEFAULT_IMAGES.ogDefault}`,
-        width: 1200,
-        height: 630,
-        alt: SITE_NAME,
-      },
-    ],
+    images = [DEFAULT_OG_IMAGE],
     locale = "en",
     keywords = [],
   } = options;
 
-  // Ensure full title format
-  const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
+  // Brand once at the end; `absolute` stops the layout title template adding it again
+  const fullTitle = title.includes("Raheem") ? title : `${title} | ${SITE_NAME_SHORT}`;
 
   // Ensure URLs are absolute
-  const absoluteUrl = url.startsWith("http") ? url : `${SITE_URL}${url}`;
+  const absoluteUrl = url.startsWith("http") ? url : `${SITE_URL}${url === "/" ? "" : url}`;
   const absoluteImages = images.map((img) => ({
     ...img,
     url: img.url.startsWith("http") ? img.url : `${SITE_URL}${img.url}`,
   }));
 
   return {
-    title: fullTitle,
+    title: { absolute: fullTitle },
     description,
     keywords: keywords.length > 0 ? keywords : undefined,
     alternates: {
@@ -79,135 +74,90 @@ export function generatePageMetadata(options: MetadataOptions): Metadata {
   };
 }
 
+const PHONE_DISPLAY = CONTACT.phone.replace(/-/g, " ");
+
 // ==================== SPECIALIZED METADATA GENERATORS ====================
+
+interface VenueMetaInput {
+  name: { en: string };
+  slug: string;
+  capacity: { total: string | number };
+  location: { address: { en: string } };
+  poster?: string;
+}
 
 /**
  * Generates metadata for venue pages
  */
-export function generateVenueMetadata(
-  venue: VenueData,
-  locale: string = "en"
-): Metadata {
-  const venueName = venue.name[locale as keyof typeof venue.name] || venue.name.en;
-  const venueDescription =
-    venue.description[locale as keyof typeof venue.description] ||
-    venue.description.en;
-
-  // Use first venue image as OpenGraph image
-  const venueImage: OpenGraphImage = venue.images[0]
-    ? {
-        url: venue.images[0].startsWith("http")
-          ? venue.images[0]
-          : `${SITE_URL}${venue.images[0]}`,
-        width: 1200,
-        height: 630,
-        alt: `${venueName} - ${SITE_NAME}`,
-      }
-    : {
-        url: `${SITE_URL}${DEFAULT_IMAGES.ogDefault}`,
-        width: 1200,
-        height: 630,
-      };
+export function generateVenueMetadata(venue: VenueMetaInput, locale: string = "en"): Metadata {
+  const name = venue.name.en;
+  const capacity = venue.capacity.total;
 
   return generatePageMetadata({
-    title: `${venueName} - Premium Event Venue`,
-    description: venueDescription,
+    title: `${name} Mirpur AJK – Up to ${capacity} Guests`,
+    description: `${name} in Mirpur, AJK for weddings, mehndi, barat, walima and corporate events – up to ${capacity} guests, with in-house catering by Raheem. ${venue.location.address.en}. Call ${PHONE_DISPLAY}.`,
     url: `/venues/${venue.slug}`,
-    images: [venueImage],
+    images: venue.poster
+      ? [{ url: venue.poster, alt: `${name} – ${SITE_NAME}` }, DEFAULT_OG_IMAGE]
+      : undefined,
     locale,
     keywords: [
-      venueName,
-      "marriage hall",
-      "wedding venue",
-      "event venue",
-      "Mirpur AJK",
-      SITE_NAME,
-      `${venue.capacity.total} capacity`,
+      name,
+      `${name} Mirpur`,
+      "marriage hall Mirpur",
+      "wedding hall Mirpur AJK",
+      "banquet hall Mirpur",
+      "wedding venue Mirpur",
+      `${capacity} guests venue`,
     ],
   });
+}
+
+interface MenuItemMetaInput {
+  id: string;
+  category: string;
+  image: string;
+  name: { en: string };
 }
 
 /**
  * Generates metadata for menu item pages
  */
 export function generateMenuItemMetadata(
-  item: MenuItem,
-  category: string,
+  item: MenuItemMetaInput,
+  categoryName: string,
   locale: string = "en"
 ): Metadata {
-  const itemName = item.name[locale as keyof typeof item.name] || item.name.en;
-  const itemDescription = item.description
-    ? item.description[locale as keyof typeof item.description] || item.description.en
-    : `Traditional ${itemName} from our ${category} menu. Available for weddings, events, and catering services.`;
-
-  const itemImage: OpenGraphImage = {
-    url: item.image.startsWith("http") ? item.image : `${SITE_URL}${item.image}`,
-    width: 1200,
-    height: 630,
-    alt: `${itemName} - ${SITE_NAME}`,
-  };
+  const itemName = item.name.en;
 
   return generatePageMetadata({
-    title: `${itemName} - ${category}`,
-    description: itemDescription,
+    title: `${itemName} – Wedding Catering Mirpur`,
+    description: `${itemName} from our ${categoryName} menu, freshly prepared for weddings, mehndi, walima and events in Mirpur, AJK. Order from Raheem Events catering – call ${PHONE_DISPLAY}.`,
     url: `/menu/${item.category}/${item.id}`,
-    images: [itemImage],
+    images: [{ url: item.image, alt: `${itemName} – ${SITE_NAME}` }],
     locale,
-    keywords: [
-      itemName,
-      category,
-      "Pakistani food",
-      "wedding catering",
-      "halal food",
-      SITE_NAME,
-      "Mirpur AJK",
-    ],
+    keywords: [itemName, `${itemName} catering`, categoryName, "wedding catering Mirpur", "halal catering AJK"],
   });
+}
+
+interface CategoryMetaInput {
+  slug: string;
+  name: { en: string };
+  description: { en: string };
 }
 
 /**
  * Generates metadata for menu category pages
  */
-export function generateCategoryMetadata(
-  category: Category,
-  locale: string = "en"
-): Metadata {
-  const categoryName =
-    category.name[locale as keyof typeof category.name] || category.name.en;
-  const categoryDescription = category.description
-    ? category.description[locale as keyof typeof category.description] ||
-      category.description.en
-    : `Explore our ${categoryName} menu featuring authentic Pakistani dishes. Perfect for weddings, events, and catering services in Mirpur, AJK.`;
-
-  const categoryImage: OpenGraphImage = category.image
-    ? {
-        url: category.image.startsWith("http")
-          ? category.image
-          : `${SITE_URL}${category.image}`,
-        width: 1200,
-        height: 630,
-        alt: `${categoryName} - ${SITE_NAME}`,
-      }
-    : {
-        url: `${SITE_URL}${DEFAULT_IMAGES.ogDefault}`,
-        width: 1200,
-        height: 630,
-      };
+export function generateCategoryMetadata(category: CategoryMetaInput, locale: string = "en"): Metadata {
+  const categoryName = category.name.en;
 
   return generatePageMetadata({
-    title: `${categoryName} Menu - Authentic Pakistani Cuisine`,
-    description: categoryDescription,
+    title: `${categoryName} Catering Menu – Mirpur AJK`,
+    description: `${category.description.en} Catering for weddings and events in Mirpur, AJK by Raheem Events.`,
     url: `/menu/${category.slug}`,
-    images: [categoryImage],
     locale,
-    keywords: [
-      categoryName,
-      "Pakistani food",
-      "wedding catering",
-      "halal food",
-      SITE_NAME,
-      "Mirpur AJK",
-    ],
+    keywords: [`${categoryName} catering`, `${categoryName} menu`, "wedding catering Mirpur", "Pakistani food catering"],
   });
 }
 
@@ -215,23 +165,19 @@ export function generateCategoryMetadata(
  * Generates metadata for the home page
  */
 export function generateHomeMetadata(locale: string = "en"): Metadata {
-  const description =
-    locale === "en" ? BUSINESS.description.en : BUSINESS.description.ur;
-  const tagline = locale === "en" ? BUSINESS.tagline.en : BUSINESS.tagline.ur;
-
   return generatePageMetadata({
-    title: `${SITE_NAME} - ${tagline}`,
-    description,
+    title: "Marriage Halls & Wedding Catering in Mirpur AJK | Raheem Events",
+    description: `Raheem Events – wedding venues and catering in Mirpur, AJK since 2005. Israr Marriage Hall, Mumtaz Banquet Hall and a marquee for 1500 guests. Call ${PHONE_DISPLAY}.`,
     url: "/",
     locale,
     keywords: [
-      "wedding catering",
-      "marriage halls",
-      "event management",
-      "Mirpur AJK",
-      "Pakistani food",
-      "BBQ",
-      "halal catering",
+      "marriage hall Mirpur",
+      "wedding hall Mirpur AJK",
+      "banquet hall Mirpur",
+      "marquee Mirpur",
+      "wedding catering Mirpur",
+      "catering services Mirpur AJK",
+      "event management Mirpur",
       SITE_NAME,
     ],
   });
@@ -242,20 +188,12 @@ export function generateHomeMetadata(locale: string = "en"): Metadata {
  */
 export function generateMenuMetadata(locale: string = "en"): Metadata {
   return generatePageMetadata({
-    title: "Our Menu - Authentic Pakistani Cuisine",
+    title: "Wedding & Event Catering Menu – 107+ Dishes",
     description:
-      "Explore our extensive menu featuring 107+ authentic Pakistani dishes including Rice, BBQ, Qorma, Curry, Chinese, Desserts, and more. Perfect for weddings and events.",
+      "Browse 107+ dishes for your wedding or event in Mirpur, AJK – biryani, BBQ, qorma, karahi, Chinese, desserts and more. Halal catering by Raheem Events.",
     url: "/menu",
     locale,
-    keywords: [
-      "menu",
-      "Pakistani food",
-      "wedding catering",
-      "BBQ",
-      "biryani",
-      "halal food",
-      SITE_NAME,
-    ],
+    keywords: ["wedding catering menu", "catering menu Mirpur", "biryani catering", "BBQ catering", "Pakistani wedding food"],
   });
 }
 
@@ -264,18 +202,16 @@ export function generateMenuMetadata(locale: string = "en"): Metadata {
  */
 export function generateCateringMetadata(locale: string = "en"): Metadata {
   return generatePageMetadata({
-    title: "Catering Services - Premium Wedding & Event Catering",
-    description:
-      "Professional catering services for weddings, corporate events, and private parties in Mirpur, AJK. Featuring authentic Pakistani, BBQ, Chinese, and Continental cuisine.",
+    title: "Wedding Catering Services in Mirpur AJK",
+    description: `Wedding and event catering in Mirpur, AJK – Pakistani, BBQ, Chinese and Continental menus for mehndi, barat, walima and corporate events. Get a quote: ${PHONE_DISPLAY}.`,
     url: "/catering",
     locale,
     keywords: [
-      "catering services",
-      "wedding catering",
-      "event catering",
-      "corporate catering",
-      "Mirpur AJK",
-      SITE_NAME,
+      "wedding catering Mirpur",
+      "catering services Mirpur AJK",
+      "event catering Mirpur",
+      "corporate catering AJK",
+      "halal catering Mirpur",
     ],
   });
 }
@@ -285,18 +221,17 @@ export function generateCateringMetadata(locale: string = "en"): Metadata {
  */
 export function generateVenuesMetadata(locale: string = "en"): Metadata {
   return generatePageMetadata({
-    title: "Our Venues - Premium Marriage Halls & Banquet Halls",
+    title: "Marriage Halls & Banquet Halls in Mirpur AJK",
     description:
-      "Discover our premium marriage halls in Mirpur, AJK. Israr Marriage Hall (700 capacity), Mumtaz Banquet Hall (700 capacity) and a Marquee for up to 1500 guests - perfect for weddings and events.",
+      "Three wedding venues in Mirpur, AJK: Israr Marriage Hall (700 guests), Mumtaz Banquet Hall (700 guests) and a marquee for up to 1500 guests – with in-house catering.",
     url: "/venues",
     locale,
     keywords: [
-      "marriage halls",
-      "wedding venues",
-      "banquet halls",
-      "event venues",
-      "Mirpur AJK",
-      SITE_NAME,
+      "marriage halls Mirpur",
+      "banquet halls Mirpur AJK",
+      "wedding venues Mirpur",
+      "marquee Mirpur",
+      "wedding hall booking Mirpur",
     ],
   });
 }
@@ -306,19 +241,12 @@ export function generateVenuesMetadata(locale: string = "en"): Metadata {
  */
 export function generateFAQMetadata(locale: string = "en"): Metadata {
   return generatePageMetadata({
-    title: "Frequently Asked Questions - Your Event Queries Answered",
+    title: "FAQs – Wedding Halls & Catering in Mirpur",
     description:
-      "Find answers to common questions about our catering services, venue booking, menu options, pricing, and event planning in Mirpur, AJK.",
+      "Answers about hall capacity, booking, catering menus, pricing and event planning at Raheem Events, Mirpur, AJK.",
     url: "/faq",
     locale,
-    keywords: [
-      "FAQ",
-      "questions",
-      "catering FAQ",
-      "venue booking",
-      "event planning",
-      SITE_NAME,
-    ],
+    keywords: ["marriage hall booking Mirpur", "wedding catering questions", "hall capacity Mirpur"],
   });
 }
 
@@ -327,18 +255,12 @@ export function generateFAQMetadata(locale: string = "en"): Metadata {
  */
 export function generateGalleryMetadata(locale: string = "en"): Metadata {
   return generatePageMetadata({
-    title: "Gallery - Our Events & Catering Showcase",
+    title: "Wedding Hall Photos & Videos – Mirpur AJK",
     description:
-      "Browse our gallery showcasing stunning weddings, events, and delicious food spreads. See why we're the premier choice for events in Mirpur, AJK.",
+      "Photos and video tours of Israr Marriage Hall and our 1500-guest marquee in Mirpur, AJK – stage setups, decor and real wedding events by Raheem Events.",
     url: "/gallery",
     locale,
-    keywords: [
-      "gallery",
-      "wedding photos",
-      "event photos",
-      "food gallery",
-      SITE_NAME,
-    ],
+    keywords: ["wedding hall photos Mirpur", "marriage hall video Mirpur", "wedding decor Mirpur"],
   });
 }
 
@@ -347,18 +269,11 @@ export function generateGalleryMetadata(locale: string = "en"): Metadata {
  */
 export function generateContactMetadata(locale: string = "en"): Metadata {
   return generatePageMetadata({
-    title: "Contact Us - Get in Touch for Your Event",
-    description:
-      "Contact Raheem Event Management & Catering for bookings and inquiries. Call +92-344-4477751 or visit us in Mirpur, AJK.",
+    title: `Contact Raheem Events Mirpur – ${PHONE_DISPLAY}`,
+    description: `Book a marriage hall or catering in Mirpur, AJK. Call or WhatsApp ${PHONE_DISPLAY}, or visit us at Haul Rd, Sector F-1, New Mirpur City.`,
     url: "/contact",
     locale,
-    keywords: [
-      "contact",
-      "booking",
-      "inquiry",
-      "Mirpur AJK",
-      SITE_NAME,
-    ],
+    keywords: ["Raheem Events contact", "marriage hall booking Mirpur", "catering Mirpur phone number"],
   });
 }
 
@@ -367,18 +282,11 @@ export function generateContactMetadata(locale: string = "en"): Metadata {
  */
 export function generateBookNowMetadata(locale: string = "en"): Metadata {
   return generatePageMetadata({
-    title: "Book Now - Reserve Your Event Today",
-    description:
-      "Book your wedding, corporate event, or private party with Raheem Events. Premium catering and venue services in Mirpur, AJK.",
+    title: "Book a Wedding Hall or Catering in Mirpur",
+    description: `Check dates and book your wedding, mehndi, walima or corporate event at Raheem Events, Mirpur, AJK. Quick reply on WhatsApp ${PHONE_DISPLAY}.`,
     url: "/book-now",
     locale,
-    keywords: [
-      "book now",
-      "reservation",
-      "booking",
-      "event booking",
-      SITE_NAME,
-    ],
+    keywords: ["book marriage hall Mirpur", "wedding hall booking AJK", "book catering Mirpur"],
   });
 }
 
@@ -387,18 +295,12 @@ export function generateBookNowMetadata(locale: string = "en"): Metadata {
  */
 export function generateMenuBuilderMetadata(locale: string = "en"): Metadata {
   return generatePageMetadata({
-    title: "Menu Builder - Create Your Custom Event Menu",
+    title: "Build Your Wedding Menu & Get a Quote",
     description:
-      "Design your perfect event menu by selecting from our 107+ authentic dishes. Build custom menus for your wedding or event.",
+      "Pick dishes from our 107+ item menu to build a custom wedding or event catering menu and request a quote from Raheem Events, Mirpur, AJK.",
     url: "/menu-builder",
     locale,
-    keywords: [
-      "menu builder",
-      "custom menu",
-      "event planning",
-      "wedding menu",
-      SITE_NAME,
-    ],
+    keywords: ["custom wedding menu", "catering quote Mirpur", "wedding menu builder"],
   });
 }
 
@@ -407,18 +309,12 @@ export function generateMenuBuilderMetadata(locale: string = "en"): Metadata {
  */
 export function generateTestimonialsMetadata(locale: string = "en"): Metadata {
   return generatePageMetadata({
-    title: "Testimonials - What Our Clients Say",
+    title: "Client Reviews & Testimonials – Mirpur Weddings",
     description:
-      "Read reviews and testimonials from our satisfied clients. Discover why we're rated 4.9/5 stars for our catering and venue services in Mirpur, AJK.",
+      "Read what families say about their weddings, mehndi and walima events with Raheem Events' halls and catering in Mirpur, AJK.",
     url: "/testimonials",
     locale,
-    keywords: [
-      "testimonials",
-      "reviews",
-      "client feedback",
-      "ratings",
-      SITE_NAME,
-    ],
+    keywords: ["Raheem Events reviews", "marriage hall reviews Mirpur", "catering reviews Mirpur"],
   });
 }
 
@@ -427,17 +323,11 @@ export function generateTestimonialsMetadata(locale: string = "en"): Metadata {
  */
 export function generateAboutMetadata(locale: string = "en"): Metadata {
   return generatePageMetadata({
-    title: "About Us - Premium Event Management Since 2005",
+    title: "About Raheem Events – Mirpur Since 2005",
     description:
-      "Learn about Raheem Event Management & Catering - serving Mirpur, AJK since 2005 with premium catering services and elegant event venues.",
+      "Raheem Event Management & Catering has served Mirpur, AJK since 2005 with wedding halls, a 1500-guest marquee, catering and complete event management.",
     url: "/about",
     locale,
-    keywords: [
-      "about us",
-      "company history",
-      "event management",
-      "Mirpur AJK",
-      SITE_NAME,
-    ],
+    keywords: ["Raheem Events", "event management Mirpur", "wedding planners Mirpur AJK"],
   });
 }

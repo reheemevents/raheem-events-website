@@ -14,6 +14,17 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // One canonical host: www.raheemevents.com currently serves a duplicate copy of the site
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.raheemevents.com" }],
+        destination: "https://raheemevents.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);

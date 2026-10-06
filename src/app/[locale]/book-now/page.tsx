@@ -8,6 +8,7 @@ import { BookingForm } from "@/components/booking";
 import { Phone, MessageCircle, Clock, Shield, Star } from "lucide-react";
 import { CONTACT } from "@/lib/constants";
 import { getWhatsAppLink, getPhoneLink } from "@/lib/utils";
+import { generateBookNowMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -15,15 +16,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "booking" });
-
-  return {
-    title: `${t("title")} | Raheem Event Management & Catering`,
-    description:
-      locale === "ur"
-        ? "اپنا ایونٹ آج ہی بک کریں - شادی، مہندی، ولیمہ، کارپوریٹ ایونٹس"
-        : "Book your event today - Weddings, Mehndi, Walima, Corporate Events",
-  };
+  return generateBookNowMetadata(locale);
 }
 
 export default async function BookNowPage({
