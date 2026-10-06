@@ -224,7 +224,7 @@ export default async function BookNowPage({
                     <div className="w-px h-10 bg-white/20" />
                     <div className="text-center">
                       <div className="font-heading text-2xl font-bold text-[#D4AF37]">
-                        500+
+                        10K+
                       </div>
                       <div className="text-xs">
                         {locale === "ur" ? "تقریبات" : "Events"}
@@ -233,7 +233,7 @@ export default async function BookNowPage({
                     <div className="w-px h-10 bg-white/20" />
                     <div className="text-center">
                       <div className="font-heading text-2xl font-bold text-[#D4AF37]">
-                        1000+
+                        20K+
                       </div>
                       <div className="text-xs">
                         {locale === "ur" ? "گاہک" : "Clients"}

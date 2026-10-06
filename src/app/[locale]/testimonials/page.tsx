@@ -119,12 +119,12 @@ export default async function TestimonialsPage({
 
   const stats = [
     {
-      value: "500+",
+      value: "10K+",
       label: locale === "ur" ? "کامیاب تقریبات" : "Successful Events",
       icon: Calendar,
     },
     {
-      value: "1000+",
+      value: "20K+",
       label: locale === "ur" ? "خوش گاہک" : "Happy Clients",
       icon: Users,
     },

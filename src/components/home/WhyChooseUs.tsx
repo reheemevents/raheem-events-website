@@ -97,14 +97,14 @@ export default function WhyChooseUs() {
       icon: <Calendar size={28} />,
     },
     {
-      value: 500,
-      suffix: "+",
+      value: 10,
+      suffix: "K+",
       label: t("stats.events"),
       icon: <Star size={28} />,
     },
     {
-      value: 1000,
-      suffix: "+",
+      value: 20,
+      suffix: "K+",
       label: t("stats.clients"),
       icon: <Users size={28} />,
     },

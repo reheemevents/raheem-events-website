@@ -51,12 +51,12 @@ export default async function AboutPage({
       icon: Calendar,
     },
     {
-      value: "500+",
+      value: "10K+",
       label: locale === "ur" ? "تقریبات مکمل" : "Events Completed",
       icon: Star,
     },
     {
-      value: "1000+",
+      value: "20K+",
       label: locale === "ur" ? "خوش گاہک" : "Happy Clients",
       icon: Users,
     },
