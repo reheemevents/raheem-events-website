@@ -37,6 +37,7 @@ export function generatePageMetadata(options: MetadataOptions): Metadata {
         url: `${SITE_URL}${DEFAULT_IMAGES.ogDefault}`,
         width: 1200,
         height: 630,
+        alt: SITE_NAME,
       },
     ],
     locale = "en",
