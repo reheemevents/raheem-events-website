@@ -110,7 +110,7 @@ export const RATING = {
 
 export const DEFAULT_IMAGES = {
   logo: "/Logo/logo.png",
-  ogDefault: "/images/og-default.jpg",
+  ogDefault: "/images/og-default.jpg?v=2",
   hero: [
     "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1920&q=85",
     "https://images.unsplash.com/photo-1555244162-803834f70033?w=1920&q=85",

@@ -81,7 +81,7 @@ export async function generateMetadata() {
       type: "website",
       images: [
         {
-          url: "https://raheemevents.com/images/og-default.jpg",
+          url: "https://raheemevents.com/images/og-default.jpg?v=2",
           width: 1200,
           height: 630,
           alt: "Raheem Event Management & Catering",
@@ -92,7 +92,7 @@ export async function generateMetadata() {
       card: "summary_large_image",
       title: "Raheem Event Management & Catering | Wedding Halls & Catering Services",
       description: "Premium catering services and elegant marriage halls in Mirpur, AJK",
-      images: ["https://raheemevents.com/images/og-default.jpg"],
+      images: ["https://raheemevents.com/images/og-default.jpg?v=2"],
     },
     robots: {
       index: true,
