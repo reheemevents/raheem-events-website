@@ -70,6 +70,7 @@ export const EVENT_TYPES = [
 export const VENUES = {
   ISRAR: "israr-marriage-hall",
   MUMTAZ: "mumtaz-banquet-hall",
+  MARQUEE: "marquee",
 } as const;
 
 // Amenity icons mapping

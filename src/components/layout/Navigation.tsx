@@ -138,7 +138,12 @@ export default function Navigation() {
         {
           href: "/venues/mumtaz-banquet-hall",
           label: "Mumtaz Banquet Hall",
-          description: "Ground floor, capacity 1000-1200 guests",
+          description: "Ground floor, capacity up to 700 guests",
+        },
+        {
+          href: "/venues/marquee",
+          label: "Marquee",
+          description: "Available for up to 1500 guests",
         },
       ],
     },

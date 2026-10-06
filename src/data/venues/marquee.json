@@ -1,0 +1,71 @@
+{
+  "id": "marquee",
+  "name": {
+    "en": "Marquee",
+    "ur": "مارکی"
+  },
+  "slug": "marquee",
+  "tagline": {
+    "en": "Grand Celebrations for up to 1500 Guests",
+    "ur": "۱۵۰۰ مہمانوں تک کی شاندار تقریبات"
+  },
+  "description": {
+    "en": "Our spacious marquee is available for large celebrations of up to 1500 guests. Located just a 9-minute drive from the heart of Mirpur (Mirpur Stadium), it is the ideal choice for big weddings, walimas and grand gatherings, with full catering and event management by Raheem.",
+    "ur": "ہماری وسیع مارکی ۱۵۰۰ مہمانوں تک کی بڑی تقریبات کے لیے دستیاب ہے۔ میرپور کے مرکز (میرپور اسٹیڈیم) سے صرف ۹ منٹ کی ڈرائیو پر واقع، یہ بڑی شادیوں، ولیموں اور شاندار اجتماعات کے لیے بہترین انتخاب ہے، رحیم کی مکمل کیٹرنگ اور ایونٹ مینجمنٹ کے ساتھ۔"
+  },
+  "video": "/images/venues/marquee/marquee-video.mp4",
+  "poster": "/images/venues/marquee/marquee-poster.jpg",
+  "capacity": {
+    "total": "1500",
+    "floors": [
+      { "name": "Marquee", "capacity": "1500" }
+    ]
+  },
+  "amenities": [
+    "parking",
+    "generator",
+    "stage",
+    "sound",
+    "lighting",
+    "catering",
+    "decor"
+  ],
+  "eventTypes": [
+    "wedding",
+    "mehndi",
+    "barat",
+    "walima",
+    "corporate",
+    "birthday"
+  ],
+  "location": {
+    "address": {
+      "en": "9 minutes drive from the heart of Mirpur (Mirpur Stadium)",
+      "ur": "میرپور کے مرکز (میرپور اسٹیڈیم) سے ۹ منٹ کی ڈرائیو"
+    },
+    "city": "Mirpur, AJK",
+    "mapUrl": ""
+  },
+  "contact": {
+    "phone": "+92 344 4477751",
+    "whatsapp": "923444477751"
+  },
+  "features": {
+    "en": [
+      "Capacity for up to 1500 guests",
+      "Only 9 minutes from the heart of Mirpur",
+      "Ideal for large weddings and walimas",
+      "Full in-house catering by Raheem",
+      "Custom stage and decor",
+      "Professional event coordination"
+    ],
+    "ur": [
+      "۱۵۰۰ مہمانوں تک کی گنجائش",
+      "میرپور کے مرکز سے صرف ۹ منٹ",
+      "بڑی شادیوں اور ولیموں کے لیے بہترین",
+      "رحیم کی مکمل کیٹرنگ",
+      "حسب ضرورت اسٹیج اور سجاوٹ",
+      "پروفیشنل ایونٹ کوآرڈینیشن"
+    ]
+  }
+}

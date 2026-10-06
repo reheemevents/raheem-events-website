@@ -86,7 +86,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // ==================== VENUE ROUTES (2 venues) ====================
+  // ==================== VENUE ROUTES (3 venues) ====================
 
   const venueRoutes: MetadataRoute.Sitemap = [
     {
@@ -97,6 +97,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${baseUrl}/venues/mumtaz-banquet-hall`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/venues/marquee`,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,

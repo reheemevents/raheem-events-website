@@ -16,6 +16,7 @@ import { CONTACT } from "@/lib/constants";
 import { getPhoneLink, getWhatsAppLink } from "@/lib/utils";
 import israrData from "@/data/venues/israr.json";
 import mumtazData from "@/data/venues/mumtaz.json";
+import marqueeData from "@/data/venues/marquee.json";
 import { generateContactMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
@@ -50,6 +51,11 @@ export default async function ContactPage({
       data: mumtazData,
       name: mumtazData.name.en,
       address: mumtazData.location.address.en,
+    },
+    {
+      data: marqueeData,
+      name: `${marqueeData.name.en} (up to ${marqueeData.capacity.total} guests)`,
+      address: marqueeData.location.address.en,
     },
   ];
 
@@ -234,14 +240,16 @@ export default async function ContactPage({
                             <Phone size={16} className="text-[#D4AF37]" />
                             {venue.data.contact.phone}
                           </p>
-                          <a
-                            href={venue.data.location.mapUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center text-[#D4AF37] font-medium hover:underline"
-                          >
-                            Get Directions →
-                          </a>
+                          {venue.data.location.mapUrl && (
+                            <a
+                              href={venue.data.location.mapUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center text-[#D4AF37] font-medium hover:underline"
+                            >
+                              Get Directions →
+                            </a>
+                          )}
                         </div>
                       </div>
                     </div>

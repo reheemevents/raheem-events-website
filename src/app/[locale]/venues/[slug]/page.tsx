@@ -28,10 +28,12 @@ import {
 import { getWhatsAppLink, getPhoneLink } from "@/lib/utils";
 import israrData from "@/data/venues/israr.json";
 import mumtazData from "@/data/venues/mumtaz.json";
+import marqueeData from "@/data/venues/marquee.json";
 
 const venues = {
   "israr-marriage-hall": israrData,
   "mumtaz-banquet-hall": mumtazData,
+  marquee: marqueeData,
 };
 
 const amenityIcons: Record<string, React.ReactNode> = {
@@ -106,6 +108,8 @@ export default async function VenueDetailPage({
   const features = venue.features.en;
 
   const whatsappMessage = `Hi! I would like to inquire about booking ${name}.`;
+  const video = "video" in venue ? venue.video : undefined;
+  const poster = "poster" in venue ? venue.poster : undefined;
 
   return (
     <>
@@ -115,6 +119,20 @@ export default async function VenueDetailPage({
         <section className="relative h-[60vh] min-h-[500px]">
           {/* Background image placeholder */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A1A] to-[#2D2D2D]" />
+
+          {/* Background video */}
+          {video && (
+            <video
+              className="absolute inset-0 w-full h-full object-cover"
+              src={video}
+              poster={poster}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            />
+          )}
 
           {/* Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
@@ -201,6 +219,23 @@ export default async function VenueDetailPage({
                     {description}
                   </p>
                 </div>
+
+                {/* Video tour */}
+                {video && (
+                  <div>
+                    <h2 className="font-heading text-2xl font-semibold text-[#1A1A1A] mb-4">
+                      Video Tour
+                    </h2>
+                    <video
+                      className="w-full rounded-sm border border-[#E5E5E5] bg-black"
+                      src={video}
+                      poster={poster}
+                      controls
+                      playsInline
+                      preload="metadata"
+                    />
+                  </div>
+                )}
 
                 {/* Capacity */}
                 <div className="bg-white p-8 rounded-sm border border-[#E5E5E5]">
@@ -335,18 +370,20 @@ export default async function VenueDetailPage({
                         {t("location")}
                       </h4>
                       <p className="text-[#6B7280] text-sm mb-3">{address}</p>
-                      <a
-                        href={venue.location.mapUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[#D4AF37] text-sm font-medium hover:underline"
-                      >
-                        {t("viewOnMap")} →
-                      </a>
+                      {venue.location.mapUrl && (
+                        <a
+                          href={venue.location.mapUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#D4AF37] text-sm font-medium hover:underline"
+                        >
+                          {t("viewOnMap")} →
+                        </a>
+                      )}
                     </div>
 
                     {/* Gallery CTA */}
-                    {slug === "israr-marriage-hall" && (
+                    {(slug === "israr-marriage-hall" || slug === "marquee") && (
                       <div className="mt-6 pt-6 border-t border-[#E5E5E5]">
                         <h4 className="font-medium text-[#1A1A1A] mb-2 flex items-center gap-2">
                           <Images size={16} className="text-[#D4AF37]" />

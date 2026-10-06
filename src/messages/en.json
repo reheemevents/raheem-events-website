@@ -206,6 +206,7 @@
       "venueOptions": {
         "israr": "Israr Marriage Hall",
         "mumtaz": "Mumtaz Banquet Hall",
+        "marquee": "Marquee (up to 1500 guests)",
         "cateringOnly": "Catering Only",
         "both": "Both Venues"
       },

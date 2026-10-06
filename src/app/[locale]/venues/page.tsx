@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { Users, MapPin, ArrowRight } from "lucide-react";
 import israrData from "@/data/venues/israr.json";
 import mumtazData from "@/data/venues/mumtaz.json";
+import marqueeData from "@/data/venues/marquee.json";
 
 export async function generateMetadata({
   params,
@@ -21,7 +22,7 @@ export async function generateMetadata({
 
   return {
     title: `${t("title")} | Raheem Event Management & Catering`,
-    description: "Explore our beautiful marriage halls - Israr Marriage Hall and Mumtaz Banquet Hall",
+    description: "Explore our beautiful venues - Israr Marriage Hall, Mumtaz Banquet Hall and a Marquee available for up to 1500 guests",
   };
 }
 
@@ -34,7 +35,7 @@ export default async function VenuesPage({
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "venues" });
 
-  const venues = [israrData, mumtazData];
+  const venues = [israrData, mumtazData, marqueeData];
 
   return (
     <>
@@ -65,7 +66,7 @@ export default async function VenuesPage({
         {/* Venues grid */}
         <section className="py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {venues.map((venue) => {
                 const name = venue.name.en;
                 const tagline = venue.tagline.en;
@@ -79,6 +80,15 @@ export default async function VenuesPage({
                     {/* Image */}
                     <div className="relative h-72 overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A1A] to-[#2D2D2D]" />
+                      {"poster" in venue && (
+                        <Image
+                          src={venue.poster}
+                          alt={name}
+                          fill
+                          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                          className="object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+                      )}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10" />
 
                       {/* Gold corner accents */}

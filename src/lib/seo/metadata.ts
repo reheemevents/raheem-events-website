@@ -286,7 +286,7 @@ export function generateVenuesMetadata(locale: string = "en"): Metadata {
   return generatePageMetadata({
     title: "Our Venues - Premium Marriage Halls & Banquet Halls",
     description:
-      "Discover our premium marriage halls in Mirpur, AJK. Israr Marriage Hall (700 capacity) and Mumtaz Banquet Hall (500 capacity) - perfect for weddings and events.",
+      "Discover our premium marriage halls in Mirpur, AJK. Israr Marriage Hall (700 capacity), Mumtaz Banquet Hall (700 capacity) and a Marquee for up to 1500 guests - perfect for weddings and events.",
     url: "/venues",
     locale,
     keywords: [

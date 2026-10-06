@@ -79,6 +79,7 @@ export function BookingForm({ locale }: BookingFormProps) {
   const venueOptions = [
     { value: "israr", label: t("form.venueOptions.israr") },
     { value: "mumtaz", label: t("form.venueOptions.mumtaz") },
+    { value: "marquee", label: t("form.venueOptions.marquee") },
     { value: "catering-only", label: t("form.venueOptions.cateringOnly") },
     { value: "both", label: t("form.venueOptions.both") },
   ];
@@ -90,7 +91,8 @@ export function BookingForm({ locale }: BookingFormProps) {
     { value: "400-500", label: "400 - 500" },
     { value: "500-600", label: "500 - 600" },
     { value: "600-700", label: "600 - 700" },
-    { value: "700+", label: "700+" },
+    { value: "700-1000", label: "700 - 1000" },
+    { value: "1000-1500", label: "1000 - 1500" },
   ];
 
   const updateFormData = (field: keyof FormData, value: string | Date | undefined) => {

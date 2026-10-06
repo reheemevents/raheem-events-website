@@ -77,11 +77,20 @@ const galleryMedia = [
     category: "israr",
     title: { en: "Israr Hall Complete View", ur: "اصرار ہال مکمل منظر" },
   },
+  // Marquee category - Videos
+  {
+    id: 14,
+    type: "video",
+    src: "/images/venues/marquee/marquee-video.mp4",
+    category: "marquee",
+    title: { en: "Marquee Video Tour (1500 Guests)", ur: "مارکی ویڈیو ٹور (۱۵۰۰ مہمان)" },
+  },
 ];
 
 const categories = [
   { id: "all", label: { en: "All", ur: "سب" } },
   { id: "israr", label: { en: "Israr Hall", ur: "اصرار ہال" } },
+  { id: "marquee", label: { en: "Marquee", ur: "مارکی" } },
 ];
 
 export default function GalleryPage() {

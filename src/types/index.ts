@@ -153,7 +153,7 @@ export interface BookingFormData {
   guestCount: number;
 
   // Step 2: Services
-  venue: "israr" | "mumtaz" | "catering-only" | "both";
+  venue: "israr" | "mumtaz" | "marquee" | "catering-only" | "both";
   packageTier: "silver" | "gold" | "platinum" | "custom";
 
   // Step 3: Contact

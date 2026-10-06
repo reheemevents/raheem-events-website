@@ -64,6 +64,12 @@
       "answer": "Mumtaz Banquet Hall has a capacity of up to 600 guests for seated arrangements and up to 800 guests for buffet-style events. It offers a luxurious setting with contemporary decor and full amenities."
     },
     {
+      "id": "venues-marquee",
+      "category": "venues",
+      "question": "Do you have a venue for more than 1000 guests?",
+      "answer": "Yes, we have a marquee available for up to 1500 guests, just a 9-minute drive from the heart of Mirpur (Mirpur Stadium). It is ideal for large weddings, walimas and grand gatherings, with full catering and event management by Raheem."
+    },
+    {
       "id": "venues-3",
       "category": "venues",
       "question": "What amenities are included with the venue?",

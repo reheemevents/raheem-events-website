@@ -34,6 +34,7 @@ export default function Footer() {
     venues: [
       { href: "/venues/israr-marriage-hall", label: "Israr Marriage Hall" },
       { href: "/venues/mumtaz-banquet-hall", label: "Mumtaz Banquet Hall" },
+      { href: "/venues/marquee", label: "Marquee (1500 Guests)" },
       { href: "/gallery", label: "Gallery" },
     ],
     company: [

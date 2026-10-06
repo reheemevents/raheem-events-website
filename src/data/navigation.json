@@ -34,6 +34,13 @@
             "ur": "ممتاز بینکوئٹ ہال"
           },
           "href": "/venues/mumtaz-banquet-hall"
+        },
+        {
+          "label": {
+            "en": "Marquee",
+            "ur": "مارکی"
+          },
+          "href": "/venues/marquee"
         }
       ]
     },
@@ -108,6 +115,13 @@
             "ur": "ممتاز بینکوئٹ ہال"
           },
           "href": "/venues/mumtaz-banquet-hall"
+        },
+        {
+          "label": {
+            "en": "Marquee",
+            "ur": "مارکی"
+          },
+          "href": "/venues/marquee"
         },
         {
           "label": {
